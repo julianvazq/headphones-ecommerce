@@ -69,12 +69,14 @@ const MenuOpen = ({ showMenu, handleShowMenu }) => {
   return (
     <AnimatePresence exitBeforeEnter>
       {showMenu && (
-        <Backdrop
-          variants={backdropVariant}
-          initial='initial'
-          animate='final'
-          exit='initial'
-        >
+        <>
+          <Backdrop
+            onClick={handleShowMenu}
+            variants={backdropVariant}
+            initial='initial'
+            animate='final'
+            exit='initial'
+          ></Backdrop>
           <MenuBackground
             variants={menuVariant}
             initial='initial'
@@ -82,7 +84,7 @@ const MenuOpen = ({ showMenu, handleShowMenu }) => {
             exit='initial'
           >
             <MenuHeading>Menu</MenuHeading>
-            <a onClick={handleShowMenu}>Cart</a>
+            <a>Cart</a>
             <Link href='/products/headphones'>
               <a>Headphones</a>
             </Link>
@@ -94,7 +96,7 @@ const MenuOpen = ({ showMenu, handleShowMenu }) => {
             </Link>
             <a>Contact Us</a>
           </MenuBackground>
-        </Backdrop>
+        </>
       )}
     </AnimatePresence>
   );

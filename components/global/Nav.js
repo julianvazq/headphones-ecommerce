@@ -64,9 +64,13 @@ const Nav = ({ showMenu, handleShowMenu }) => {
       <MenuOpen showMenu={showMenu} handleShowMenu={handleShowMenu} />
       <ContainerMaxWidth>
         <Navigation>
-          <LogoContainer>
-            <p>H</p>
-          </LogoContainer>
+          <Link href='/'>
+            <a>
+              <LogoContainer>
+                <p>H</p>
+              </LogoContainer>
+            </a>
+          </Link>
           <LinkContainer>
             {width >= 700 && (
               <>
