@@ -32,9 +32,12 @@ const MenuHeading = styled.h2`
   border-bottom: 2px solid var(--dark);
 `;
 
-const MenuOpen = ({ showMenu, handleShowMenu }) => {
+const MenuOpen = ({ showingCartOrMenu, handleShowSidebar }) => {
   return (
-    <AnimatedSidebar show={showMenu} handleShow={handleShowMenu}>
+    <AnimatedSidebar
+      showSidebar={showingCartOrMenu}
+      handleShowSidebar={handleShowSidebar}
+    >
       <Menu>
         <MenuHeading>Menu</MenuHeading>
         <a>Checkout</a>

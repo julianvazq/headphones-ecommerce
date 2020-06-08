@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import Link from 'next/link';
 import styled from 'styled-components';
-import { motion } from 'framer-motion';
+import { motion, AnimatePresence } from 'framer-motion';
 import ContainerMaxWidth from '../utils/ContainerMaxWidth';
 import { MdShoppingCart, MdMenu } from 'react-icons/md';
 import MenuOpen from './MenuOpen';
@@ -56,11 +56,24 @@ const CartIcon = styled(MdShoppingCart)`
   color: var(--dark);
 `;
 
-const Nav = ({ showMenu, handleShowMenu }) => {
+const Nav = ({ showingCartOrMenu, handleShowSidebar }) => {
+  console.log(showingCartOrMenu);
   return (
     <>
-      <CartOpen />
-      <MenuOpen showMenu={showMenu} handleShowMenu={handleShowMenu} />
+      <AnimatePresence exitBeforeEnter>
+        {showingCartOrMenu === 'cart' && (
+          <CartOpen
+            showingCartOrMenu={showingCartOrMenu}
+            handleShowSidebar={handleShowSidebar}
+          />
+        )}
+        {showingCartOrMenu === 'menu' && (
+          <MenuOpen
+            showingCartOrMenu={showingCartOrMenu}
+            handleShowSidebar={handleShowSidebar}
+          />
+        )}
+      </AnimatePresence>
       <ContainerMaxWidth>
         <Navigation>
           <Link href='/'>
@@ -77,8 +90,8 @@ const Nav = ({ showMenu, handleShowMenu }) => {
             <Link href='/products/earbuds'>
               <a>Earbuds</a>
             </Link>
-            <CartIcon />
-            <MdMenu onClick={handleShowMenu} />
+            <CartIcon onClick={() => handleShowSidebar('cart')} />
+            <MdMenu onClick={() => handleShowSidebar('menu')} />
           </LinkContainer>
         </Navigation>
       </ContainerMaxWidth>

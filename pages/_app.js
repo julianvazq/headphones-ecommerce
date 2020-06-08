@@ -12,12 +12,17 @@ const theme = {
 
 export default class MyApp extends App {
   state = {
-    showMenu: false,
-    showCart: false,
+    showingCartOrMenu: null,
   };
 
-  handleShowMenu = () => {
-    this.setState((prevState) => ({ showMenu: !prevState.showMenu }));
+  handleShowSidebar = (showing) => {
+    if (!showing) {
+      this.setState({ showingCartOrMenu: null });
+    } else if (showing === 'cart') {
+      this.setState({ showingCartOrMenu: 'cart' });
+    } else {
+      this.setState({ showingCartOrMenu: 'menu' });
+    }
   };
 
   render() {
@@ -27,12 +32,12 @@ export default class MyApp extends App {
         <AnimatePresence
           exitBeforeEnter
           onExitComplete={() => {
-            this.setState({ showMenu: false });
+            this.setState({ showingCartOrMenu: null });
           }}
         >
           <Layout
-            showMenu={this.state.showMenu}
-            handleShowMenu={this.handleShowMenu}
+            showingCartOrMenu={this.state.showingCartOrMenu}
+            handleShowSidebar={this.handleShowSidebar}
           >
             <Component {...pageProps} />
           </Layout>

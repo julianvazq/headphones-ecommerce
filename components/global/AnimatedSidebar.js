@@ -5,7 +5,6 @@ import { MdClose } from 'react-icons/md';
 const backdropVariant = {
   initial: { opacity: 0 },
   final: { opacity: 1 },
-  exit: { opacity: 0 },
 };
 
 const sidebarVariant = {
@@ -15,7 +14,6 @@ const sidebarVariant = {
     opacity: 1,
     transition: { delay: 0.5 },
   },
-  exit: { x: '100%', opacity: 0 },
 };
 
 const Backdrop = styled(motion.div)`
@@ -51,30 +49,30 @@ const CloseButton = styled(MdClose)`
   cursor: pointer;
 `;
 
-const AnimatedSidebar = ({ show, handleShow, children }) => {
+const AnimatedSidebar = ({ showSidebar, handleShowSidebar, children }) => {
+  const closeSidebar = () => {
+    handleShowSidebar(null);
+  };
+
   return (
-    <AnimatePresence exitBeforeEnter>
-      {show && (
-        <>
-          <Backdrop
-            onClick={handleShow}
-            variants={backdropVariant}
-            initial='initial'
-            animate='final'
-            exit='initial'
-          />
-          <Sidebar
-            variants={sidebarVariant}
-            initial='initial'
-            animate='final'
-            exit='initial'
-          >
-            <CloseButton onClick={handleShow} />
-            {children}
-          </Sidebar>
-        </>
-      )}
-    </AnimatePresence>
+    <>
+      <Backdrop
+        onClick={closeSidebar}
+        variants={backdropVariant}
+        initial='initial'
+        animate='final'
+        exit='initial'
+      />
+      <Sidebar
+        variants={sidebarVariant}
+        initial='initial'
+        animate='final'
+        exit='initial'
+      >
+        <CloseButton onClick={closeSidebar} />
+        {children}
+      </Sidebar>
+    </>
   );
 };
 
