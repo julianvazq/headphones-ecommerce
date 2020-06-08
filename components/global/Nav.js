@@ -39,10 +39,15 @@ const LinkContainer = styled.div`
 
   a {
     letter-spacing: 0.5px;
+    display: none;
   }
 
   @media (min-width: 700px) {
     width: 350px;
+
+    a {
+      display: inline-block;
+    }
   }
 `;
 
@@ -51,14 +56,6 @@ const CartIcon = styled(MdShoppingCart)`
 `;
 
 const Nav = ({ showMenu, handleShowMenu }) => {
-  const width = useViewportWidth();
-
-  useEffect(() => {
-    setTimeout(() => {
-      //   setShowMenu(true);
-    }, 3000);
-  }, []);
-
   return (
     <>
       <MenuOpen showMenu={showMenu} handleShowMenu={handleShowMenu} />
@@ -72,16 +69,16 @@ const Nav = ({ showMenu, handleShowMenu }) => {
             </a>
           </Link>
           <LinkContainer>
-            {width >= 700 && (
-              <>
-                <Link href='/products/headphones'>
-                  <a>Headphones</a>
-                </Link>
-                <Link href='/products/earbuds'>
-                  <a>Earbuds</a>
-                </Link>
-              </>
-            )}
+            {/* {width >= 700 && ( */}
+            <>
+              <Link href='/products/headphones'>
+                <a>Headphones</a>
+              </Link>
+              <Link href='/products/earbuds'>
+                <a>Earbuds</a>
+              </Link>
+            </>
+            {/* )} */}
             <CartIcon />
             <MdMenu onClick={handleShowMenu} />
           </LinkContainer>

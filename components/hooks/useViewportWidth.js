@@ -8,10 +8,11 @@ const useViewportWidth = () => {
       setWidth(window.innerWidth);
     }
 
-    let timer = null;
+    // let timer = null;
     const handleResize = () => {
-      clearTimeout(timer);
-      timer = setTimeout(() => setWidth(window.innerWidth), 300);
+      // clearTimeout(timer);
+      // timer = setTimeout(() => setWidth(window.innerWidth), 0);
+      setWidth(window.innerWidth);
     };
     window.addEventListener('resize', handleResize);
     return () => {

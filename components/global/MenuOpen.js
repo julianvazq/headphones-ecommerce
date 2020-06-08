@@ -1,6 +1,7 @@
 import styled from 'styled-components';
 import Link from 'next/link';
 import { motion, AnimatePresence } from 'framer-motion';
+import { MdClose } from 'react-icons/md';
 
 const backdropVariant = {
   initial: { opacity: 0 },
@@ -65,6 +66,15 @@ const Backdrop = styled(motion.div)`
   background: rgba(0, 0, 0, 0.65);
 `;
 
+const CloseButton = styled(MdClose)`
+  display: block;
+  color: var(--light);
+  font-size: 3rem;
+  align-self: flex-end;
+  margin-bottom: 2rem;
+  cursor: pointer;
+`;
+
 const MenuOpen = ({ showMenu, handleShowMenu }) => {
   return (
     <AnimatePresence exitBeforeEnter>
@@ -83,6 +93,7 @@ const MenuOpen = ({ showMenu, handleShowMenu }) => {
             animate='final'
             exit='initial'
           >
+            <CloseButton onClick={handleShowMenu} />
             <MenuHeading>Menu</MenuHeading>
             <a>Cart</a>
             <Link href='/products/headphones'>
