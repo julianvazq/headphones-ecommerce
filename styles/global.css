@@ -18,6 +18,7 @@ body {
   color: var(--primary);
   background: #f6f6f6;
   text-transform: uppercase;
+  overflow: hidden;
 }
 
 /* font-family: 'Oswald', sans-serif; */

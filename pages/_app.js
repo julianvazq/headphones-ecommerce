@@ -13,6 +13,7 @@ const theme = {
 export default class MyApp extends App {
   state = {
     showMenu: false,
+    showCart: false,
   };
 
   handleShowMenu = () => {

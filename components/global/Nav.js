@@ -3,9 +3,9 @@ import Link from 'next/link';
 import styled from 'styled-components';
 import { motion } from 'framer-motion';
 import ContainerMaxWidth from '../utils/ContainerMaxWidth';
-import useViewportWidth from '../hooks/useViewportWidth';
 import { MdShoppingCart, MdMenu } from 'react-icons/md';
 import MenuOpen from './MenuOpen';
+import CartOpen from './CartOpen';
 
 const Navigation = styled.nav`
   display: flex;
@@ -35,6 +35,7 @@ const LinkContainer = styled.div`
 
   svg {
     font-size: 2.25rem;
+    cursor: pointer;
   }
 
   a {
@@ -58,6 +59,7 @@ const CartIcon = styled(MdShoppingCart)`
 const Nav = ({ showMenu, handleShowMenu }) => {
   return (
     <>
+      <CartOpen />
       <MenuOpen showMenu={showMenu} handleShowMenu={handleShowMenu} />
       <ContainerMaxWidth>
         <Navigation>
@@ -69,16 +71,12 @@ const Nav = ({ showMenu, handleShowMenu }) => {
             </a>
           </Link>
           <LinkContainer>
-            {/* {width >= 700 && ( */}
-            <>
-              <Link href='/products/headphones'>
-                <a>Headphones</a>
-              </Link>
-              <Link href='/products/earbuds'>
-                <a>Earbuds</a>
-              </Link>
-            </>
-            {/* )} */}
+            <Link href='/products/headphones'>
+              <a>Headphones</a>
+            </Link>
+            <Link href='/products/earbuds'>
+              <a>Earbuds</a>
+            </Link>
             <CartIcon />
             <MdMenu onClick={handleShowMenu} />
           </LinkContainer>
