@@ -7,9 +7,11 @@
     "start": "next start"
   },
   "dependencies": {
+    "framer-motion": "^1.11.0",
     "next": "latest",
     "react": "^16.8.0",
     "react-dom": "^16.8.0",
+    "react-icons": "^3.10.0",
     "styled-components": "^5.0.0"
   },
   "devDependencies": {
