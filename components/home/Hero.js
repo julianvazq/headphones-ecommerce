@@ -1,8 +1,52 @@
 import React from 'react';
 import styled from 'styled-components';
 import Link from 'next/link';
+import { motion } from 'framer-motion';
 
-const Header = styled.header`
+const headerVariant = {
+  initial: {
+    // opacity: 0,
+    x: '100%',
+  },
+  final: {
+    // opacity: 1,
+    x: 0,
+    transition: {
+      delayChildren: 0.75,
+      duration: 1,
+      staggerChildren: 0.25,
+    },
+  },
+};
+
+const headphoneVariant = {
+  initial: {
+    y: -100,
+    opacity: 0,
+  },
+  final: {
+    y: 0,
+    opacity: 1,
+    transition: {
+      delay: 0.75,
+      type: 'spring',
+    },
+  },
+};
+
+const opacityVariant = {
+  initial: {
+    opacity: 0,
+  },
+  final: {
+    opacity: 1,
+    transition: {
+      //   delay: 0.5,
+    },
+  },
+};
+
+const Header = styled(motion.header)`
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -28,16 +72,14 @@ const Header = styled.header`
   }
 `;
 
-const HeroTextContainer = styled.div`
+const HeroTextContainer = styled(motion.div)`
   display: flex;
   justify-content: center;
   align-items: center;
   margin: 4rem 1rem 2rem;
   padding: 1rem;
   mix-blend-mode: luminosity;
-  /* color: var(--dark); */
   color: #565656;
-  /* background-color: rgba(0, 0, 0, 0.1); */
   text-align: center;
   font-family: 'Oswald', sans-serif;
   letter-spacing: 2px;
@@ -60,10 +102,6 @@ const HeroTextContainer = styled.div`
     padding: 2rem;
     border-radius: 100px;
   }
-
-  @media (min-width: 1200px) {
-    /* top: 30%; */
-  }
 `;
 
 const ImageContainer = styled.div`
@@ -72,14 +110,14 @@ const ImageContainer = styled.div`
   align-items: center;
 `;
 
-const HeadphoneImage = styled.img`
+const HeadphoneImage = styled(motion.img)`
   display: block;
   width: 100%;
   max-width: 700px;
   mix-blend-mode: multiply;
 `;
 
-const HeadphonesButton = styled.a`
+const HeadphonesButton = styled(motion.a)`
   background: rgba(0, 0, 0, 0.8);
   color: var(--body);
   margin: 0 2rem 2rem;
@@ -95,7 +133,7 @@ const HeadphonesButton = styled.a`
   }
 `;
 
-const EarbudsButton = styled.a`
+const EarbudsButton = styled(motion.a)`
   background: rgba(0, 0, 0, 0.8);
   color: var(--body);
   margin: 0 2rem;
@@ -109,24 +147,27 @@ const EarbudsButton = styled.a`
 
 const Hero = () => {
   return (
-    <Header>
+    <Header variants={headerVariant} initial='initial' animate='final'>
       <ImageContainer>
         <HeadphoneImage
+          variants={headphoneVariant}
           src='/images/headphone-white-cover-no-space.png'
           alt='White headphones.'
         />
       </ImageContainer>
-      <HeroTextContainer>
+      <HeroTextContainer variants={opacityVariant}>
         <h1>
           The future of
           <br /> <span>sound</span>
         </h1>
       </HeroTextContainer>
       <Link href='/headphones'>
-        <HeadphonesButton>Headphones</HeadphonesButton>
+        <HeadphonesButton variants={opacityVariant}>
+          Headphones
+        </HeadphonesButton>
       </Link>
       <Link href='/earbuds'>
-        <EarbudsButton>Earbuds</EarbudsButton>
+        <EarbudsButton variants={opacityVariant}>Earbuds</EarbudsButton>
       </Link>
     </Header>
   );

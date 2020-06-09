@@ -11,7 +11,11 @@ const sidebarVariant = {
   initial: { x: '100%' },
   final: {
     x: 0,
-    transition: { delay: 0.5 },
+    transition: {
+      delay: 0.5,
+      type: 'spring',
+      damping: '20',
+    },
   },
 };
 
@@ -26,6 +30,7 @@ const Backdrop = styled(motion.div)`
 `;
 
 const Sidebar = styled(motion.div)`
+  font-family: 'Oswald', sans-serif;
   height: 100vh;
   width: 100%;
   background: var(--primary);

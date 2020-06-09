@@ -6,9 +6,9 @@ import ProductsSection from '../components/home/ProductsSection';
 export default function Home() {
   return (
     <motion.div
-      initial={{ opacity: 0 }}
-      animate={{ opacity: 1 }}
-      exit={{ opacity: 0 }}
+    // initial={{ opacity: 0 }}
+    // animate={{ opacity: 1 }}
+    // exit={{ opacity: 0 }}
     >
       <Hero />
       <ProductsSection />
