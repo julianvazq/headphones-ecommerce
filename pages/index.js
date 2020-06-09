@@ -1,10 +1,7 @@
 import styled from 'styled-components';
 import { motion } from 'framer-motion';
-
-const Title = styled.h1`
-  font-size: 50px;
-  color: var(--primary);
-`;
+import Hero from '../components/home/Hero';
+import ProductsSection from '../components/home/ProductsSection';
 
 export default function Home() {
   return (
@@ -13,7 +10,8 @@ export default function Home() {
       animate={{ opacity: 1 }}
       exit={{ opacity: 0 }}
     >
-      <Title>My page</Title>;
+      <Hero />
+      <ProductsSection />
     </motion.div>
   );
 }

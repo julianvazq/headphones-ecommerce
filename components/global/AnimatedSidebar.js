@@ -29,15 +29,31 @@ const Sidebar = styled(motion.div)`
   height: 100vh;
   width: 100%;
   background: var(--primary);
-  position: absolute;
+  position: fixed;
   right: 0;
   padding: 2rem;
   display: flex;
   flex-direction: column;
   z-index: 2;
 
+  &:before {
+    content: '';
+    position: absolute;
+    top: 114px;
+    left: 0;
+    height: 100%;
+    width: 100%;
+    max-width: 285px;
+    z-index: -1;
+    background-image: url('/images/headphone-white-half.png');
+    opacity: 0.6;
+    background-repeat: no-repeat;
+    background-size: contain;
+    mix-blend-mode: multiply;
+  }
+
   @media (min-width: 700px) {
-    width: 40%;
+    width: 50%;
   }
 `;
 

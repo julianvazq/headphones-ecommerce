@@ -2,6 +2,7 @@
 
 :root {
   --primary: #00dfd2;
+  --body: #f6f6f6;
   --dark: #000;
   --light: #fff;
 }
@@ -16,9 +17,10 @@ body {
   font-family: 'Open Sans', sans-serif;
   line-height: 1.5;
   color: var(--primary);
-  background: #f6f6f6;
+  background: var(--body);
   text-transform: uppercase;
-  overflow: hidden;
+  overflow-x: hidden;
+  overscroll-behavior-y: none;
 }
 
 /* font-family: 'Oswald', sans-serif; */

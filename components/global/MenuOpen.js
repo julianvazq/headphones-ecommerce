@@ -15,13 +15,6 @@ const Menu = styled(motion.div)`
     color: var(--light);
     margin: 0.5rem 0;
   }
-
-  a:last-child {
-    position: absolute;
-    bottom: 2rem;
-    left: 0;
-    right: 0;
-  }
 `;
 
 const MenuHeading = styled.h2`
@@ -29,10 +22,23 @@ const MenuHeading = styled.h2`
   font-size: 2rem;
   padding-bottom: 1rem;
   margin-bottom: 0.75rem;
-  border-bottom: 2px solid var(--dark);
+  position: relative;
+
+  &:before {
+    content: '';
+    position: absolute;
+    bottom: -0.25rem;
+    left: 25%;
+    width: 50%;
+    background: black;
+    height: 2px;
+  }
 `;
 
 const MenuOpen = ({ showingCartOrMenu, handleShowSidebar }) => {
+  const closeSidebar = () => {
+    handleShowSidebar(null);
+  };
   return (
     <AnimatedSidebar
       showSidebar={showingCartOrMenu}
@@ -40,17 +46,20 @@ const MenuOpen = ({ showingCartOrMenu, handleShowSidebar }) => {
     >
       <Menu>
         <MenuHeading>Menu</MenuHeading>
+        <Link href='/'>
+          <a onClick={closeSidebar}>Home</a>
+        </Link>
         <Link href='/checkout'>
-          <a onClick={() => handleShowSidebar(null)}>Checkout</a>
+          <a onClick={closeSidebar}>Checkout</a>
         </Link>
         <Link href='/products/headphones'>
-          <a onClick={() => handleShowSidebar(null)}>Headphones</a>
+          <a onClick={closeSidebar}>Headphones</a>
         </Link>
         <Link href='/products/earbuds'>
-          <a onClick={() => handleShowSidebar(null)}>Earbuds</a>
+          <a onClick={closeSidebar}>Earbuds</a>
         </Link>
         <Link href='/products/accessories'>
-          <a onClick={() => handleShowSidebar(null)}>Accessories</a>
+          <a onClick={closeSidebar}>Accessories</a>
         </Link>
         <a>Contact Us</a>
       </Menu>

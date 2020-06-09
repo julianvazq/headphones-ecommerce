@@ -36,9 +36,11 @@ const LinkContainer = styled.div`
   svg {
     font-size: 2.25rem;
     cursor: pointer;
+    color: white;
   }
 
   a {
+    color: var(--light);
     letter-spacing: 0.5px;
     display: none;
   }
@@ -53,11 +55,10 @@ const LinkContainer = styled.div`
 `;
 
 const CartIcon = styled(MdShoppingCart)`
-  color: var(--dark);
+  color: var(--dark) !important;
 `;
 
 const Nav = ({ showingCartOrMenu, handleShowSidebar }) => {
-  console.log(showingCartOrMenu);
   return (
     <>
       <AnimatePresence exitBeforeEnter>
