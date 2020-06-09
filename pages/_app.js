@@ -25,21 +25,20 @@ export default class MyApp extends App {
     }
   };
 
+  closeSidebar = () => {
+    this.setState({ showingCartOrMenu: null });
+  };
+
   render() {
-    const { Component, pageProps } = this.props;
+    const { Component, pageProps, router } = this.props;
     return (
       <ThemeProvider theme={theme}>
-        <AnimatePresence
-          exitBeforeEnter
-          onExitComplete={() => {
-            this.setState({ showingCartOrMenu: null });
-          }}
-        >
+        <AnimatePresence exitBeforeEnter onExitComplete={this.closeSidebar}>
           <Layout
             showingCartOrMenu={this.state.showingCartOrMenu}
             handleShowSidebar={this.handleShowSidebar}
           >
-            <Component {...pageProps} />
+            <Component {...pageProps} key={router.route} />
           </Layout>
         </AnimatePresence>
       </ThemeProvider>

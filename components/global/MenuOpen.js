@@ -40,15 +40,17 @@ const MenuOpen = ({ showingCartOrMenu, handleShowSidebar }) => {
     >
       <Menu>
         <MenuHeading>Menu</MenuHeading>
-        <a>Checkout</a>
+        <Link href='/checkout'>
+          <a onClick={() => handleShowSidebar(null)}>Checkout</a>
+        </Link>
         <Link href='/products/headphones'>
-          <a>Headphones</a>
+          <a onClick={() => handleShowSidebar(null)}>Headphones</a>
         </Link>
         <Link href='/products/earbuds'>
-          <a>Earbuds</a>
+          <a onClick={() => handleShowSidebar(null)}>Earbuds</a>
         </Link>
         <Link href='/products/accessories'>
-          <a>Accessories</a>
+          <a onClick={() => handleShowSidebar(null)}>Accessories</a>
         </Link>
         <a>Contact Us</a>
       </Menu>

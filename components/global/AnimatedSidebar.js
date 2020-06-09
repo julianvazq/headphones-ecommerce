@@ -1,5 +1,5 @@
 import styled from 'styled-components';
-import { motion, AnimatePresence } from 'framer-motion';
+import { motion } from 'framer-motion';
 import { MdClose } from 'react-icons/md';
 
 const backdropVariant = {
@@ -8,10 +8,9 @@ const backdropVariant = {
 };
 
 const sidebarVariant = {
-  initial: { x: '100%', opacity: 0 },
+  initial: { x: '100%' },
   final: {
     x: 0,
-    opacity: 1,
     transition: { delay: 0.5 },
   },
 };
@@ -23,6 +22,7 @@ const Backdrop = styled(motion.div)`
   width: 100%;
   height: 100%;
   background: rgba(0, 0, 0, 0.65);
+  z-index: 1;
 `;
 
 const Sidebar = styled(motion.div)`
@@ -34,6 +34,7 @@ const Sidebar = styled(motion.div)`
   padding: 2rem;
   display: flex;
   flex-direction: column;
+  z-index: 2;
 
   @media (min-width: 700px) {
     width: 40%;
@@ -55,7 +56,7 @@ const AnimatedSidebar = ({ showSidebar, handleShowSidebar, children }) => {
   };
 
   return (
-    <>
+    <motion.div>
       <Backdrop
         onClick={closeSidebar}
         variants={backdropVariant}
@@ -72,7 +73,7 @@ const AnimatedSidebar = ({ showSidebar, handleShowSidebar, children }) => {
         <CloseButton onClick={closeSidebar} />
         {children}
       </Sidebar>
-    </>
+    </motion.div>
   );
 };
 
