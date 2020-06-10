@@ -1,11 +1,24 @@
-import React, { useState, useEffect } from 'react';
+import React from 'react';
 import Link from 'next/link';
+import { useRouter } from 'next/router';
 import styled from 'styled-components';
 import { motion, AnimatePresence } from 'framer-motion';
 import ContainerMaxWidth from '../utils/ContainerMaxWidth';
 import { MdShoppingCart, MdMenu } from 'react-icons/md';
 import MenuOpen from './MenuOpen';
 import CartOpen from './CartOpen';
+
+const navVariant = {
+  initial: {
+    opacity: 0,
+  },
+  final: {
+    opacity: 1,
+    transition: {
+      delay: 1,
+    },
+  },
+};
 
 const Navigation = styled.nav`
   display: flex;
@@ -36,11 +49,11 @@ const LinkContainer = styled.div`
   svg {
     font-size: 2.25rem;
     cursor: pointer;
-    color: white;
+    color: ${(props) => (props.greenLinks ? 'var(--primary)' : 'var(--light)')};
   }
 
   a {
-    color: var(--light);
+    color: ${(props) => (props.greenLinks ? 'var(--primary)' : 'var(--light)')};
     letter-spacing: 0.5px;
     display: none;
   }
@@ -59,8 +72,9 @@ const CartIcon = styled(MdShoppingCart)`
 `;
 
 const Nav = ({ showingCartOrMenu, handleShowSidebar }) => {
+  const router = useRouter();
   return (
-    <>
+    <motion.div variants={navVariant} initial='initial' animate='final'>
       <AnimatePresence exitBeforeEnter>
         {showingCartOrMenu === 'cart' && (
           <CartOpen
@@ -84,7 +98,7 @@ const Nav = ({ showingCartOrMenu, handleShowSidebar }) => {
               </LogoContainer>
             </a>
           </Link>
-          <LinkContainer>
+          <LinkContainer greenLinks={router.pathname !== '/'}>
             <Link href='/products/headphones'>
               <a>Headphones</a>
             </Link>
@@ -96,7 +110,7 @@ const Nav = ({ showingCartOrMenu, handleShowSidebar }) => {
           </LinkContainer>
         </Navigation>
       </ContainerMaxWidth>
-    </>
+    </motion.div>
   );
 };
 

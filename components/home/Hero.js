@@ -5,16 +5,14 @@ import { motion } from 'framer-motion';
 
 const headerVariant = {
   initial: {
-    // opacity: 0,
     x: '100%',
   },
   final: {
-    // opacity: 1,
     x: 0,
     transition: {
-      delayChildren: 0.75,
+      delayChildren: 0.5,
       duration: 1,
-      staggerChildren: 0.25,
+      staggerChildren: 0.5,
     },
   },
 };
@@ -28,7 +26,7 @@ const headphoneVariant = {
     y: 0,
     opacity: 1,
     transition: {
-      delay: 0.75,
+      delay: 1.25,
       type: 'spring',
     },
   },
@@ -40,9 +38,6 @@ const opacityVariant = {
   },
   final: {
     opacity: 1,
-    transition: {
-      //   delay: 0.5,
-    },
   },
 };
 
@@ -76,7 +71,7 @@ const HeroTextContainer = styled(motion.div)`
   display: flex;
   justify-content: center;
   align-items: center;
-  margin: 4rem 1rem 2rem;
+  margin: 2rem 1rem 4rem;
   padding: 1rem;
   mix-blend-mode: luminosity;
   color: #565656;
