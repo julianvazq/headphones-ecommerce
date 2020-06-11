@@ -29,7 +29,11 @@ body {
 
 a {
   text-decoration: none;
-  color: var(--primary);
+  /* color: var(--primary); */
   font-weight: 700;
   cursor: pointer;
+}
+
+a:visited {
+  color: inherit;
 }

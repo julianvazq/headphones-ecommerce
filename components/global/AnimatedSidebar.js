@@ -50,7 +50,7 @@ const Sidebar = styled(motion.div)`
     width: 100%;
     max-width: 285px;
     z-index: -1;
-    background-image: url('/images/headphone-white-half.png');
+    background-image: url('/images/headphones/headphone-white-half.png');
     opacity: 0.6;
     background-repeat: no-repeat;
     background-size: contain;

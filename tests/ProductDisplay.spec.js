@@ -3,7 +3,7 @@ import { mount, shallow } from 'enzyme';
 import ProductDisplay, {
   ProductCard,
   Model,
-} from '../components/home/ProductDisplay';
+} from '../components/products/ProductDisplay';
 
 /** @test {ProductDisplay Component} */
 describe('ProductDisplay Component', () => {

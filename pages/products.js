@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { useRouter } from 'next/router';
 import { headphones, earbuds } from '../public/products';
-import ProductGrid from '../components/home/ProductGrid';
+import ProductGrid from '../components/products/ProductGrid';
 
 const Products = () => {
   const router = useRouter();

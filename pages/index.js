@@ -1,7 +1,6 @@
-import styled from 'styled-components';
 import { motion } from 'framer-motion';
-import Hero from '../components/home/Hero';
-import ProductsSection from '../components/home/ProductsSection';
+import Hero from '../components/hero/Hero';
+import ProductsSection from '../components/products/ProductsSection';
 
 export default function Home() {
   return (

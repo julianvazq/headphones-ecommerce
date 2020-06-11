@@ -1,41 +1,58 @@
 import React from 'react';
-import { useRouter } from 'next/router';
-import dynamic from 'next/dynamic';
 import { headphones, earbuds } from '../../public/products';
+import styled from 'styled-components';
+import ContainerMaxWidth from '../../components/utils/ContainerMaxWidth';
+import Breadcrumbs from '../../components/products/Breadcrumbs';
+import ProductInformation from '../../components/products/ProductInformation';
 
-const ProductPage = (props) => {
-  const router = useRouter();
-  console.log('props: ', props);
-  console.log(router.query);
+const SectionContainer = styled.section`
+  background: var(--light);
+  color: var(--dark);
+  padding: 2rem 0;
+`;
+
+const ProductPage = ({
+  product: { model, type, price, image, rating, description, colors, stock },
+}) => {
   return (
-    <div>
-      <h1>product</h1>
-    </div>
+    <SectionContainer>
+      <ContainerMaxWidth>
+        <Breadcrumbs model={model} />
+        <ProductInformation
+          model={model}
+          type={type}
+          price={price}
+          image={image}
+          rating={rating}
+          description={description}
+          colors={colors}
+          stock={stock}
+        />
+      </ContainerMaxWidth>
+    </SectionContainer>
   );
 };
 
 export async function getStaticPaths() {
-  // Return a list of possible value for id
+  // Return a list of possible values for [model]
   const allProducts = [...headphones, ...earbuds];
-  const listOfUrls = allProducts.map((product) => {
+  const listOfModels = allProducts.map((product) => {
     return {
       params: {
-        model: product.url,
+        model: product.model,
       },
     };
   });
 
-  console.log(listOfUrls);
   return {
-    paths: listOfUrls,
+    paths: listOfModels,
     fallback: false,
   };
 }
 
 export async function getStaticProps({ params }) {
-  console.log(params);
   const allProducts = [...headphones, ...earbuds];
-  const product = allProducts.find((p) => params.model === p.url);
+  const product = allProducts.find((p) => params.model === p.model);
 
   return {
     props: {

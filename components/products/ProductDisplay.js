@@ -20,7 +20,8 @@ const ProductCard = styled.article`
     width: 100%;
     transition: transform 500ms ease-in;
   }
-  &:hover img {
+  &:hover img,
+  &:focus img {
     transform: translateY(-10px);
   }
 
@@ -81,7 +82,7 @@ const HalfStarIcon = styled(MdStarHalf)`
 `;
 MdStarHalf;
 
-const ProductDisplay = ({ model, type, price, image, rating, url }) => {
+const ProductDisplay = ({ model, type, price, image, rating }) => {
   const getStars = (rating) => {
     const integer = Math.floor(rating);
 
@@ -99,7 +100,7 @@ const ProductDisplay = ({ model, type, price, image, rating, url }) => {
   };
 
   return (
-    <Link href='/products/[model]' as={`/products/${url}`}>
+    <Link href='/products/[model]' as={`/products/${model}`}>
       <a>
         <ProductCard>
           <img src={image} alt={model} />
