@@ -1,6 +1,6 @@
 import React from 'react';
 import styled from 'styled-components';
-import { headphones } from '../../public/products';
+import { headphones, earbuds } from '../../public/products';
 import ProductGrid from './ProductGrid';
 
 const SectionContainer = styled.section`
@@ -13,7 +13,6 @@ const HeadingContainer = styled.div`
   display: flex;
   flex-direction: column;
   align-items: center;
-  margin-bottom: 4rem;
   padding-bottom: 1.125rem;
   border-bottom: 2px solid var(--primary);
 
@@ -49,6 +48,11 @@ const ProductsSection = () => {
         <ViewMoreButton>View more</ViewMoreButton>
       </HeadingContainer>
       <ProductGrid products={headphones} />
+      <HeadingContainer>
+        <SectionTitle>Earbuds</SectionTitle>
+        <ViewMoreButton>View more</ViewMoreButton>
+      </HeadingContainer>
+      <ProductGrid products={earbuds} />
     </SectionContainer>
   );
 };

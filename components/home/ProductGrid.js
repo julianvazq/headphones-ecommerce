@@ -6,6 +6,8 @@ const Grid = styled.div`
   display: grid;
   grid-template-columns: 1fr;
   grid-gap: 2rem;
+  margin: 4rem 0;
+  align-items: center;
 
   @media (min-width: 500px) {
     grid-template-columns: repeat(2, 1fr);
@@ -19,7 +21,7 @@ const Grid = styled.div`
 const ProductGrid = ({ products }) => {
   return (
     <Grid>
-      {products.map((product, index) => (
+      {products.slice(0, 4).map((product, index) => (
         <ProductDisplay key={index} {...product} />
       ))}
     </Grid>

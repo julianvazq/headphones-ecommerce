@@ -146,7 +146,7 @@ const Hero = () => {
       <ImageContainer>
         <HeadphoneImage
           variants={headphoneVariant}
-          src='/images/headphone-white-cover-no-space.png'
+          src='/images/headphones/headphone-1.png'
           alt='White headphones.'
         />
       </ImageContainer>

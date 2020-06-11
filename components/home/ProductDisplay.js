@@ -6,6 +6,7 @@ const ProductCard = styled.article`
   display: flex;
   flex-direction: column;
   align-items: center;
+  justify-content: space-between;
   text-align: center;
   color: var(--dark);
 
@@ -16,10 +17,14 @@ const ProductCard = styled.article`
   img {
     display: block;
     width: 100%;
+    transition: transform 500ms ease-in;
+  }
+  &:hover img {
+    transform: translateY(-10px);
   }
 `;
 
-const Title = styled.h2`
+const Model = styled.h2`
   @media (min-width: 500px) {
     font-size: 1rem;
   }
@@ -79,11 +84,11 @@ const ProductDisplay = ({ model, price, image, rating }) => {
     const stars = [];
 
     for (let i = 0; i < integer; i++) {
-      stars.push(<StarIcon />);
+      stars.push(<StarIcon key={i} />);
     }
 
     if (rating % integer !== 0) {
-      stars.push(<HalfStarIcon />);
+      stars.push(<HalfStarIcon key={stars.length} />);
     }
 
     return stars;
@@ -92,7 +97,7 @@ const ProductDisplay = ({ model, price, image, rating }) => {
   return (
     <ProductCard>
       <img src={image} alt={model} />
-      <Title>{model}</Title>
+      <Model>{model}</Model>
       <StarContainer>{getStars(rating)}</StarContainer>
       <Price>{price}</Price>
     </ProductCard>
