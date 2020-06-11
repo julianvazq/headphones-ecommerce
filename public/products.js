@@ -1,6 +1,8 @@
 export const headphones = [
   {
     model: 'Sony MDRZX100',
+    url: 'SONY-MDRZX100',
+    type: 'headphones',
     rating: 3.5,
     price: '$199.99',
     image: '/images/headphones/headphone-1.png',
@@ -9,6 +11,8 @@ export const headphones = [
   },
   {
     model: 'JBL E45BT',
+    url: 'JBL-E45BT',
+    type: 'headphones',
     rating: 4,
     price: '$224.99',
     image: '/images/headphones/headphone-2.png',
@@ -17,6 +21,8 @@ export const headphones = [
   },
   {
     model: 'Sennheiser HD 800S',
+    url: 'SENNHEISER-HD-800S',
+    type: 'headphones',
     rating: 4.5,
     price: '$349.99',
     image: '/images/headphones/headphone-3.png',
@@ -25,6 +31,8 @@ export const headphones = [
   },
   {
     model: 'Sennheiser Momentum 3',
+    url: 'SENNHEISER-MOMENTUM-3',
+    type: 'headphones',
     rating: 5,
     price: '$499.99',
     image: '/images/headphones/headphone-4.png',
@@ -36,6 +44,8 @@ export const headphones = [
 export const earbuds = [
   {
     model: 'Parasonic ErgoFit',
+    url: 'PARASONIC-ERGOFIT',
+    type: 'earbuds',
     rating: 4,
     price: '$174.99',
     image: '/images/earbuds/earbuds-1.png',
@@ -44,6 +54,8 @@ export const earbuds = [
   },
   {
     model: 'Lestsfit 5.0',
+    url: 'LETSFIT-50',
+    type: 'earbuds',
     rating: 4.5,
     price: '$199.99',
     image: '/images/earbuds/earbuds-2.png',
@@ -52,6 +64,8 @@ export const earbuds = [
   },
   {
     model: 'Jlab Audio Go Air',
+    url: 'JLAB-AUDIO-GO-AIR',
+    type: 'earbuds',
     rating: 4.5,
     price: '$214.99',
     image: '/images/earbuds/earbuds-3.png',
@@ -60,6 +74,8 @@ export const earbuds = [
   },
   {
     model: 'Skullcandy HZ300',
+    url: 'SKULLCANDY-HZ300',
+    type: 'earbuds',
     rating: 4.5,
     price: '$289.99',
     image: '/images/earbuds/earbuds-4.png',

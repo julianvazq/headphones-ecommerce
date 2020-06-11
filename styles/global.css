@@ -31,4 +31,5 @@ a {
   text-decoration: none;
   color: var(--primary);
   font-weight: 700;
+  cursor: pointer;
 }

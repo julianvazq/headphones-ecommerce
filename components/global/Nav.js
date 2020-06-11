@@ -99,10 +99,10 @@ const Nav = ({ showingCartOrMenu, handleShowSidebar }) => {
             </a>
           </Link>
           <LinkContainer greenLinks={router.pathname !== '/'}>
-            <Link href='/products/headphones'>
+            <Link href='/products?type=headphones'>
               <a>Headphones</a>
             </Link>
-            <Link href='/products/earbuds'>
+            <Link href='/products?type=earbuds'>
               <a>Earbuds</a>
             </Link>
             <CartIcon onClick={() => handleShowSidebar('cart')} />

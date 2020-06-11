@@ -1,5 +1,6 @@
 import React from 'react';
 import styled from 'styled-components';
+import Link from 'next/link';
 import { MdStar, MdStarHalf } from 'react-icons/md';
 
 const ProductCard = styled.article`
@@ -22,6 +23,10 @@ const ProductCard = styled.article`
   &:hover img {
     transform: translateY(-10px);
   }
+
+  &:last-child {
+    margin-bottom: 0rem;
+  }
 `;
 
 const Model = styled.h2`
@@ -37,7 +42,6 @@ const Model = styled.h2`
 const Price = styled.p`
   font-weight: 600;
   font-size: 1.125rem;
-  margin-bottom: 0;
 
   @media (min-width: 500px) {
     font-size: 1rem;
@@ -77,7 +81,7 @@ const HalfStarIcon = styled(MdStarHalf)`
 `;
 MdStarHalf;
 
-const ProductDisplay = ({ model, price, image, rating }) => {
+const ProductDisplay = ({ model, type, price, image, rating, url }) => {
   const getStars = (rating) => {
     const integer = Math.floor(rating);
 
@@ -95,12 +99,16 @@ const ProductDisplay = ({ model, price, image, rating }) => {
   };
 
   return (
-    <ProductCard>
-      <img src={image} alt={model} />
-      <Model>{model}</Model>
-      <StarContainer>{getStars(rating)}</StarContainer>
-      <Price>{price}</Price>
-    </ProductCard>
+    <Link href='/products/[model]' as={`/products/${url}`}>
+      <a>
+        <ProductCard>
+          <img src={image} alt={model} />
+          <Model>{model}</Model>
+          <StarContainer>{getStars(rating)}</StarContainer>
+          <Price>{price}</Price>
+        </ProductCard>
+      </a>
+    </Link>
   );
 };
 

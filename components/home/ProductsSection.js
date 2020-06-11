@@ -1,5 +1,6 @@
 import React from 'react';
 import styled from 'styled-components';
+import Link from 'next/link';
 import { headphones, earbuds } from '../../public/products';
 import ProductGrid from './ProductGrid';
 
@@ -45,12 +46,16 @@ const ProductsSection = () => {
     <SectionContainer>
       <HeadingContainer>
         <SectionTitle>Headphones</SectionTitle>
-        <ViewMoreButton>View more</ViewMoreButton>
+        <Link href='/products?type=headphones'>
+          <ViewMoreButton>View more</ViewMoreButton>
+        </Link>
       </HeadingContainer>
       <ProductGrid products={headphones} />
       <HeadingContainer>
         <SectionTitle>Earbuds</SectionTitle>
-        <ViewMoreButton>View more</ViewMoreButton>
+        <Link href='/products?type=earbuds'>
+          <ViewMoreButton>View more</ViewMoreButton>
+        </Link>
       </HeadingContainer>
       <ProductGrid products={earbuds} />
     </SectionContainer>
