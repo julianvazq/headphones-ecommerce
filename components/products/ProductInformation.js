@@ -1,7 +1,8 @@
-import React from 'react';
+import React, { useState } from 'react';
 import Link from 'next/link';
 import styled from 'styled-components';
 import Stars from './Stars';
+import Colors from './Colors';
 
 const ProductContainer = styled.article`
   display: flex;
@@ -48,11 +49,8 @@ const HeadingContainer = styled.div`
 `;
 
 const Stock = styled.p`
-  /* flex: 1; */
   width: max-content;
   white-space: nowrap;
-  align-self: flex-start;
-  font-weight: 600;
   color: ${(props) => props.outOfStock && '#bc0000'};
 
   span {
@@ -65,14 +63,92 @@ const Type = styled.p`
   font-weight: 500;
 `;
 
-const Shipping = styled.p`
-  font-weight: 500;
-`;
-
 const Description = styled.p`
   font-weight: 400;
   text-transform: none;
-  margin: 1rem 0;
+  margin: 1rem 0 2rem;
+  padding-bottom: 2rem;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.3);
+`;
+
+const ColorInfo = styled.p`
+  margin-bottom: 0.5rem;
+
+  span {
+    text-transform: capitalize;
+    font-weight: 600;
+  }
+`;
+
+const ColorsContainer = styled.div`
+  display: flex;
+  flex-wrap: wrap;
+  margin-bottom: 2rem;
+`;
+
+const PriceContainer = styled.div`
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 2rem;
+`;
+
+const Price = styled.div`
+  display: flex;
+  flex-direction: column;
+  margin-right: 0.5rem;
+
+  p {
+    font-size: 1.5rem;
+    font-weight: 600;
+  }
+
+  span {
+    font-size: 0.9rem;
+  }
+`;
+
+const ButtonContainer = styled.div`
+  display: flex;
+  flex-direction: column;
+
+  @media (min-width: 600px) {
+    flex-direction: row;
+    justify-content: space-between;
+  }
+
+  @media (min-width: 800px) {
+    flex-direction: column;
+  }
+`;
+
+const CartButton = styled.button`
+  font-family: 'Oswald', sans-serif;
+  text-transform: uppercase;
+  font-size: 1rem;
+  font-weight: 600;
+  padding: 1rem 0;
+  text-align: center;
+  display: block;
+  width: 100%;
+  color: white;
+  background: var(--primary);
+  margin-bottom: 1rem;
+
+  @media (min-width: 600px) {
+    width: 48%;
+    margin-bottom: 0;
+  }
+
+  @media (min-width: 800px) {
+    width: 100%;
+    margin-bottom: 1rem;
+  }
+`;
+
+const CheckoutButton = styled(CartButton)`
+  margin-bottom: 0;
 `;
 
 const ProductInformation = ({
@@ -85,21 +161,7 @@ const ProductInformation = ({
   colors,
   stock,
 }) => {
-  const getStars = (rating) => {
-    const integer = Math.floor(rating);
-
-    const stars = [];
-
-    for (let i = 0; i < integer; i++) {
-      stars.push(<StarIcon key={i} />);
-    }
-
-    if (rating % integer !== 0) {
-      stars.push(<HalfStarIcon key={stars.length} />);
-    }
-
-    return stars;
-  };
+  const [selectedColor, setSelectedColor] = useState('Predetermined');
 
   return (
     <ProductContainer>
@@ -110,20 +172,40 @@ const ProductInformation = ({
         <HeadingContainer>
           <h1>{model}</h1>
           <Stars rating={rating} />
-          {/* <StarContainer>
-            {getStars(rating)}
-            <span>({rating})</span>
-          </StarContainer> */}
         </HeadingContainer>
         <Type>{type}</Type>
         <Description>{description}</Description>
-        {stock ? (
-          <Stock>
-            In stock: <span>{stock}</span>
-          </Stock>
-        ) : (
-          <Stock outOfStock>Out of stock</Stock>
-        )}
+
+        <ColorInfo>
+          Color: <span>{selectedColor}</span>
+        </ColorInfo>
+        <ColorsContainer>
+          {colors.map((color) => (
+            <Colors
+              key={color}
+              color={color}
+              selectedColor={selectedColor}
+              setSelectedColor={setSelectedColor}
+            />
+          ))}
+        </ColorsContainer>
+        <PriceContainer>
+          <Price>
+            <p>{price}</p>
+            <span>Free Shipping</span>
+          </Price>
+          {stock ? (
+            <Stock>
+              In stock: <span>{stock}</span>
+            </Stock>
+          ) : (
+            <Stock outOfStock>Out of stock</Stock>
+          )}
+        </PriceContainer>
+        <ButtonContainer>
+          <CartButton>Add to cart</CartButton>
+          <CheckoutButton>Go to checkout</CheckoutButton>
+        </ButtonContainer>
       </InformationContainer>
     </ProductContainer>
   );

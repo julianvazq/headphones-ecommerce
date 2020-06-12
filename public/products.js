@@ -7,7 +7,7 @@ export const headphones = [
     image: '/images/headphones/headphone-1.png',
     description:
       'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin tempus nibh nisl, eu ullamcorper orci volutpat ac. Praesent posuere diam id condimentum convallis.',
-    colors: ['red, pink, green, blue, black, white'],
+    colors: ['red', 'pink', 'green', 'blue', 'black', 'white'],
     stock: 7,
   },
   {
@@ -18,7 +18,7 @@ export const headphones = [
     image: '/images/headphones/headphone-2.png',
     description:
       'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin tempus nibh nisl, eu ullamcorper orci volutpat ac. Praesent posuere diam id condimentum convallis.',
-    colors: ['red, pink, green, blue, black, white'],
+    colors: ['red', 'pink', 'green', 'blue', 'black', 'white'],
     stock: 3,
   },
   {
@@ -29,7 +29,7 @@ export const headphones = [
     image: '/images/headphones/headphone-3.png',
     description:
       'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin tempus nibh nisl, eu ullamcorper orci volutpat ac. Praesent posuere diam id condimentum convallis.',
-    colors: ['red, pink, green, blue, black, white'],
+    colors: ['red', 'pink', 'green', 'blue', 'black', 'white'],
     stock: 9,
   },
   {
@@ -40,7 +40,7 @@ export const headphones = [
     image: '/images/headphones/headphone-4.png',
     description:
       'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin tempus nibh nisl, eu ullamcorper orci volutpat ac. Praesent posuere diam id condimentum convallis.',
-    colors: ['red, pink, green, blue, black, white'],
+    colors: ['red', 'pink', 'green', 'blue', 'black', 'white'],
     stock: 2,
   },
 ];
@@ -54,7 +54,7 @@ export const earbuds = [
     image: '/images/earbuds/earbuds-1.png',
     description:
       'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin tempus nibh nisl, eu ullamcorper orci volutpat ac. Praesent posuere diam id condimentum convallis.',
-    colors: ['red, pink, green, blue, black, white'],
+    colors: ['red', 'pink', 'green', 'blue', 'black', 'white'],
     stock: 1,
   },
   {
@@ -65,7 +65,7 @@ export const earbuds = [
     image: '/images/earbuds/earbuds-2.png',
     description:
       'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin tempus nibh nisl, eu ullamcorper orci volutpat ac. Praesent posuere diam id condimentum convallis.',
-    colors: ['red, pink, green, blue, black, white'],
+    colors: ['red', 'pink', 'green', 'blue', 'black', 'white'],
     stock: 0,
   },
   {
@@ -76,7 +76,7 @@ export const earbuds = [
     image: '/images/earbuds/earbuds-3.png',
     description:
       'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin tempus nibh nisl, eu ullamcorper orci volutpat ac. Praesent posuere diam id condimentum convallis.',
-    colors: ['red, pink, green, blue, black, white'],
+    colors: ['red', 'pink', 'green', 'blue', 'black', 'white'],
     stock: 4,
   },
   {
@@ -87,7 +87,7 @@ export const earbuds = [
     image: '/images/earbuds/earbuds-4.png',
     description:
       'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin tempus nibh nisl, eu ullamcorper orci volutpat ac. Praesent posuere diam id condimentum convallis.',
-    colors: ['red, pink, green, blue, black, white'],
+    colors: ['red', 'pink', 'green', 'blue', 'black', 'white'],
     stock: 7,
   },
 ];

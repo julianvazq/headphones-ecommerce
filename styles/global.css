@@ -15,6 +15,7 @@
 
 body {
   font-family: 'Open Sans', sans-serif;
+  /* font-family: 'Oswald', sans-serif; */
   line-height: 1.5;
   color: var(--primary);
   background: var(--body);
@@ -23,17 +24,25 @@ body {
   overscroll-behavior-y: none;
 }
 
-/* font-family: 'Oswald', sans-serif; */
-
 /* Global Styles */
 
 a {
   text-decoration: none;
-  /* color: var(--primary); */
   font-weight: 700;
   cursor: pointer;
 }
 
 a:visited {
   color: inherit;
+}
+
+button {
+  border: none;
+  margin: 0;
+  padding: 0;
+  width: auto;
+  overflow: visible;
+  background: transparent;
+  -webkit-appearance: none;
+  cursor: pointer;
 }
