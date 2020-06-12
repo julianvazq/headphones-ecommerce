@@ -1,9 +1,25 @@
 import React, { useState } from 'react';
 import Link from 'next/link';
 import styled from 'styled-components';
+import { motion } from 'framer-motion';
 import Stars from './Stars';
 import Colors from './Colors';
 import { MdShoppingCart, MdCheckCircle } from 'react-icons/md';
+
+const imageVariant = {
+  initial: {
+    x: 100,
+    opacity: 0,
+  },
+  final: {
+    x: 0,
+    opacity: 1,
+    transition: {
+      duration: 0.5,
+      type: 'spring',
+    },
+  },
+};
 
 const ProductContainer = styled.article`
   display: flex;
@@ -15,7 +31,7 @@ const ProductContainer = styled.article`
   }
 `;
 
-const ImageContainer = styled.div`
+const ImageContainer = styled(motion.div)`
   margin-bottom: 4rem;
 
   img {
@@ -179,7 +195,7 @@ const ProductInformation = ({
 
   return (
     <ProductContainer>
-      <ImageContainer>
+      <ImageContainer variants={imageVariant} initial='initial' animate='final'>
         <img src={image} alt={model} />
       </ImageContainer>
       <InformationContainer>
