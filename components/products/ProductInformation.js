@@ -1,6 +1,7 @@
 import React from 'react';
 import Link from 'next/link';
 import styled from 'styled-components';
+import { MdStar, MdStarHalf } from 'react-icons/md';
 
 const ProductContainer = styled.article`
   display: flex;
@@ -68,6 +69,48 @@ const Shipping = styled.p`
   font-weight: 500;
 `;
 
+const Description = styled.p`
+  font-weight: 400;
+  text-transform: none;
+  margin: 1rem 0;
+`;
+
+const StarContainer = styled.div`
+  display: flex;
+  align-items: center;
+
+  span {
+    font-weight: 600;
+    margin-left: 0.25rem;
+  }
+`;
+
+const StarIcon = styled(MdStar)`
+  font-size: 1.5rem;
+  color: var(--primary);
+
+  @media (min-width: 500px) {
+    font-size: 1.25rem;
+  }
+
+  @media (min-width: 1000px) {
+    font-size: 1.5rem;
+  }
+`;
+
+const HalfStarIcon = styled(MdStarHalf)`
+  font-size: 1.5rem;
+  color: var(--primary);
+
+  @media (min-width: 500px) {
+    font-size: 1.25rem;
+  }
+
+  @media (min-width: 1000px) {
+    font-size: 1.5rem;
+  }
+`;
+
 const ProductInformation = ({
   model,
   type,
@@ -78,6 +121,22 @@ const ProductInformation = ({
   colors,
   stock,
 }) => {
+  const getStars = (rating) => {
+    const integer = Math.floor(rating);
+
+    const stars = [];
+
+    for (let i = 0; i < integer; i++) {
+      stars.push(<StarIcon key={i} />);
+    }
+
+    if (rating % integer !== 0) {
+      stars.push(<HalfStarIcon key={stars.length} />);
+    }
+
+    return stars;
+  };
+
   return (
     <ProductContainer>
       <ImageContainer>
@@ -86,15 +145,20 @@ const ProductInformation = ({
       <InformationContainer>
         <HeadingContainer>
           <h1>{model}</h1>
-          {stock ? (
-            <Stock>
-              In stock: <span>{stock}</span>
-            </Stock>
-          ) : (
-            <Stock outOfStock>Out of stock</Stock>
-          )}
+          <StarContainer>
+            {getStars(rating)}
+            <span>({rating})</span>
+          </StarContainer>
         </HeadingContainer>
         <Type>{type}</Type>
+        <Description>{description}</Description>
+        {stock ? (
+          <Stock>
+            In stock: <span>{stock}</span>
+          </Stock>
+        ) : (
+          <Stock outOfStock>Out of stock</Stock>
+        )}
       </InformationContainer>
     </ProductContainer>
   );

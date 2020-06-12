@@ -5,7 +5,8 @@ export const headphones = [
     rating: 3.5,
     price: '$199.99',
     image: '/images/headphones/headphone-1.png',
-    description: 'Some description...',
+    description:
+      'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin tempus nibh nisl, eu ullamcorper orci volutpat ac. Praesent posuere diam id condimentum convallis.',
     colors: ['red, pink, green, blue, black, white'],
     stock: 7,
   },
@@ -15,7 +16,8 @@ export const headphones = [
     rating: 4,
     price: '$224.99',
     image: '/images/headphones/headphone-2.png',
-    description: 'Some description...',
+    description:
+      'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin tempus nibh nisl, eu ullamcorper orci volutpat ac. Praesent posuere diam id condimentum convallis.',
     colors: ['red, pink, green, blue, black, white'],
     stock: 3,
   },
@@ -25,7 +27,8 @@ export const headphones = [
     rating: 4.5,
     price: '$349.99',
     image: '/images/headphones/headphone-3.png',
-    description: 'Some description...',
+    description:
+      'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin tempus nibh nisl, eu ullamcorper orci volutpat ac. Praesent posuere diam id condimentum convallis.',
     colors: ['red, pink, green, blue, black, white'],
     stock: 9,
   },
@@ -35,7 +38,8 @@ export const headphones = [
     rating: 5,
     price: '$499.99',
     image: '/images/headphones/headphone-4.png',
-    description: 'Some description...',
+    description:
+      'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin tempus nibh nisl, eu ullamcorper orci volutpat ac. Praesent posuere diam id condimentum convallis.',
     colors: ['red, pink, green, blue, black, white'],
     stock: 2,
   },
@@ -48,7 +52,8 @@ export const earbuds = [
     rating: 4,
     price: '$174.99',
     image: '/images/earbuds/earbuds-1.png',
-    description: 'Some description...',
+    description:
+      'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin tempus nibh nisl, eu ullamcorper orci volutpat ac. Praesent posuere diam id condimentum convallis.',
     colors: ['red, pink, green, blue, black, white'],
     stock: 1,
   },
@@ -58,7 +63,8 @@ export const earbuds = [
     rating: 4.5,
     price: '$199.99',
     image: '/images/earbuds/earbuds-2.png',
-    description: 'Some description...',
+    description:
+      'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin tempus nibh nisl, eu ullamcorper orci volutpat ac. Praesent posuere diam id condimentum convallis.',
     colors: ['red, pink, green, blue, black, white'],
     stock: 0,
   },
@@ -68,7 +74,8 @@ export const earbuds = [
     rating: 4.5,
     price: '$214.99',
     image: '/images/earbuds/earbuds-3.png',
-    description: 'Some description...',
+    description:
+      'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin tempus nibh nisl, eu ullamcorper orci volutpat ac. Praesent posuere diam id condimentum convallis.',
     colors: ['red, pink, green, blue, black, white'],
     stock: 4,
   },
@@ -78,7 +85,8 @@ export const earbuds = [
     rating: 4.5,
     price: '$289.99',
     image: '/images/earbuds/earbuds-4.png',
-    description: 'Some description...',
+    description:
+      'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin tempus nibh nisl, eu ullamcorper orci volutpat ac. Praesent posuere diam id condimentum convallis.',
     colors: ['red, pink, green, blue, black, white'],
     stock: 7,
   },

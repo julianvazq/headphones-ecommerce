@@ -110,6 +110,7 @@ const HeadphoneImage = styled(motion.img)`
   width: 100%;
   max-width: 700px;
   mix-blend-mode: multiply;
+  filter: contrast(90%);
 `;
 
 const HeadphonesButton = styled(motion.a)`
@@ -156,12 +157,12 @@ const Hero = () => {
           <br /> <span>sound</span>
         </h1>
       </HeroTextContainer>
-      <Link href='/headphones'>
+      <Link href='/products?headphones'>
         <HeadphonesButton variants={opacityVariant}>
           Headphones
         </HeadphonesButton>
       </Link>
-      <Link href='/earbuds'>
+      <Link href='/products?earbuds'>
         <EarbudsButton variants={opacityVariant}>Earbuds</EarbudsButton>
       </Link>
     </Header>

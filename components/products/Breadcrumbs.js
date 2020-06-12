@@ -9,6 +9,11 @@ const Breadcrumb = styled.div`
   align-items: center;
   color: var(--dark);
 
+  div {
+    display: flex;
+    align-items: center;
+  }
+
   a {
     font-weight: 600;
   }
@@ -19,7 +24,7 @@ const Breadcrumb = styled.div`
   }
 `;
 
-const Breadcrumbs = ({ model }) => {
+const Breadcrumbs = ({ model, type }) => {
   return (
     <Breadcrumb>
       <div>
@@ -31,6 +36,12 @@ const Breadcrumbs = ({ model }) => {
       <div>
         <Link href='/products'>
           <a>Products</a>
+        </Link>
+        <MdPlayArrow />
+      </div>
+      <div>
+        <Link href={`/products?type=${type}`}>
+          <a>{type}</a>
         </Link>
         <MdPlayArrow />
       </div>

@@ -17,7 +17,7 @@ const ProductPage = ({
   return (
     <SectionContainer>
       <ContainerMaxWidth>
-        <Breadcrumbs model={model} />
+        <Breadcrumbs model={model} type={type} />
         <ProductInformation
           model={model}
           type={type}
