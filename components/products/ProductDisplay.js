@@ -1,7 +1,7 @@
 import React from 'react';
 import styled from 'styled-components';
 import Link from 'next/link';
-import { MdStar, MdStarHalf } from 'react-icons/md';
+import Stars from './Stars';
 
 const ProductCard = styled.article`
   display: flex;
@@ -53,59 +53,14 @@ const Price = styled.p`
   }
 `;
 
-const StarContainer = styled.div``;
-
-const StarIcon = styled(MdStar)`
-  font-size: 1.5rem;
-  color: var(--primary);
-
-  @media (min-width: 500px) {
-    font-size: 1.25rem;
-  }
-
-  @media (min-width: 1000px) {
-    font-size: 1.5rem;
-  }
-`;
-
-const HalfStarIcon = styled(MdStarHalf)`
-  font-size: 1.5rem;
-  color: var(--primary);
-
-  @media (min-width: 500px) {
-    font-size: 1.25rem;
-  }
-
-  @media (min-width: 1000px) {
-    font-size: 1.5rem;
-  }
-`;
-MdStarHalf;
-
 const ProductDisplay = ({ model, type, price, image, rating }) => {
-  const getStars = (rating) => {
-    const integer = Math.floor(rating);
-
-    const stars = [];
-
-    for (let i = 0; i < integer; i++) {
-      stars.push(<StarIcon key={i} />);
-    }
-
-    if (rating % integer !== 0) {
-      stars.push(<HalfStarIcon key={stars.length} />);
-    }
-
-    return stars;
-  };
-
   return (
     <Link href='/products/[model]' as={`/products/${model}`}>
       <a>
         <ProductCard>
           <img src={image} alt={model} />
           <Model>{model}</Model>
-          <StarContainer>{getStars(rating)}</StarContainer>
+          <Stars rating={rating} />
           <Price>{price}</Price>
         </ProductCard>
       </a>

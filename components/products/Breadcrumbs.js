@@ -34,7 +34,7 @@ const Breadcrumbs = ({ model, type }) => {
         <MdPlayArrow />
       </div>
       <div>
-        <Link href='/products'>
+        <Link href={`/products?type=${type}`}>
           <a>Products</a>
         </Link>
         <MdPlayArrow />

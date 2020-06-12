@@ -1,7 +1,7 @@
 import React from 'react';
 import Link from 'next/link';
 import styled from 'styled-components';
-import { MdStar, MdStarHalf } from 'react-icons/md';
+import Stars from './Stars';
 
 const ProductContainer = styled.article`
   display: flex;
@@ -75,42 +75,6 @@ const Description = styled.p`
   margin: 1rem 0;
 `;
 
-const StarContainer = styled.div`
-  display: flex;
-  align-items: center;
-
-  span {
-    font-weight: 600;
-    margin-left: 0.25rem;
-  }
-`;
-
-const StarIcon = styled(MdStar)`
-  font-size: 1.5rem;
-  color: var(--primary);
-
-  @media (min-width: 500px) {
-    font-size: 1.25rem;
-  }
-
-  @media (min-width: 1000px) {
-    font-size: 1.5rem;
-  }
-`;
-
-const HalfStarIcon = styled(MdStarHalf)`
-  font-size: 1.5rem;
-  color: var(--primary);
-
-  @media (min-width: 500px) {
-    font-size: 1.25rem;
-  }
-
-  @media (min-width: 1000px) {
-    font-size: 1.5rem;
-  }
-`;
-
 const ProductInformation = ({
   model,
   type,
@@ -145,10 +109,11 @@ const ProductInformation = ({
       <InformationContainer>
         <HeadingContainer>
           <h1>{model}</h1>
-          <StarContainer>
+          <Stars rating={rating} />
+          {/* <StarContainer>
             {getStars(rating)}
             <span>({rating})</span>
-          </StarContainer>
+          </StarContainer> */}
         </HeadingContainer>
         <Type>{type}</Type>
         <Description>{description}</Description>

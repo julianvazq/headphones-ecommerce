@@ -157,12 +157,12 @@ const Hero = () => {
           <br /> <span>sound</span>
         </h1>
       </HeroTextContainer>
-      <Link href='/products?headphones'>
+      <Link href='/products?type=headphones'>
         <HeadphonesButton variants={opacityVariant}>
           Headphones
         </HeadphonesButton>
       </Link>
-      <Link href='/products?earbuds'>
+      <Link href='/products?type=earbuds'>
         <EarbudsButton variants={opacityVariant}>Earbuds</EarbudsButton>
       </Link>
     </Header>
