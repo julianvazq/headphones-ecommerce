@@ -3,6 +3,7 @@ import Link from 'next/link';
 import styled from 'styled-components';
 import Stars from './Stars';
 import Colors from './Colors';
+import { MdShoppingCart, MdCheckCircle } from 'react-icons/md';
 
 const ProductContainer = styled.article`
   display: flex;
@@ -126,11 +127,13 @@ const ButtonContainer = styled.div`
 const CartButton = styled.button`
   font-family: 'Oswald', sans-serif;
   text-transform: uppercase;
-  font-size: 1rem;
+  font-size: 1.125rem;
   font-weight: 600;
   padding: 1rem 0;
   text-align: center;
-  display: block;
+  display: flex;
+  justify-content: center;
+  align-items: center;
   width: 100%;
   color: white;
   background: var(--primary);
@@ -151,6 +154,16 @@ const CheckoutButton = styled(CartButton)`
   margin-bottom: 0;
 `;
 
+const CartIcon = styled(MdShoppingCart)`
+  font-size: 1.25rem;
+  margin-right: 0.5rem;
+`;
+
+const CheckmarkIcon = styled(MdCheckCircle)`
+  font-size: 1.25rem;
+  margin-right: 0.5rem;
+`;
+
 const ProductInformation = ({
   model,
   type,
@@ -161,7 +174,7 @@ const ProductInformation = ({
   colors,
   stock,
 }) => {
-  const [selectedColor, setSelectedColor] = useState('Predetermined');
+  const [selectedColor, setSelectedColor] = useState('Default');
 
   return (
     <ProductContainer>
@@ -203,8 +216,14 @@ const ProductInformation = ({
           )}
         </PriceContainer>
         <ButtonContainer>
-          <CartButton>Add to cart</CartButton>
-          <CheckoutButton>Go to checkout</CheckoutButton>
+          <CartButton>
+            <CartIcon />
+            Add to cart
+          </CartButton>
+          <CheckoutButton>
+            <CheckmarkIcon />
+            Buy now
+          </CheckoutButton>
         </ButtonContainer>
       </InformationContainer>
     </ProductContainer>
