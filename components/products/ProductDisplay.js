@@ -43,6 +43,7 @@ const Model = styled.h2`
 const Price = styled.p`
   font-weight: 600;
   font-size: 1.125rem;
+  margin-bottom: 1.5rem;
 
   @media (min-width: 500px) {
     font-size: 1rem;
@@ -51,6 +52,24 @@ const Price = styled.p`
   @media (min-width: 1000px) {
     font-size: 1.125rem;
   }
+`;
+
+const Button = styled.a`
+  font-family: 'Oswald', sans-serif;
+  text-transform: uppercase;
+  font-size: 1.125rem;
+  font-weight: 600;
+  padding: 0.5rem 0;
+  text-align: center;
+  width: 75%;
+  color: #fff;
+  background: var(--primary);
+`;
+
+const SecondaryButton = styled(Button)`
+  color: var(--primary);
+  background: var(--light);
+  border: 1.5px solid var(--primary);
 `;
 
 const ProductDisplay = ({ model, type, price, image, rating }) => {
@@ -62,6 +81,8 @@ const ProductDisplay = ({ model, type, price, image, rating }) => {
           <Model>{model}</Model>
           <Stars rating={rating} />
           <Price>{price}</Price>
+          <SecondaryButton>More info</SecondaryButton>
+          <Button>Buy now</Button>
         </ProductCard>
       </a>
     </Link>

@@ -8,7 +8,7 @@ import { MdShoppingCart, MdCheckCircle } from 'react-icons/md';
 const ProductContainer = styled.article`
   display: flex;
   flex-direction: column;
-  margin-top: 4rem;
+  margin: 4rem 0;
 
   @media (min-width: 800px) {
     flex-direction: row;
@@ -34,6 +34,7 @@ const InformationContainer = styled.div`
   background: var(--body);
   padding: 2rem;
   flex: 1;
+  align-self: center;
 `;
 
 // H1 + Stock
@@ -135,7 +136,7 @@ const CartButton = styled.button`
   justify-content: center;
   align-items: center;
   width: 100%;
-  color: white;
+  color: #fff;
   background: var(--primary);
   margin-bottom: 1rem;
 

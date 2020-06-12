@@ -4,6 +4,7 @@ import styled from 'styled-components';
 import ContainerMaxWidth from '../../components/utils/ContainerMaxWidth';
 import Breadcrumbs from '../../components/products/Breadcrumbs';
 import ProductInformation from '../../components/products/ProductInformation';
+import SimilarProducts from '../../components/products/SimilarProducts';
 
 const SectionContainer = styled.section`
   background: var(--light);
@@ -28,6 +29,7 @@ const ProductPage = ({
           colors={colors}
           stock={stock}
         />
+        <SimilarProducts model={model} type={type} />
       </ContainerMaxWidth>
     </SectionContainer>
   );

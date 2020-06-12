@@ -35,12 +35,6 @@ const Breadcrumbs = ({ model, type }) => {
       </div>
       <div>
         <Link href={`/products?type=${type}`}>
-          <a>Products</a>
-        </Link>
-        <MdPlayArrow />
-      </div>
-      <div>
-        <Link href={`/products?type=${type}`}>
           <a>{type}</a>
         </Link>
         <MdPlayArrow />
