@@ -52,10 +52,10 @@ const MenuOpen = ({ showingCartOrMenu, handleShowSidebar }) => {
         <Link href='/checkout'>
           <a onClick={closeSidebar}>Checkout</a>
         </Link>
-        <Link href='/products/headphones'>
+        <Link href='/products?type=headphones'>
           <a onClick={closeSidebar}>Headphones</a>
         </Link>
-        <Link href='/products/earbuds'>
+        <Link href='/products?type=earbuds'>
           <a onClick={closeSidebar}>Earbuds</a>
         </Link>
         <Link href='/products/accessories'>

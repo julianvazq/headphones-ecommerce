@@ -221,7 +221,7 @@ const ProductInformation = ({
         </ColorsContainer>
         <PriceContainer>
           <Price>
-            <p>{price}</p>
+            <p>${price}</p>
             <span>Free Shipping</span>
           </Price>
           {stock ? (

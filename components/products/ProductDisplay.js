@@ -80,7 +80,7 @@ const ProductDisplay = ({ model, type, price, image, rating }) => {
           <img src={image} alt={model} />
           <Model>{model}</Model>
           <Stars rating={rating} />
-          <Price>{price}</Price>
+          <Price>${price}</Price>
           <SecondaryButton>More info</SecondaryButton>
           <Button>Buy now</Button>
         </ProductCard>
