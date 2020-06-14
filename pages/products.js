@@ -17,7 +17,11 @@ const Products = () => {
   const [productType, setProductType] = useState(router.query.type);
   const [priceSort, setPriceSort] = useState(null);
   const [ratingSort, setRatingSort] = useState(null);
-  const [products, setProducts] = useState([]);
+  const [products, setProducts] = useState(
+    productType === 'headphones' ? headphones : earbuds
+  );
+
+  // const products = productType === 'headphones' ? headphones : earbuds;
 
   useEffect(() => {
     setProductType(router.query.type);
@@ -25,10 +29,36 @@ const Products = () => {
 
   useEffect(() => {
     router.push(`/products?type=${productType}`, undefined, { shallow: true });
+
+    if (productType === 'headphones') {
+      setProducts(headphones);
+    } else {
+      setProducts(earbuds);
+    }
+
+    setPriceSort(null);
+    setRatingSort(null);
   }, [productType]);
 
-  //Use multiple useEffects to call function when priceSort or ratingSort change
-  useEffect(() => {});
+  useEffect(() => {
+    if (priceSort === null) return;
+
+    if (priceSort === 'low to high') {
+      sortProducts(products, 'price', 'desc');
+    } else {
+      sortProducts(products, 'price');
+    }
+  }, [priceSort]);
+
+  useEffect(() => {
+    if (ratingSort === null) return;
+
+    if (ratingSort === 'low to high') {
+      sortProducts(products, 'rating', 'desc');
+    } else {
+      sortProducts(products, 'rating');
+    }
+  }, [ratingSort]);
 
   //   const getSortedProducts = () => {
   //     let products = [];
@@ -56,20 +86,30 @@ const Products = () => {
 
   // Sorts in ascending value by default
   const sortProducts = (products, key, sorting = 'asc') => {
-    products.sort((a, b) => {
-      if (sorting === 'desc') {
+    const sortedProducts = [...products];
+    sortedProducts.sort((a, b) => {
+      if (sorting === 'asc') {
         return parseFloat(b[key]) - parseFloat(a[key]);
       }
 
       return parseFloat(a[key]) - parseFloat(b[key]);
     });
+
+    setProducts(sortedProducts);
   };
 
   return (
     <SectionContainer>
       <ContainerMaxWidth>
-        <Filter productType={productType} setProductType={setProductType} />
-        <ProductGrid products={[]} />
+        <Filter
+          productType={productType}
+          setProductType={setProductType}
+          priceSort={priceSort}
+          setPriceSort={setPriceSort}
+          ratingSort={ratingSort}
+          setRatingSort={setRatingSort}
+        />
+        <ProductGrid products={products} />
       </ContainerMaxWidth>
     </SectionContainer>
   );

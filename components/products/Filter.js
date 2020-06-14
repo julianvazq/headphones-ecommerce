@@ -54,7 +54,14 @@ const Showing = styled.p`
   margin: 1rem 0;
 `;
 
-const Filter = ({ productType, setProductType }) => {
+const Filter = ({
+  productType,
+  setProductType,
+  priceSort,
+  setPriceSort,
+  ratingSort,
+  setRatingSort,
+}) => {
   return (
     <>
       <FilterContainer>
@@ -78,15 +85,35 @@ const Filter = ({ productType, setProductType }) => {
         <InnerContainer>
           <Subheading>Price</Subheading>
           <ButtonContainer>
-            <Button>Low to High</Button>
-            <Button>High to Low</Button>
+            <Button
+              selected={priceSort === 'low to high'}
+              onClick={() => setPriceSort('low to high')}
+            >
+              Low to High
+            </Button>
+            <Button
+              selected={priceSort === 'high to low'}
+              onClick={() => setPriceSort('high to low')}
+            >
+              High to Low
+            </Button>
           </ButtonContainer>
         </InnerContainer>
         <InnerContainer>
           <Subheading>Rating</Subheading>
           <ButtonContainer>
-            <Button>Low to High</Button>
-            <Button>High to Low</Button>
+            <Button
+              selected={ratingSort === 'low to high'}
+              onClick={() => setRatingSort('low to high')}
+            >
+              Low to High
+            </Button>
+            <Button
+              selected={ratingSort === 'high to low'}
+              onClick={() => setRatingSort('high to low')}
+            >
+              High to Low
+            </Button>
           </ButtonContainer>
         </InnerContainer>
       </FilterContainer>
