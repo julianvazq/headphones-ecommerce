@@ -51,7 +51,7 @@ const Button = styled.button`
 
 const Showing = styled.p`
   text-transform: none;
-  margin: 1rem 0;
+  margin: 0.5rem 0 1rem;
 `;
 
 const Filter = ({
@@ -61,6 +61,7 @@ const Filter = ({
   setPriceSort,
   ratingSort,
   setRatingSort,
+  count,
 }) => {
   return (
     <>
@@ -117,7 +118,9 @@ const Filter = ({
           </ButtonContainer>
         </InnerContainer>
       </FilterContainer>
-      <Showing>Showing 4 of 4</Showing>
+      <Showing>
+        Showing {count} of {count}
+      </Showing>
     </>
   );
 };

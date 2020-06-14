@@ -60,31 +60,6 @@ const Products = () => {
     }
   }, [ratingSort]);
 
-  //   const getSortedProducts = () => {
-  //     let products = [];
-
-  //     if (productType === 'headphones') {
-  //       products = headphones;
-  //     } else {
-  //       products = earbuds;
-  //     }
-
-  //     if (priceSort === 'high to low') {
-  //       sortProducts(products, 'price', 'desc');
-  //     } else if (priceSort === 'low to high') {
-  //       sortProducts(products, 'price');
-  //     }
-
-  //     if (ratingSort === 'high to low') {
-  //       sortProducts(products, 'rating', 'desc');
-  //     } else if (ratingSort === 'low to high') {
-  //       sortProducts(products, 'rating');
-  //     }
-
-  //     setProducts(products);
-  //   };
-
-  // Sorts in ascending value by default
   const sortProducts = (products, key, sorting = 'asc') => {
     const sortedProducts = [...products];
     sortedProducts.sort((a, b) => {
@@ -108,6 +83,7 @@ const Products = () => {
           setPriceSort={setPriceSort}
           ratingSort={ratingSort}
           setRatingSort={setRatingSort}
+          count={products.length}
         />
         <ProductGrid products={products} />
       </ContainerMaxWidth>

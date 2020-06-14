@@ -58,9 +58,6 @@ const MenuOpen = ({ showingCartOrMenu, handleShowSidebar }) => {
         <Link href='/products?type=earbuds'>
           <a onClick={closeSidebar}>Earbuds</a>
         </Link>
-        <Link href='/products/accessories'>
-          <a onClick={closeSidebar}>Accessories</a>
-        </Link>
         <a>Contact Us</a>
       </Menu>
     </AnimatedSidebar>

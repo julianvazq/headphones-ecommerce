@@ -34,11 +34,12 @@ export const SectionTitle = styled.h2`
 `;
 
 const ViewMoreButton = styled.a`
+  font-family: 'Oswald', sans-serif;
   text-align: center;
   display: inline-block;
   padding: 0.5rem 1rem;
   color: var(--light);
-  background: var(--primary);
+  background: var(--dark);
 `;
 
 const ProductsSection = () => {
