@@ -153,7 +153,8 @@ const CartButton = styled.button`
   align-items: center;
   width: 100%;
   color: #fff;
-  background: var(--primary);
+  /* outline: 1px solid black; */
+  background: ${(props) => (props.inCart ? 'green' : 'var(--primary)')};
   margin-bottom: 1rem;
 
   @media (min-width: 600px) {
@@ -190,9 +191,11 @@ const ProductInformation = ({
   description,
   colors,
   stock,
+  handleCartChange,
+  inCart,
 }) => {
   const [selectedColor, setSelectedColor] = useState('Default');
-
+  console.log(inCart);
   return (
     <ProductContainer>
       <ImageContainer variants={imageVariant} initial='initial' animate='final'>
@@ -233,7 +236,7 @@ const ProductInformation = ({
           )}
         </PriceContainer>
         <ButtonContainer>
-          <CartButton>
+          <CartButton onClick={handleCartChange} inCart={inCart}>
             <CartIcon />
             Add to cart
           </CartButton>

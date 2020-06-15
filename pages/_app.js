@@ -3,6 +3,7 @@ import '../styles/global.css';
 import { ThemeProvider } from 'styled-components';
 import Layout from '../components/global/Layout';
 import { AnimatePresence } from 'framer-motion';
+import CartProvider from '../components/context/CartContext';
 
 const theme = {
   colors: {
@@ -33,14 +34,16 @@ export default class MyApp extends App {
     const { Component, pageProps, router } = this.props;
     return (
       <ThemeProvider theme={theme}>
-        <AnimatePresence exitBeforeEnter onExitComplete={this.closeSidebar}>
-          <Layout
-            showingCartOrMenu={this.state.showingCartOrMenu}
-            handleShowSidebar={this.handleShowSidebar}
-          >
-            <Component {...pageProps} key={router.route} />
-          </Layout>
-        </AnimatePresence>
+        <CartProvider>
+          <AnimatePresence exitBeforeEnter onExitComplete={this.closeSidebar}>
+            <Layout
+              showingCartOrMenu={this.state.showingCartOrMenu}
+              handleShowSidebar={this.handleShowSidebar}
+            >
+              <Component {...pageProps} key={router.route} />
+            </Layout>
+          </AnimatePresence>
+        </CartProvider>
       </ThemeProvider>
     );
   }

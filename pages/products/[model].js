@@ -1,10 +1,11 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import { headphones, earbuds } from '../../public/products';
 import styled from 'styled-components';
 import ContainerMaxWidth from '../../components/utils/ContainerMaxWidth';
 import Breadcrumbs from '../../components/products/Breadcrumbs';
 import ProductInformation from '../../components/products/ProductInformation';
 import SimilarProducts from '../../components/products/SimilarProducts';
+import { CartContext } from '../../components/context/CartContext';
 
 const SectionContainer = styled.section`
   background: var(--light);
@@ -12,24 +13,30 @@ const SectionContainer = styled.section`
   padding: 2rem 0;
 `;
 
-const ProductPage = ({
-  product: { model, type, price, image, rating, description, colors, stock },
-}) => {
+const ProductPage = ({ product }) => {
+  const { handleCartChange, checkIfInCart } = useContext(CartContext);
+
+  const handleCart = () => {
+    handleCartChange(product);
+  };
+
   return (
     <SectionContainer>
       <ContainerMaxWidth>
-        <Breadcrumbs model={model} type={type} />
+        <Breadcrumbs model={product.model} type={product.type} />
         <ProductInformation
-          model={model}
-          type={type}
-          price={price}
-          image={image}
-          rating={rating}
-          description={description}
-          colors={colors}
-          stock={stock}
+          model={product.model}
+          type={product.type}
+          price={product.price}
+          image={product.image}
+          rating={product.rating}
+          description={product.description}
+          colors={product.colors}
+          stock={product.stock}
+          handleCartChange={handleCart}
+          inCart={checkIfInCart(product)}
         />
-        <SimilarProducts model={model} type={type} />
+        <SimilarProducts model={product.model} type={product.type} />
       </ContainerMaxWidth>
     </SectionContainer>
   );

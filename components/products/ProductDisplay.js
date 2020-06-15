@@ -54,7 +54,7 @@ const Price = styled.p`
   }
 `;
 
-const Button = styled.a`
+const Button = styled.button`
   font-family: 'Oswald', sans-serif;
   text-transform: uppercase;
   font-size: 1.125rem;
@@ -72,7 +72,15 @@ const SecondaryButton = styled(Button)`
   border: 1.5px solid var(--primary);
 `;
 
-const ProductDisplay = ({ model, type, price, image, rating }) => {
+const ProductDisplay = ({
+  model,
+  type,
+  price,
+  image,
+  rating,
+  product,
+  handleCart,
+}) => {
   return (
     <Link href='/products/[model]' as={`/products/${model}`}>
       <a>
@@ -82,7 +90,7 @@ const ProductDisplay = ({ model, type, price, image, rating }) => {
           <Stars rating={rating} />
           <Price>${price}</Price>
           <SecondaryButton>More info</SecondaryButton>
-          <Button>Buy now</Button>
+          <Button onClick={handleCart}>Buy now</Button>
         </ProductCard>
       </a>
     </Link>

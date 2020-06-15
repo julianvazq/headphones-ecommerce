@@ -46,3 +46,7 @@ button {
   -webkit-appearance: none;
   cursor: pointer;
 }
+
+button:focus {
+  outline: 1px solid gray;
+}

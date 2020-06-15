@@ -1,6 +1,7 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import styled from 'styled-components';
 import ProductDisplay from './ProductDisplay';
+import { CartContext } from '../context/CartContext';
 
 const Grid = styled.div`
   display: grid;
@@ -19,10 +20,22 @@ const Grid = styled.div`
 `;
 
 const ProductGrid = ({ products }) => {
+  const { handleCartChange } = useContext(CartContext);
+
+  const handleCart = (e, product) => {
+    e.preventDefault();
+    handleCartChange(product);
+  };
+
   return (
     <Grid>
       {products.slice(0, 4).map((product, index) => (
-        <ProductDisplay key={index} {...product} />
+        <ProductDisplay
+          key={index}
+          {...product}
+          product={product}
+          handleCart={(e) => handleCart(e, product)}
+        />
       ))}
     </Grid>
   );
