@@ -1,10 +1,11 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect, useContext } from 'react';
 import Link from 'next/link';
 import styled from 'styled-components';
 import { motion } from 'framer-motion';
 import Stars from './Stars';
 import Colors from './Colors';
 import { MdShoppingCart, MdCheckCircle } from 'react-icons/md';
+import { CartContext } from '../../components/context/CartContext';
 
 const imageVariant = {
   initial: {
@@ -191,10 +192,22 @@ const ProductInformation = ({
   description,
   colors,
   stock,
-  handleCartChange,
-  inCart,
+  // handleClick,
+  initialInCart,
+  product,
 }) => {
   const [selectedColor, setSelectedColor] = useState('Default');
+  const { cart, handleCartChange, checkIfInCart } = useContext(CartContext);
+  const [inCart, setInCart] = useState(initialInCart);
+
+  const handleClick = () => {
+    handleCartChange(product);
+  };
+
+  useEffect(() => {
+    setInCart(checkIfInCart(product));
+  }, [cart, initialInCart]);
+
   return (
     <ProductContainer>
       <ImageContainer variants={imageVariant} initial='initial' animate='final'>
@@ -235,7 +248,7 @@ const ProductInformation = ({
           )}
         </PriceContainer>
         <ButtonContainer>
-          <CartButton onClick={handleCartChange} inCart={inCart}>
+          <CartButton onClick={handleClick} inCart={inCart}>
             <CartIcon />
             {inCart ? 'Added to cart' : 'Add to cart'}
           </CartButton>

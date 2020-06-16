@@ -1,11 +1,11 @@
-import React, { useState, useContext } from 'react';
+import React, { useState, useEffect, useContext } from 'react';
 import { headphones, earbuds } from '../../public/products';
 import styled from 'styled-components';
 import ContainerMaxWidth from '../../components/utils/ContainerMaxWidth';
 import Breadcrumbs from '../../components/products/Breadcrumbs';
 import ProductInformation from '../../components/products/ProductInformation';
 import SimilarProducts from '../../components/products/SimilarProducts';
-import { CartContext } from '../../components/context/CartContext';
+// import { CartContext } from '../../components/context/CartContext';
 import { addInCartProperty } from '../../components/context/cookieUtils';
 
 const SectionContainer = styled.section`
@@ -15,13 +15,27 @@ const SectionContainer = styled.section`
 `;
 
 const ProductPage = ({ product, similarProducts }) => {
-  const { handleCartChange, checkIfInCart } = useContext(CartContext);
-  const [inCart, setInCart] = useState(product.inCart);
+  // const { cart, handleCartChange, checkIfInCart } = useContext(CartContext);
+  // const [inCart, setInCart] = useState(product.inCart);
 
-  const handleCart = () => {
-    handleCartChange(product);
-    setInCart(!inCart);
-  };
+  // const handleClick = () => {
+  //   handleCartChange(product);
+  // };
+
+  // console.log(
+  //   'new page: ',
+  //   product.model,
+  //   'product.inCart: ',
+  //   product.inCart,
+  //   'inCart: ',
+  //   inCart
+  // );
+
+  // console.log(inCart);
+
+  // useEffect(() => {
+  //   setInCart(checkIfInCart(product));
+  // }, [cart]);
 
   return (
     <SectionContainer>
@@ -36,8 +50,9 @@ const ProductPage = ({ product, similarProducts }) => {
           description={product.description}
           colors={product.colors}
           stock={product.stock}
-          handleCartChange={handleCart}
-          inCart={checkIfInCart(product)}
+          // handleClick={handleClick}
+          initialInCart={product.inCart}
+          product={product}
         />
         <SimilarProducts products={similarProducts} model={product.model} />
       </ContainerMaxWidth>

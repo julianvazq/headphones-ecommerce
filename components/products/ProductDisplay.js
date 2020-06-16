@@ -78,7 +78,7 @@ const ProductDisplay = ({ product }) => {
   const { cart, handleCartChange, checkIfInCart } = useContext(CartContext);
   const [inCart, setInCart] = useState(product.inCart);
 
-  const handleButtonClick = (e) => {
+  const handleClick = (e) => {
     e.preventDefault();
     handleCartChange(product);
   };
@@ -96,7 +96,7 @@ const ProductDisplay = ({ product }) => {
           <Stars rating={product.rating} />
           <Price>${product.price}</Price>
           <SecondaryButton>More info</SecondaryButton>
-          <Button onClick={handleButtonClick} inCart={inCart}>
+          <Button onClick={handleClick} inCart={inCart}>
             {inCart ? 'Added to cart' : 'Add to cart'}
           </Button>
         </ProductCard>

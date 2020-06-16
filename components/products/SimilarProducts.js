@@ -1,6 +1,5 @@
 import React from 'react';
 import styled from 'styled-components';
-// import { headphones, earbuds } from '../../public/products';
 import ProductGrid from './ProductGrid';
 
 const Heading = styled.h2`
