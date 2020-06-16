@@ -1,6 +1,6 @@
 import React from 'react';
 import styled from 'styled-components';
-import { headphones, earbuds } from '../../public/products';
+// import { headphones, earbuds } from '../../public/products';
 import ProductGrid from './ProductGrid';
 
 const Heading = styled.h2`
@@ -12,10 +12,9 @@ const Heading = styled.h2`
   border-bottom: 2px solid var(--primary);
 `;
 
-const SimilarProducts = ({ model, type }) => {
-  const allProducts = type === 'headphones' ? headphones : earbuds;
+const SimilarProducts = ({ model, products }) => {
   //   Filter out product on display
-  const similarProducts = allProducts
+  const similarProducts = products
     .slice(0, 5)
     .filter((product) => product.model !== model);
 

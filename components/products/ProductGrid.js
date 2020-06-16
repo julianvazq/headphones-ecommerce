@@ -20,22 +20,15 @@ const Grid = styled.div`
 `;
 
 const ProductGrid = ({ products }) => {
-  const { handleCartChange, checkIfInCart } = useContext(CartContext);
-
-  const handleCart = (e, product) => {
-    e.preventDefault();
-    handleCartChange(product);
-  };
+  const { handleCartChange } = useContext(CartContext);
 
   return (
     <Grid>
-      {products.slice(0, 4).map((product, index) => (
+      {products.slice(0, 4).map((product) => (
         <ProductDisplay
-          key={index}
-          {...product}
+          key={product.model}
           product={product}
-          handleCart={(e) => handleCart(e, product)}
-          inCart={checkIfInCart(product)}
+          handleCartChange={handleCartChange}
         />
       ))}
     </Grid>

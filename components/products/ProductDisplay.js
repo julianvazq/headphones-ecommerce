@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import styled from 'styled-components';
 import Link from 'next/link';
 import Stars from './Stars';
@@ -63,7 +63,8 @@ const Button = styled.button`
   text-align: center;
   width: 75%;
   color: #fff;
-  background: ${(props) => (props.inCart ? 'var(--dark)' : 'var(--primary)')};
+  background: ${(props) =>
+    props.inCart ? 'var(--confirmed)' : 'var(--primary)'};
 `;
 
 const SecondaryButton = styled(Button)`
@@ -72,24 +73,25 @@ const SecondaryButton = styled(Button)`
   border: 1.5px solid var(--primary);
 `;
 
-const ProductDisplay = ({
-  model,
-  price,
-  image,
-  rating,
-  handleCart,
-  inCart,
-}) => {
+const ProductDisplay = ({ product, handleCartChange }) => {
+  const [inCart, setInCart] = useState(product.inCart);
+
+  const handleButtonClick = (e) => {
+    e.preventDefault();
+    handleCartChange(product);
+    setInCart(!inCart);
+  };
+
   return (
-    <Link href='/products/[model]' as={`/products/${model}`}>
+    <Link href='/products/[model]' as={`/products/${product.model}`}>
       <a>
         <ProductCard>
-          <img src={image} alt={model} />
-          <Model>{model}</Model>
-          <Stars rating={rating} />
-          <Price>${price}</Price>
+          <img src={product.image} alt={product.model} />
+          <Model>{product.model}</Model>
+          <Stars rating={product.rating} />
+          <Price>${product.price}</Price>
           <SecondaryButton>More info</SecondaryButton>
-          <Button onClick={handleCart} inCart={inCart}>
+          <Button onClick={handleButtonClick} inCart={inCart}>
             {inCart ? 'Added to cart' : 'Add to cart'}
           </Button>
         </ProductCard>

@@ -5,6 +5,7 @@ import { headphones, earbuds } from '../public/products';
 import ProductGrid from '../components/products/ProductGrid';
 import ContainerMaxWidth from '../components/utils/ContainerMaxWidth';
 import Filter from '../components/products/Filter';
+import { addInCartProperty } from '../components/context/cookieUtils';
 
 const SectionContainer = styled.section`
   background: var(--light);
@@ -12,20 +13,12 @@ const SectionContainer = styled.section`
   padding: 2rem 0;
 `;
 
-const Products = () => {
+const Products = ({ initialProducts, headphones, earbuds }) => {
   const router = useRouter();
   const [productType, setProductType] = useState(router.query.type);
   const [priceSort, setPriceSort] = useState(null);
   const [ratingSort, setRatingSort] = useState(null);
-  const [products, setProducts] = useState(
-    productType === 'headphones' ? headphones : earbuds
-  );
-
-  // const products = productType === 'headphones' ? headphones : earbuds;
-
-  useEffect(() => {
-    setProductType(router.query.type);
-  }, []);
+  const [products, setProducts] = useState(initialProducts);
 
   useEffect(() => {
     router.push(`/products?type=${productType}`, undefined, { shallow: true });
@@ -90,5 +83,32 @@ const Products = () => {
     </SectionContainer>
   );
 };
+
+export async function getServerSideProps({ req, query }) {
+  /* Check if product is in cart (stored in cookies)
+   and set inCart key value.
+   This will allow to server-side render the CSS
+   displaying whether a product is in the cart
+   */
+
+  /* Gets headphones and earbuds (updated products based on cookies) */
+  const headphonesArray = headphones.map((product) =>
+    addInCartProperty(req, product)
+  );
+  const earbudsArray = earbuds.map((product) =>
+    addInCartProperty(req, product)
+  );
+
+  const initialProducts =
+    query.type === 'headphones' ? headphonesArray : earbudsArray;
+
+  return {
+    props: {
+      initialProducts,
+      headphones: headphonesArray,
+      earbuds: earbudsArray,
+    },
+  };
+}
 
 export default Products;

@@ -2,8 +2,9 @@ import { motion } from 'framer-motion';
 import Hero from '../components/hero/Hero';
 import ProductsSection from '../components/products/ProductsSection';
 import { headphones, earbuds } from '../public/products';
+import { addInCartProperty } from '../components/context/cookieUtils';
 
-export default function Home() {
+export default function Home({ headphones, earbuds }) {
   return (
     <motion.div
     // initial={{ opacity: 0 }}
@@ -11,32 +12,28 @@ export default function Home() {
     // exit={{ opacity: 0 }}
     >
       <Hero />
-      <ProductsSection />
+      <ProductsSection headphones={headphones} earbuds={earbuds} />
     </motion.div>
   );
 }
 
-// export async function getServerSideProps({ req }) {
-//   const headphones = headphones;
-//   const earbuds = earbuds;
+export async function getServerSideProps({ req }) {
+  /* Check if products in JSON file are in cart 
+     (passed by cookies).
+    If so, add isCart = true
+  */
 
-//   const product = allProducts.find((p) => params.model === p.model);
+  const headphonesArray = headphones.map((product) =>
+    addInCartProperty(req, product)
+  );
+  const earbudsArray = earbuds.map((product) =>
+    addInCartProperty(req, product)
+  );
 
-//   /* Check if product is in cart (stored in cookies)
-//    and set inCart key value.
-//    This will allow to server-side render the CSS
-//    displaying whether a product is in the cart
-//    */
-//   const cookies = parseCookies(req);
-//   if (checkIfInCart(cookies.cart, product)) {
-//     product.inCart = true;
-//   } else {
-//     product.inCart = false;
-//   }
-
-//   return {
-//     props: {
-//       product,
-//     },
-//   };
-// }
+  return {
+    props: {
+      headphones: headphonesArray,
+      earbuds: earbudsArray,
+    },
+  };
+}

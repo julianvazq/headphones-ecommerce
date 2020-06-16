@@ -6,10 +6,7 @@ import Breadcrumbs from '../../components/products/Breadcrumbs';
 import ProductInformation from '../../components/products/ProductInformation';
 import SimilarProducts from '../../components/products/SimilarProducts';
 import { CartContext } from '../../components/context/CartContext';
-import {
-  parseCookies,
-  addInCartProperty,
-} from '../../components/context/cookieUtils';
+import { addInCartProperty } from '../../components/context/cookieUtils';
 
 const SectionContainer = styled.section`
   background: var(--light);
@@ -17,7 +14,7 @@ const SectionContainer = styled.section`
   padding: 2rem 0;
 `;
 
-const ProductPage = ({ product }) => {
+const ProductPage = ({ product, similarProducts }) => {
   const { handleCartChange, checkIfInCart } = useContext(CartContext);
   const [inCart, setInCart] = useState(product.inCart);
 
@@ -40,30 +37,13 @@ const ProductPage = ({ product }) => {
           colors={product.colors}
           stock={product.stock}
           handleCartChange={handleCart}
-          inCart={inCart}
+          inCart={checkIfInCart(product)}
         />
-        <SimilarProducts model={product.model} type={product.type} />
+        <SimilarProducts products={similarProducts} model={product.model} />
       </ContainerMaxWidth>
     </SectionContainer>
   );
 };
-
-// export async function getStaticPaths() {
-//   // Return a list of possible values for [model]
-//   const allProducts = [...headphones, ...earbuds];
-//   const listOfModels = allProducts.map((product) => {
-//     return {
-//       params: {
-//         model: product.model,
-//       },
-//     };
-//   });
-
-//   return {
-//     paths: listOfModels,
-//     fallback: false,
-//   };
-// }
 
 export async function getServerSideProps({ params, req }) {
   const allProducts = [...headphones, ...earbuds];
@@ -78,9 +58,24 @@ export async function getServerSideProps({ params, req }) {
   /* Modifies product object by reference */
   addInCartProperty(req, product);
 
+  /* Gets headphones and earbuds (updated products based on cookies)
+     to pass to SimilarProducts  */
+  const headphonesArray = headphones.map((product) =>
+    addInCartProperty(req, product)
+  );
+  const earbudsArray = earbuds.map((product) =>
+    addInCartProperty(req, product)
+  );
+
+  const similarProducts =
+    product.type === 'headphones' ? headphonesArray : earbudsArray;
+
+  console.log(product);
+
   return {
     props: {
       product,
+      similarProducts,
     },
   };
 }

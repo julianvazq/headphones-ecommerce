@@ -1,7 +1,6 @@
 import React from 'react';
 import styled from 'styled-components';
 import Link from 'next/link';
-import { headphones, earbuds } from '../../public/products';
 import ProductGrid from './ProductGrid';
 
 const SectionContainer = styled.section`
@@ -42,7 +41,7 @@ const ViewMoreButton = styled.a`
   background: var(--dark);
 `;
 
-const ProductsSection = () => {
+const ProductsSection = ({ headphones, earbuds }) => {
   return (
     <SectionContainer>
       <HeadingContainer>
