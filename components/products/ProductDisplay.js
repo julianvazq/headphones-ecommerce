@@ -1,7 +1,8 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect, useContext } from 'react';
 import styled from 'styled-components';
 import Link from 'next/link';
 import Stars from './Stars';
+import { CartContext } from '../context/CartContext';
 
 const ProductCard = styled.article`
   display: flex;
@@ -73,14 +74,18 @@ const SecondaryButton = styled(Button)`
   border: 1.5px solid var(--primary);
 `;
 
-const ProductDisplay = ({ product, handleCartChange }) => {
+const ProductDisplay = ({ product }) => {
+  const { cart, handleCartChange, checkIfInCart } = useContext(CartContext);
   const [inCart, setInCart] = useState(product.inCart);
 
   const handleButtonClick = (e) => {
     e.preventDefault();
     handleCartChange(product);
-    setInCart(!inCart);
   };
+
+  useEffect(() => {
+    setInCart(checkIfInCart(product));
+  }, [cart]);
 
   return (
     <Link href='/products/[model]' as={`/products/${product.model}`}>
