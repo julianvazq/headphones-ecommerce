@@ -34,7 +34,7 @@ const CartProvider = ({ children }) => {
       (productInCart) => productInCart.model === product.model
     );
 
-    return found;
+    return found ? true : false;
   };
 
   const handleCartChange = (product) => {
@@ -49,10 +49,13 @@ const CartProvider = ({ children }) => {
       newCart = addToCart(product);
     }
 
-    /* Saves cookies AND context to trigger re-render */
-    saveCartCookie(newCart);
     setCart(newCart);
   };
+
+  // When cart changes, save new cart in cookie
+  useEffect(() => {
+    saveCartCookie(cart);
+  }, [cart]);
 
   return (
     <CartContext.Provider value={{ cart, handleCartChange, checkIfInCart }}>

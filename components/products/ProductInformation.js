@@ -115,7 +115,7 @@ const PriceContainer = styled.div`
 const Price = styled.div`
   display: flex;
   flex-direction: column;
-  margin-right: 0.5rem;
+  margin-right: 2.75rem;
 
   p {
     font-size: 1.5rem;
@@ -153,8 +153,8 @@ const CartButton = styled.button`
   align-items: center;
   width: 100%;
   color: #fff;
-  /* outline: 1px solid black; */
-  background: ${(props) => (props.inCart ? 'green' : 'var(--primary)')};
+  background: ${(props) =>
+    props.inCart ? 'var(--confirmed)' : 'var(--primary)'};
   margin-bottom: 1rem;
 
   @media (min-width: 600px) {
@@ -195,7 +195,6 @@ const ProductInformation = ({
   inCart,
 }) => {
   const [selectedColor, setSelectedColor] = useState('Default');
-  console.log(inCart);
   return (
     <ProductContainer>
       <ImageContainer variants={imageVariant} initial='initial' animate='final'>
@@ -238,7 +237,7 @@ const ProductInformation = ({
         <ButtonContainer>
           <CartButton onClick={handleCartChange} inCart={inCart}>
             <CartIcon />
-            Add to cart
+            {inCart ? 'Added to cart' : 'Add to cart'}
           </CartButton>
           <CheckoutButton>
             <CheckmarkIcon />

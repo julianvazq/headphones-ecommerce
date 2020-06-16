@@ -20,7 +20,7 @@ const Grid = styled.div`
 `;
 
 const ProductGrid = ({ products }) => {
-  const { handleCartChange } = useContext(CartContext);
+  const { handleCartChange, checkIfInCart } = useContext(CartContext);
 
   const handleCart = (e, product) => {
     e.preventDefault();
@@ -35,6 +35,7 @@ const ProductGrid = ({ products }) => {
           {...product}
           product={product}
           handleCart={(e) => handleCart(e, product)}
+          inCart={checkIfInCart(product)}
         />
       ))}
     </Grid>

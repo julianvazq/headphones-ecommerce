@@ -63,7 +63,7 @@ const Button = styled.button`
   text-align: center;
   width: 75%;
   color: #fff;
-  background: var(--primary);
+  background: ${(props) => (props.inCart ? 'var(--dark)' : 'var(--primary)')};
 `;
 
 const SecondaryButton = styled(Button)`
@@ -74,12 +74,11 @@ const SecondaryButton = styled(Button)`
 
 const ProductDisplay = ({
   model,
-  type,
   price,
   image,
   rating,
-  product,
   handleCart,
+  inCart,
 }) => {
   return (
     <Link href='/products/[model]' as={`/products/${model}`}>
@@ -90,7 +89,9 @@ const ProductDisplay = ({
           <Stars rating={rating} />
           <Price>${price}</Price>
           <SecondaryButton>More info</SecondaryButton>
-          <Button onClick={handleCart}>Buy now</Button>
+          <Button onClick={handleCart} inCart={inCart}>
+            {inCart ? 'Added to cart' : 'Add to cart'}
+          </Button>
         </ProductCard>
       </a>
     </Link>
