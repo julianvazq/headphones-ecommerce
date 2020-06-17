@@ -5,6 +5,7 @@ import { motion } from 'framer-motion';
 import styled from 'styled-components';
 import { CartContext } from '../context/CartContext';
 import CartProduct from '../products/CartProduct';
+import EmptyCart from '../products/EmptyCart';
 
 const CartContainer = styled.div`
   text-align: center;
@@ -13,20 +14,32 @@ const CartContainer = styled.div`
 
 const Total = styled.p`
   font-size: 2rem;
+  color: var(--dark);
+  text-align: center;
+  margin-bottom: 2rem;
+  font-weight: 600;
+  letter-spacing: 1px;
 
   span {
+    font-weight: 700;
+  }
+
+  span span {
+    color: var(--primary);
+    margin-right: 0.25rem;
   }
 `;
 
 const ButtonContainer = styled.div`
   display: flex;
-  padding-bottom: 2rem;
-  border-bottom: 2px solid var(--dark);
+  padding-bottom: 4rem;
+  border-bottom: 1px solid var(--dark);
 `;
 
 const Button = styled.button`
   font-family: 'Oswald', sans-serif;
-  font-size: 1.125rem;
+  text-transform: uppercase;
+  font-size: 1.5rem;
   font-weight: 600;
   padding: 1rem 0;
   text-align: center;
@@ -40,17 +53,23 @@ const Button = styled.button`
   background: var(--dark);
 `;
 
-const SecondaryButton = styled(Button)`
-  background: none;
-  color: var(--dark);
-  width: 25%;
-`;
-
 const CartOpen = ({ showingCartOrMenu, handleShowSidebar }) => {
-  const { cart } = useContext(CartContext);
+  const { cart, getCartTotal } = useContext(CartContext);
   const closeSidebar = () => {
     handleShowSidebar(null);
   };
+
+  if (!cart.length) {
+    return (
+      <AnimatedSidebar
+        showSidebar={showingCartOrMenu}
+        handleShowSidebar={handleShowSidebar}
+        cart
+      >
+        <EmptyCart />
+      </AnimatedSidebar>
+    );
+  }
 
   return (
     <AnimatedSidebar
@@ -58,8 +77,17 @@ const CartOpen = ({ showingCartOrMenu, handleShowSidebar }) => {
       handleShowSidebar={handleShowSidebar}
       cart
     >
+      <Total>
+        Total:{' '}
+        <span>
+          <span>$</span>
+          {getCartTotal()}
+        </span>
+      </Total>
       <ButtonContainer>
-        <Button>Checkout</Button>
+        <Link href='/checkout'>
+          <Button onClick={closeSidebar}>Checkout</Button>
+        </Link>
       </ButtonContainer>
       <CartContainer>
         {cart.map((product) => (

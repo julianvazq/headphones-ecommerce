@@ -33,8 +33,6 @@ export function parseCookies(req) {
 export function evaluateProperties(req, product) {
   const cookies = parseCookies(req);
 
-  console.log(product);
-
   if (!cookies.cart) {
     product.inCart = false;
     product.quantity = 1;

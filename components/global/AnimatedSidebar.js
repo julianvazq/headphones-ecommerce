@@ -55,7 +55,7 @@ const Sidebar = styled(motion.div)`
     z-index: -1;
     background-image: url('/images/headphones/headphone-white-half.png');
     filter: contrast(90%);
-    opacity: 0.6;
+    opacity: 0.4;
     background-repeat: no-repeat;
     background-size: contain;
     mix-blend-mode: multiply;
@@ -68,7 +68,7 @@ const Sidebar = styled(motion.div)`
 
 const CloseButton = styled(MdClose)`
   display: block;
-  color: var(--light);
+  color: ${(props) => (props.cart ? 'var(--dark)' : 'var(--light)')};
   font-size: 3rem;
   align-self: flex-end;
   margin-bottom: 2rem;
@@ -97,7 +97,7 @@ const AnimatedSidebar = ({ handleShowSidebar, cart = false, children }) => {
         animate='final'
         exit='initial'
       >
-        <CloseButton onClick={closeSidebar} />
+        <CloseButton onClick={closeSidebar} cart={cart} />
         {children}
       </Sidebar>
     </motion.div>

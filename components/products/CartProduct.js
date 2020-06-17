@@ -6,8 +6,8 @@ const ProductContainer = styled.article`
   display: flex;
   flex-direction: column;
   align-items: center;
-  margin-top: 2rem;
-  padding-bottom: 2rem;
+  margin-top: 4rem;
+  padding-bottom: 4rem;
   border-bottom: 1px solid;
   color: var(--dark);
   text-transform: capitalize;

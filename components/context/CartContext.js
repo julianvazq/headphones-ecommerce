@@ -12,6 +12,19 @@ const CartProvider = ({ children }) => {
     return [];
   });
 
+  const getCartTotal = () => {
+    if (!cart.length) return 0;
+
+    const INITIAL_VALUE = 0;
+
+    const total = cart.reduce(
+      (accumulator, currValue) =>
+        accumulator + currValue.price * currValue.quantity,
+      INITIAL_VALUE
+    );
+    return total.toFixed(2);
+  };
+
   const updateProduct = (product) => {
     const found = cart.find(
       (productInCart) => productInCart.model === product.model
@@ -87,7 +100,13 @@ const CartProvider = ({ children }) => {
 
   return (
     <CartContext.Provider
-      value={{ cart, handleCartChange, checkIfInCart, updateProduct }}
+      value={{
+        cart,
+        handleCartChange,
+        checkIfInCart,
+        updateProduct,
+        getCartTotal,
+      }}
     >
       {children}
     </CartContext.Provider>
