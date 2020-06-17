@@ -5,16 +5,17 @@ import { MdStar, MdStarHalf } from 'react-icons/md';
 const StarContainer = styled.div`
   display: flex;
   align-items: center;
+  color: ${(props) => (props.cart ? 'var(--light)' : 'var(--primary)')};
 
   span {
     font-weight: 600;
     margin-left: 0.25rem;
+    color: var(--dark);
   }
 `;
 
 const StarIcon = styled(MdStar)`
   font-size: 1.5rem;
-  color: var(--primary);
 
   @media (min-width: 500px) {
     font-size: 1.25rem;
@@ -27,7 +28,6 @@ const StarIcon = styled(MdStar)`
 
 const HalfStarIcon = styled(MdStarHalf)`
   font-size: 1.5rem;
-  color: var(--primary);
 
   @media (min-width: 500px) {
     font-size: 1.25rem;
@@ -38,7 +38,7 @@ const HalfStarIcon = styled(MdStarHalf)`
   }
 `;
 
-const Stars = ({ rating }) => {
+const Stars = ({ rating, cart = false }) => {
   const getStars = (rating) => {
     const integer = Math.floor(rating);
 
@@ -56,7 +56,7 @@ const Stars = ({ rating }) => {
   };
 
   return (
-    <StarContainer>
+    <StarContainer cart={cart}>
       {getStars(rating)}
       <span>({rating})</span>
     </StarContainer>

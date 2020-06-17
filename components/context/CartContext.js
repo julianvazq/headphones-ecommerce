@@ -12,8 +12,28 @@ const CartProvider = ({ children }) => {
     return [];
   });
 
+  const checkQuantity = (product) => {
+    if (product.quantity) {
+      return product;
+    }
+
+    return { ...product, quantity: 1 };
+  };
+
+  const updateProduct = (product) => {
+    const newCart = cart.map((productInCart) => {
+      if (productInCart.model === product.model) {
+        return product;
+      }
+      return productInCart;
+    });
+
+    setCart(newCart);
+  };
+
   const addToCart = (product) => {
-    const newCart = [...cart, product];
+    const checkedProduct = checkQuantity(product);
+    const newCart = [...cart, checkedProduct];
     return newCart;
   };
 
@@ -26,7 +46,7 @@ const CartProvider = ({ children }) => {
   };
 
   const saveCartCookie = (newCart) => {
-    Cookies.set('cart', JSON.stringify(newCart));
+    Cookies.set('cart', JSON.stringify(newCart), { sameSite: 'lax' });
   };
 
   const checkIfInCart = (product) => {
@@ -58,7 +78,9 @@ const CartProvider = ({ children }) => {
   }, [cart]);
 
   return (
-    <CartContext.Provider value={{ cart, handleCartChange, checkIfInCart }}>
+    <CartContext.Provider
+      value={{ cart, handleCartChange, checkIfInCart, updateProduct }}
+    >
       {children}
     </CartContext.Provider>
   );

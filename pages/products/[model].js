@@ -5,7 +5,6 @@ import ContainerMaxWidth from '../../components/utils/ContainerMaxWidth';
 import Breadcrumbs from '../../components/products/Breadcrumbs';
 import ProductInformation from '../../components/products/ProductInformation';
 import SimilarProducts from '../../components/products/SimilarProducts';
-// import { CartContext } from '../../components/context/CartContext';
 import { addInCartProperty } from '../../components/context/cookieUtils';
 
 const SectionContainer = styled.section`
@@ -15,45 +14,11 @@ const SectionContainer = styled.section`
 `;
 
 const ProductPage = ({ product, similarProducts }) => {
-  // const { cart, handleCartChange, checkIfInCart } = useContext(CartContext);
-  // const [inCart, setInCart] = useState(product.inCart);
-
-  // const handleClick = () => {
-  //   handleCartChange(product);
-  // };
-
-  // console.log(
-  //   'new page: ',
-  //   product.model,
-  //   'product.inCart: ',
-  //   product.inCart,
-  //   'inCart: ',
-  //   inCart
-  // );
-
-  // console.log(inCart);
-
-  // useEffect(() => {
-  //   setInCart(checkIfInCart(product));
-  // }, [cart]);
-
   return (
     <SectionContainer>
       <ContainerMaxWidth>
         <Breadcrumbs model={product.model} type={product.type} />
-        <ProductInformation
-          model={product.model}
-          type={product.type}
-          price={product.price}
-          image={product.image}
-          rating={product.rating}
-          description={product.description}
-          colors={product.colors}
-          stock={product.stock}
-          // handleClick={handleClick}
-          initialInCart={product.inCart}
-          product={product}
-        />
+        <ProductInformation initialInCart={product.inCart} product={product} />
         <SimilarProducts products={similarProducts} model={product.model} />
       </ContainerMaxWidth>
     </SectionContainer>
@@ -84,8 +49,6 @@ export async function getServerSideProps({ params, req }) {
 
   const similarProducts =
     product.type === 'headphones' ? headphonesArray : earbudsArray;
-
-  console.log(product);
 
   return {
     props: {

@@ -32,6 +32,7 @@ const Backdrop = styled(motion.div)`
 const Sidebar = styled(motion.div)`
   font-family: 'Oswald', sans-serif;
   height: 100vh;
+  min-height: 100vh;
   width: 100%;
   background: var(--primary);
   position: fixed;
@@ -40,6 +41,8 @@ const Sidebar = styled(motion.div)`
   display: flex;
   flex-direction: column;
   z-index: 2;
+  overscroll-behavior-y: none;
+  overflow-y: ${(props) => props.cart && 'scroll'};
 
   &:before {
     content: '';
@@ -70,9 +73,10 @@ const CloseButton = styled(MdClose)`
   align-self: flex-end;
   margin-bottom: 2rem;
   cursor: pointer;
+  overflow: visible;
 `;
 
-const AnimatedSidebar = ({ showSidebar, handleShowSidebar, children }) => {
+const AnimatedSidebar = ({ handleShowSidebar, cart = false, children }) => {
   const closeSidebar = () => {
     handleShowSidebar(null);
   };
@@ -87,6 +91,7 @@ const AnimatedSidebar = ({ showSidebar, handleShowSidebar, children }) => {
         exit='initial'
       />
       <Sidebar
+        cart={cart}
         variants={sidebarVariant}
         initial='initial'
         animate='final'

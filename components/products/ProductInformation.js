@@ -6,6 +6,7 @@ import Stars from './Stars';
 import Colors from './Colors';
 import { MdShoppingCart, MdCheckCircle } from 'react-icons/md';
 import { CartContext } from '../../components/context/CartContext';
+import QuantityPicker from './QuantityPicker';
 
 const imageVariant = {
   initial: {
@@ -67,17 +68,6 @@ const HeadingContainer = styled.div`
   }
 `;
 
-const Stock = styled.p`
-  width: max-content;
-  white-space: nowrap;
-  color: ${(props) => props.outOfStock && '#bc0000'};
-
-  span {
-    color: var(--primary);
-    font-weight: 700;
-  }
-`;
-
 const Type = styled.p`
   font-weight: 500;
 `;
@@ -118,12 +108,26 @@ const Price = styled.div`
   flex-direction: column;
   margin-right: 2.75rem;
 
-  p {
+  p:first-child {
     font-size: 1.5rem;
     font-weight: 600;
   }
 
   span {
+    font-size: 0.9rem;
+  }
+`;
+
+const Stock = styled.p`
+  width: max-content;
+  white-space: nowrap;
+  color: ${(props) => props.outOfStock && '#bc0000'};
+  font-size: 0.9rem;
+  font-weight: 500;
+
+  span {
+    color: var(--primary);
+    font-weight: 700;
     font-size: 0.9rem;
   }
 `;
@@ -153,7 +157,7 @@ const CartButton = styled.button`
   justify-content: center;
   align-items: center;
   width: 100%;
-  color: #fff;
+  color: var(--light);
   background: ${(props) =>
     props.inCart ? 'var(--confirmed)' : 'var(--primary)'};
   margin-bottom: 1rem;
@@ -184,29 +188,32 @@ const CheckmarkIcon = styled(MdCheckCircle)`
 `;
 
 const ProductInformation = ({
-  model,
-  type,
-  price,
-  rating,
-  image,
-  description,
-  colors,
-  stock,
-  // handleClick,
+  product: { model, type, price, rating, image, description, colors, stock },
   initialInCart,
   product,
 }) => {
   const [selectedColor, setSelectedColor] = useState('Default');
-  const { cart, handleCartChange, checkIfInCart } = useContext(CartContext);
+  const { cart, handleCartChange, checkIfInCart, updateProduct } = useContext(
+    CartContext
+  );
   const [inCart, setInCart] = useState(initialInCart);
+  const [quantity, setQuantity] = useState(1);
+
+  console.log(checkIfInCart(product));
 
   const handleClick = () => {
-    handleCartChange(product);
+    handleCartChange({ ...product, color: selectedColor, quantity: quantity });
   };
 
   useEffect(() => {
+    if (quantity > 1) {
+      updateProduct({ ...product, quantity: quantity });
+    }
+  }, [quantity]);
+
+  useEffect(() => {
     setInCart(checkIfInCart(product));
-  }, [cart, initialInCart]);
+  }, [cart, initialInCart, product]);
 
   return (
     <ProductContainer>
@@ -220,7 +227,6 @@ const ProductInformation = ({
         </HeadingContainer>
         <Type>{type}</Type>
         <Description>{description}</Description>
-
         <ColorInfo>
           Color: <span>{selectedColor}</span>
         </ColorInfo>
@@ -238,24 +244,27 @@ const ProductInformation = ({
           <Price>
             <p>${price}</p>
             <span>Free Shipping</span>
+            {stock ? (
+              <Stock>
+                In stock: <span>{stock}</span>
+              </Stock>
+            ) : (
+              <Stock outOfStock>Out of stock</Stock>
+            )}
           </Price>
-          {stock ? (
-            <Stock>
-              In stock: <span>{stock}</span>
-            </Stock>
-          ) : (
-            <Stock outOfStock>Out of stock</Stock>
-          )}
+          <QuantityPicker quantity={quantity} setQuantity={setQuantity} />
         </PriceContainer>
         <ButtonContainer>
           <CartButton onClick={handleClick} inCart={inCart}>
             <CartIcon />
             {inCart ? 'Added to cart' : 'Add to cart'}
           </CartButton>
-          <CheckoutButton>
-            <CheckmarkIcon />
-            Buy now
-          </CheckoutButton>
+          <Link href='/checkout'>
+            <CheckoutButton>
+              <CheckmarkIcon />
+              Checkout
+            </CheckoutButton>
+          </Link>
         </ButtonContainer>
       </InformationContainer>
     </ProductContainer>

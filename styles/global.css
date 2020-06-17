@@ -22,7 +22,7 @@ body {
   background: var(--body);
   text-transform: uppercase;
   overflow-x: hidden;
-  overscroll-behavior-y: none;
+  /* overscroll-behavior-y: none; */
 }
 
 /* Global Styles */
@@ -50,4 +50,17 @@ button {
 
 button:focus {
   outline: 1px solid gray;
+}
+
+/* Remove input number arrows */
+/* Chrome, Safari, Edge, Opera */
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+/* Firefox */
+input[type='number'] {
+  -moz-appearance: textfield;
 }

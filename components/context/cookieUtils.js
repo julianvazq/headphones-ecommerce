@@ -9,6 +9,12 @@ export function parseCookies(req) {
    and adds inCart property accordingly */
 export function addInCartProperty(req, product) {
   const cookies = parseCookies(req);
+
+  if (!cookies.cart) {
+    product.inCart = false;
+    return product;
+  }
+
   const found = JSON.parse(cookies.cart).find(
     (productInCart) => productInCart.model === product.model
   );

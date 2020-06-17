@@ -19,7 +19,7 @@ const SimilarProducts = ({ model, products }) => {
 
   return (
     <>
-      <Heading>Similar Products</Heading>
+      <Heading>You may also like</Heading>
       <ProductGrid products={similarProducts} />
     </>
   );
