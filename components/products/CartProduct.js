@@ -1,4 +1,5 @@
 import React from 'react';
+import Link from 'next/link';
 import styled from 'styled-components';
 import Stars from './Stars';
 
@@ -43,6 +44,7 @@ const ImgContainer = styled.div`
 `;
 
 const InfoContainer = styled.div`
+  flex: 1;
   display: flex;
   flex-direction: column;
   margin: auto;
@@ -83,7 +85,43 @@ const Type = styled.p`
   letter-spacing: 1px;
 `;
 
+const ButtonContainer = styled.div`
+  display: flex;
+  width: 100%;
+  margin-top: 0.5rem;
+
+  @media (min-width: 1000px) {
+    width: 80%;
+  }
+`;
+
+const Button = styled.button`
+  font-family: 'Oswald', sans-serif;
+  text-transform: uppercase;
+  font-size: 1.25rem;
+  font-weight: 600;
+  padding: 0.5rem 1rem;
+  text-align: center;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 45px;
+  width: 50%;
+  max-width: 400px;
+  margin: auto;
+  color: var(--light);
+  background: var(--dark);
+`;
+
+const SecondaryButton = styled(Button)`
+  background: none;
+  color: var(--dark);
+  border: 1px solid;
+`;
+
 const CartProduct = ({
+  closeSidebar,
+  removeFromCart,
   model,
   type,
   image,
@@ -92,23 +130,6 @@ const CartProduct = ({
   quantity,
   color = 'Default',
 }) => {
-  const getColor = () => {
-    switch (color) {
-      case 'white':
-        return '#fff';
-      case 'black':
-        return '#222';
-      case 'red':
-        return '#d83030';
-      case 'pink':
-        return '#ffcfd7';
-      case 'green':
-        return '#68bb68';
-      case 'blue':
-        return '#4343f3';
-    }
-  };
-
   return (
     <ProductContainer>
       <ImgContainer>
@@ -121,6 +142,12 @@ const CartProduct = ({
         <p>Color: {color}</p>
         <Quantity>Quantity: {quantity}</Quantity>
         <Price>${price}</Price>
+        <ButtonContainer>
+          <Link href='/products/[model]' as={`/products/${model}`}>
+            <Button onClick={closeSidebar}>Edit</Button>
+          </Link>
+          <SecondaryButton onClick={removeFromCart}>Remove</SecondaryButton>
+        </ButtonContainer>
       </InfoContainer>
     </ProductContainer>
   );

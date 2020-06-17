@@ -54,9 +54,13 @@ const Button = styled.button`
 `;
 
 const CartOpen = ({ showingCartOrMenu, handleShowSidebar }) => {
-  const { cart, getCartTotal } = useContext(CartContext);
+  const { cart, handleCartChange, getCartTotal } = useContext(CartContext);
   const closeSidebar = () => {
     handleShowSidebar(null);
+  };
+
+  const removeFromCart = (product) => {
+    handleCartChange(product);
   };
 
   if (!cart.length) {
@@ -91,7 +95,13 @@ const CartOpen = ({ showingCartOrMenu, handleShowSidebar }) => {
       </ButtonContainer>
       <CartContainer>
         {cart.map((product) => (
-          <CartProduct key={product.model} {...product} />
+          <CartProduct
+            key={product.model}
+            product={product}
+            {...product}
+            closeSidebar={closeSidebar}
+            removeFromCart={() => removeFromCart(product)}
+          />
         ))}
       </CartContainer>
     </AnimatedSidebar>
