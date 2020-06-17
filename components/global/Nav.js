@@ -46,6 +46,12 @@ const LinkContainer = styled.div`
   align-items: center;
   width: 100px;
 
+  button {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
   svg {
     font-size: 2.25rem;
     cursor: pointer;
@@ -105,8 +111,12 @@ const Nav = ({ showingCartOrMenu, handleShowSidebar }) => {
             <Link href='/products?type=earbuds'>
               <a>Earbuds</a>
             </Link>
-            <CartIcon onClick={() => handleShowSidebar('cart')} />
-            <MdMenu onClick={() => handleShowSidebar('menu')} />
+            <button onClick={() => handleShowSidebar('cart')}>
+              <CartIcon />
+            </button>
+            <button onClick={() => handleShowSidebar('menu')}>
+              <MdMenu />
+            </button>
           </LinkContainer>
         </Navigation>
       </ContainerMaxWidth>

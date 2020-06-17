@@ -26,7 +26,7 @@ const imageVariant = {
 const ProductContainer = styled.article`
   display: flex;
   flex-direction: column;
-  margin: 4rem 0;
+  margin: 4rem 0 6rem;
 
   @media (min-width: 800px) {
     flex-direction: row;

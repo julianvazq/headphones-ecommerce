@@ -93,7 +93,7 @@ const CartOpen = ({ showingCartOrMenu, handleShowSidebar }) => {
     <AnimatedSidebar
       showSidebar={showingCartOrMenu}
       handleShowSidebar={handleShowSidebar}
-      cart
+      cart='true'
     >
       <Total>
         Total:{' '}

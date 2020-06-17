@@ -40,6 +40,7 @@ const ButtonContainer = styled.div`
 const Button = styled.button`
   font-family: 'Oswald', sans-serif;
   text-transform: uppercase;
+  letter-spacing: 1px;
   font-size: 1rem;
   font-weight: 600;
   padding: 0.5rem 1rem;
@@ -51,6 +52,9 @@ const Button = styled.button`
 
 const Showing = styled.p`
   text-transform: none;
+  color: var(--added);
+  text-transform: uppercase;
+  letter-spacing: 1px;
   margin: 0.5rem 0 1rem;
 `;
 
