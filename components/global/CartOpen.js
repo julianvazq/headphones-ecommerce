@@ -8,25 +8,13 @@ import CartProduct from '../products/CartProduct';
 
 const CartContainer = styled.div`
   text-align: center;
-  color: var(--light);
+  color: var(--dark);
 `;
 
-const MenuHeading = styled.h2`
-  color: var(--dark);
+const Total = styled.p`
   font-size: 2rem;
-  padding-bottom: 1rem;
-  margin-bottom: 0.75rem;
-  position: relative;
-  text-align: center;
 
-  &:before {
-    content: '';
-    position: absolute;
-    bottom: -0.25rem;
-    left: 25%;
-    width: 50%;
-    background: black;
-    height: 2px;
+  span {
   }
 `;
 
@@ -70,7 +58,6 @@ const CartOpen = ({ showingCartOrMenu, handleShowSidebar }) => {
       handleShowSidebar={handleShowSidebar}
       cart
     >
-      {/* <MenuHeading>Cart</MenuHeading> */}
       <ButtonContainer>
         <Button>Checkout</Button>
       </ButtonContainer>

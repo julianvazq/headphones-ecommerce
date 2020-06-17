@@ -32,6 +32,8 @@ const ProductCard = styled.article`
 `;
 
 const Model = styled.h2`
+  letter-spacing: 1px;
+
   @media (min-width: 500px) {
     font-size: 1rem;
   }

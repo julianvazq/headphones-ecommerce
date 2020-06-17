@@ -9,6 +9,8 @@ const ProductContainer = styled.article`
   margin-top: 2rem;
   padding-bottom: 2rem;
   border-bottom: 1px solid;
+  color: var(--dark);
+  text-transform: capitalize;
 
   &:last-child {
     border-bottom: none;
@@ -61,12 +63,24 @@ const InfoContainer = styled.div`
     font-size: 2rem;
     margin-top: 1rem;
     color: var(--dark);
+    text-transform: uppercase;
+    letter-spacing: 1px;
   }
 `;
 
 const Price = styled.p`
   font-weight: 700;
   font-size: 1.125rem;
+  color: var(--dark);
+`;
+
+const Quantity = styled.p`
+  color: var(--dark);
+`;
+
+const Type = styled.p`
+  text-transform: uppercase;
+  letter-spacing: 1px;
 `;
 
 const CartProduct = ({
@@ -102,11 +116,11 @@ const CartProduct = ({
       </ImgContainer>
       <InfoContainer>
         <h2>{model}</h2>
-        <Stars rating={rating} cart />
-        <p>{type}</p>
+        <Stars rating={rating} />
+        <Type>{type}</Type>
         <p>Color: {color}</p>
+        <Quantity>Quantity: {quantity}</Quantity>
         <Price>${price}</Price>
-        <p>Qty: {quantity}</p>
       </InfoContainer>
     </ProductContainer>
   );

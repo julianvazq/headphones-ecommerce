@@ -64,12 +64,13 @@ const HeadingContainer = styled.div`
   h1 {
     font-family: 'Oswald', sans-serif;
     font-size: 1.75rem;
+    letter-spacing: 1px;
     margin-right: 0.5rem;
   }
 `;
 
 const Type = styled.p`
-  font-weight: 500;
+  letter-spacing: 1px;
 `;
 
 const Description = styled.p`

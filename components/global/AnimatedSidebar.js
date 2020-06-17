@@ -34,7 +34,7 @@ const Sidebar = styled(motion.div)`
   height: 100vh;
   min-height: 100vh;
   width: 100%;
-  background: var(--primary);
+  background: ${(props) => (props.cart ? 'var(--body)' : 'var(--primary)')};
   position: fixed;
   right: 0;
   padding: 2rem;
