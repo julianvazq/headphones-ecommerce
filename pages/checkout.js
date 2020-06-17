@@ -1,19 +1,16 @@
 import React from 'react';
 import { motion } from 'framer-motion';
 import { parseCookies } from '../components/context/cookieUtils';
+import ContainerMaxWidth from '../components/utils/ContainerMaxWidth';
 
 const Checkout = ({ cart }) => {
   return (
-    <motion.div
-      initial={{ opacity: 0 }}
-      animate={{ opacity: 1 }}
-      exit={{ opacity: 0 }}
-    >
+    <ContainerMaxWidth>
       <h1>Checkout</h1>
       {JSON.parse(cart).map((product) => (
         <p>{product.model}</p>
       ))}
-    </motion.div>
+    </ContainerMaxWidth>
   );
 };
 
