@@ -30,10 +30,17 @@ const Total = styled.p`
   }
 `;
 
-const ButtonContainer = styled.div`
-  display: flex;
-  padding-bottom: 4rem;
+const CheckoutContainer = styled.div`
+  text-align: center;
+  padding-bottom: 2rem;
   border-bottom: 1px solid var(--dark);
+
+  p {
+    font-family: 'Open Sans', sans-serif;
+    margin: 2rem 0;
+    color: var(--dark);
+    font-weight: 600;
+  }
 `;
 
 const Button = styled.button`
@@ -63,6 +70,13 @@ const CartOpen = ({ showingCartOrMenu, handleShowSidebar }) => {
     handleCartChange(product);
   };
 
+  const getNumberOfItems = () => {
+    if (cart.length === 1) {
+      return '1 item in the cart';
+    }
+    return `${cart.length} items in the cart`;
+  };
+
   if (!cart.length) {
     return (
       <AnimatedSidebar
@@ -88,11 +102,12 @@ const CartOpen = ({ showingCartOrMenu, handleShowSidebar }) => {
           {getCartTotal()}
         </span>
       </Total>
-      <ButtonContainer>
+      <CheckoutContainer>
         <Link href='/checkout'>
           <Button onClick={closeSidebar}>Checkout</Button>
         </Link>
-      </ButtonContainer>
+        <p>{getNumberOfItems()}</p>
+      </CheckoutContainer>
       <CartContainer>
         {cart.map((product) => (
           <CartProduct

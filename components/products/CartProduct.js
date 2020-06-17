@@ -29,6 +29,7 @@ const ImgContainer = styled.div`
 
   img {
     display: block;
+    width: 100%;
     max-height: 300px;
     object-fit: contain;
   }
@@ -91,21 +92,25 @@ const ButtonContainer = styled.div`
   margin-top: 0.5rem;
 
   @media (min-width: 1000px) {
-    width: 80%;
+    width: 90%;
+  }
+
+  @media (min-width: 1500px) {
+    width: 70%;
   }
 `;
 
 const Button = styled.button`
   font-family: 'Oswald', sans-serif;
   text-transform: uppercase;
-  font-size: 1.25rem;
+  font-size: 1rem;
   font-weight: 600;
   padding: 0.5rem 1rem;
   text-align: center;
   display: flex;
   justify-content: center;
   align-items: center;
-  height: 45px;
+  height: 40px;
   width: 50%;
   max-width: 400px;
   margin: auto;
