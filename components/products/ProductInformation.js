@@ -199,17 +199,25 @@ const ProductInformation = ({
   const [inCart, setInCart] = useState(initialInCart);
   const [quantity, setQuantity] = useState(1);
 
-  console.log(checkIfInCart(product));
-
   const handleClick = () => {
     handleCartChange({ ...product, color: selectedColor, quantity: quantity });
   };
 
   useEffect(() => {
-    if (quantity > 1) {
-      updateProduct({ ...product, quantity: quantity });
-    }
+    updateProduct({ ...product, quantity: quantity });
   }, [quantity]);
+
+  useEffect(() => {
+    const currentProduct = cart.find(
+      (productInCart) => productInCart.model === product.model
+    );
+
+    if (!currentProduct) {
+      setQuantity(1);
+    } else {
+      setQuantity(currentProduct.quantity);
+    }
+  }, [product]);
 
   useEffect(() => {
     setInCart(checkIfInCart(product));

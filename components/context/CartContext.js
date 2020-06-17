@@ -12,15 +12,15 @@ const CartProvider = ({ children }) => {
     return [];
   });
 
-  const checkQuantity = (product) => {
-    if (product.quantity) {
-      return product;
+  const updateProduct = (product) => {
+    const found = cart.find(
+      (productInCart) => productInCart.model === product.model
+    );
+
+    if (!found) {
+      return;
     }
 
-    return { ...product, quantity: 1 };
-  };
-
-  const updateProduct = (product) => {
     const newCart = cart.map((productInCart) => {
       if (productInCart.model === product.model) {
         return product;
@@ -29,6 +29,14 @@ const CartProvider = ({ children }) => {
     });
 
     setCart(newCart);
+  };
+
+  const checkQuantity = (product) => {
+    if (product.quantity) {
+      return product;
+    }
+
+    return { ...product, quantity: 1 };
   };
 
   const addToCart = (product) => {
@@ -43,10 +51,6 @@ const CartProvider = ({ children }) => {
       (productInCart) => productInCart.model !== model
     );
     return newCart;
-  };
-
-  const saveCartCookie = (newCart) => {
-    Cookies.set('cart', JSON.stringify(newCart), { sameSite: 'lax' });
   };
 
   const checkIfInCart = (product) => {
@@ -70,6 +74,10 @@ const CartProvider = ({ children }) => {
     }
 
     setCart(newCart);
+  };
+
+  const saveCartCookie = (newCart) => {
+    Cookies.set('cart', JSON.stringify(newCart), { sameSite: 'lax' });
   };
 
   // When cart changes, save new cart in cookie

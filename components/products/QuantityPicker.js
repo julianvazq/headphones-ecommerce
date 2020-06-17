@@ -25,10 +25,7 @@ const MinusIcon = styled(FiMinus)``;
 
 const PlusIcon = styled(FiPlus)``;
 
-const Quantity = styled.input`
-  -moz-appearance: none;
-  border: none;
-  background: inherit;
+const Quantity = styled.p`
   width: 30px;
   text-align: center;
   font-weight: 600;
@@ -48,7 +45,7 @@ const QuantityPicker = ({ quantity, setQuantity }) => {
       <Button onClick={decrementQuantity} disabled={quantity < 2}>
         <MinusIcon />
       </Button>
-      <Quantity value={quantity} type='number' />
+      <Quantity>{quantity}</Quantity>
       <Button onClick={incrementQuantity}>
         <PlusIcon />
       </Button>

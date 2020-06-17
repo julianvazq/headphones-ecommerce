@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useContext } from 'react';
+import React from 'react';
 import { headphones, earbuds } from '../../public/products';
 import styled from 'styled-components';
 import ContainerMaxWidth from '../../components/utils/ContainerMaxWidth';
@@ -14,6 +14,7 @@ const SectionContainer = styled.section`
 `;
 
 const ProductPage = ({ product, similarProducts }) => {
+  console.log(product);
   return (
     <SectionContainer>
       <ContainerMaxWidth>
