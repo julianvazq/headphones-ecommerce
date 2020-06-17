@@ -14,7 +14,6 @@ const SectionContainer = styled.section`
 `;
 
 const ProductPage = ({ product, similarProducts }) => {
-  console.log(product);
   return (
     <SectionContainer>
       <ContainerMaxWidth>
@@ -50,6 +49,8 @@ export async function getServerSideProps({ params, req }) {
 
   const similarProducts =
     product.type === 'headphones' ? headphonesArray : earbudsArray;
+
+  console.log(product);
 
   return {
     props: {
