@@ -5,7 +5,7 @@
   --body: #f6f6f6;
   --dark: #000;
   --light: #fff;
-  --confirmed: #00ad5d;
+  --added: hsl(177, 50%, 20%);
 }
 
 * {

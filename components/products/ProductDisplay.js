@@ -66,8 +66,7 @@ const Button = styled.button`
   text-align: center;
   width: 75%;
   color: #fff;
-  background: ${(props) =>
-    props.inCart ? 'var(--confirmed)' : 'var(--primary)'};
+  background: ${(props) => (props.inCart ? 'var(--added)' : 'var(--primary)')};
 `;
 
 const SecondaryButton = styled(Button)`
@@ -99,7 +98,7 @@ const ProductDisplay = ({ product }) => {
           <Price>${product.price}</Price>
           <SecondaryButton>More info</SecondaryButton>
           <Button onClick={handleClick} inCart={inCart}>
-            {inCart ? 'Added to cart' : 'Add to cart'}
+            {inCart ? 'Remove from cart' : 'Add to cart'}
           </Button>
         </ProductCard>
       </a>

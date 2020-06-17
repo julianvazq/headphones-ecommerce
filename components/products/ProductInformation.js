@@ -159,8 +159,7 @@ const CartButton = styled.button`
   align-items: center;
   width: 100%;
   color: var(--light);
-  background: ${(props) =>
-    props.inCart ? 'var(--confirmed)' : 'var(--primary)'};
+  background: ${(props) => (props.inCart ? 'var(--added)' : 'var(--primary)')};
   margin-bottom: 1rem;
 
   @media (min-width: 600px) {
@@ -277,7 +276,7 @@ const ProductInformation = ({
         <ButtonContainer>
           <CartButton onClick={handleClick} inCart={inCart}>
             <CartIcon />
-            {inCart ? 'Added to cart' : 'Add to cart'}
+            {inCart ? 'Remove from cart' : 'Add to cart'}
           </CartButton>
           <Link href='/checkout'>
             <CheckoutButton>
