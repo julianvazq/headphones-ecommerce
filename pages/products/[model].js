@@ -6,12 +6,7 @@ import Breadcrumbs from '../../components/products/Breadcrumbs';
 import ProductInformation from '../../components/products/ProductInformation';
 import SimilarProducts from '../../components/products/SimilarProducts';
 import { evaluateProperties } from '../../components/context/cookieUtils';
-
-const SectionContainer = styled.section`
-  background: var(--light);
-  color: var(--dark);
-  padding: 2rem 0;
-`;
+import { SectionContainer } from '../../styles/shared-styles';
 
 const ProductPage = ({ product, similarProducts }) => {
   return (

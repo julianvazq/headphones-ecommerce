@@ -1,27 +1,29 @@
 import React from 'react';
 import { motion } from 'framer-motion';
-import { parseCookies } from '../components/context/cookieUtils';
 import ContainerMaxWidth from '../components/utils/ContainerMaxWidth';
+import styled from 'styled-components';
+import { SectionContainer } from '../styles/shared-styles';
+import OrderSummary from '../components/checkout/OrderSummary';
 
-const Checkout = ({ cart }) => {
+const Heading = styled.h1`
+  font-size: 2rem;
+  font-family: 'Oswald', sans-serif;
+  color: var(--dark);
+  margin-bottom: 0.5rem;
+  padding-bottom: 1.5rem;
+  /* padding-bottom: 1.125rem;
+  border-bottom: 2px solid var(--primary); */
+`;
+
+const Checkout = () => {
   return (
-    <ContainerMaxWidth>
-      <h1>Checkout</h1>
-      {JSON.parse(cart).map((product) => (
-        <p>{product.model}</p>
-      ))}
-    </ContainerMaxWidth>
+    <SectionContainer>
+      <ContainerMaxWidth>
+        <Heading>Order Summary</Heading>
+        <OrderSummary />
+      </ContainerMaxWidth>
+    </SectionContainer>
   );
 };
-
-export async function getServerSideProps({ req }) {
-  const cookies = parseCookies(req);
-
-  return {
-    props: {
-      cart: cookies.cart,
-    },
-  };
-}
 
 export default Checkout;

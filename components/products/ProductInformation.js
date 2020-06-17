@@ -195,13 +195,24 @@ const ProductInformation = ({
   product,
 }) => {
   const [selectedColor, setSelectedColor] = useState(initialColor);
+  const [quantity, setQuantity] = useState(initialQuantity);
   const { cart, handleCartChange, checkIfInCart, updateProduct } = useContext(
     CartContext
   );
   const [inCart, setInCart] = useState(initialInCart);
-  const [quantity, setQuantity] = useState(initialQuantity);
 
   const handleClick = () => {
+    handleCartChange({ ...product, color: selectedColor, quantity: quantity });
+  };
+
+  const handleCheckout = () => {
+    const found = checkIfInCart(product);
+
+    // If found, do nothing (otherwise handleCartChange would delete it)
+    if (found) {
+      return;
+    }
+
     handleCartChange({ ...product, color: selectedColor, quantity: quantity });
   };
 
@@ -214,6 +225,7 @@ const ProductInformation = ({
   }, [selectedColor]);
 
   /* Render quantity and color based on stored value.
+     Keeps server and client in sync.
      E.g. if product in cart has quantity = 5, render
      5, otherwise render 1
      E.g. if product in cart has color = green, render
@@ -237,7 +249,8 @@ const ProductInformation = ({
   }, [product]);
 
   /* If product changes or if it's added to the cart,
-     change inCart value to render the appropriate button styling */
+     change inCart value to render the appropriate button
+     text and styling */
   useEffect(() => {
     setInCart(checkIfInCart(product));
   }, [cart, product]);
@@ -287,7 +300,7 @@ const ProductInformation = ({
             {inCart ? 'Remove from cart' : 'Add to cart'}
           </CartButton>
           <Link href='/checkout'>
-            <CheckoutButton>
+            <CheckoutButton onClick={handleCheckout}>
               <CheckmarkIcon />
               Checkout
             </CheckoutButton>
