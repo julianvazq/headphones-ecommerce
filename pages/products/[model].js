@@ -5,7 +5,7 @@ import ContainerMaxWidth from '../../components/utils/ContainerMaxWidth';
 import Breadcrumbs from '../../components/products/Breadcrumbs';
 import ProductInformation from '../../components/products/ProductInformation';
 import SimilarProducts from '../../components/products/SimilarProducts';
-import { addInCartProperty } from '../../components/context/cookieUtils';
+import { evaluateProperties } from '../../components/context/cookieUtils';
 
 const SectionContainer = styled.section`
   background: var(--light);
@@ -18,7 +18,12 @@ const ProductPage = ({ product, similarProducts }) => {
     <SectionContainer>
       <ContainerMaxWidth>
         <Breadcrumbs model={product.model} type={product.type} />
-        <ProductInformation initialInCart={product.inCart} product={product} />
+        <ProductInformation
+          initialInCart={product.inCart}
+          initialQuantity={product.quantity}
+          initialColor={product.color}
+          product={product}
+        />
         <SimilarProducts products={similarProducts} model={product.model} />
       </ContainerMaxWidth>
     </SectionContainer>
@@ -36,21 +41,19 @@ export async function getServerSideProps({ params, req }) {
    */
 
   /* Modifies product object by reference */
-  addInCartProperty(req, product);
+  evaluateProperties(req, product);
 
   /* Gets headphones and earbuds (updated products based on cookies)
      to pass to SimilarProducts  */
   const headphonesArray = headphones.map((product) =>
-    addInCartProperty(req, product)
+    evaluateProperties(req, product)
   );
   const earbudsArray = earbuds.map((product) =>
-    addInCartProperty(req, product)
+    evaluateProperties(req, product)
   );
 
   const similarProducts =
     product.type === 'headphones' ? headphonesArray : earbudsArray;
-
-  console.log(product);
 
   return {
     props: {

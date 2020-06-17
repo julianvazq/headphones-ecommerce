@@ -2,7 +2,7 @@ import { motion } from 'framer-motion';
 import Hero from '../components/hero/Hero';
 import ProductsSection from '../components/products/ProductsSection';
 import { headphones, earbuds } from '../public/products';
-import { addInCartProperty } from '../components/context/cookieUtils';
+import { evaluateProperties } from '../components/context/cookieUtils';
 
 export default function Home({ headphones, earbuds }) {
   return (
@@ -24,10 +24,10 @@ export async function getServerSideProps({ req }) {
   */
 
   const headphonesArray = headphones.map((product) =>
-    addInCartProperty(req, product)
+    evaluateProperties(req, product)
   );
   const earbudsArray = earbuds.map((product) =>
-    addInCartProperty(req, product)
+    evaluateProperties(req, product)
   );
 
   return {

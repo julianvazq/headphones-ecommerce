@@ -190,14 +190,16 @@ const CheckmarkIcon = styled(MdCheckCircle)`
 const ProductInformation = ({
   product: { model, type, price, rating, image, description, colors, stock },
   initialInCart,
+  initialQuantity,
+  initialColor,
   product,
 }) => {
-  const [selectedColor, setSelectedColor] = useState('Default');
+  const [selectedColor, setSelectedColor] = useState(initialColor);
   const { cart, handleCartChange, checkIfInCart, updateProduct } = useContext(
     CartContext
   );
   const [inCart, setInCart] = useState(initialInCart);
-  const [quantity, setQuantity] = useState(1);
+  const [quantity, setQuantity] = useState(initialQuantity);
 
   const handleClick = () => {
     handleCartChange({ ...product, color: selectedColor, quantity: quantity });

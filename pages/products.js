@@ -5,7 +5,7 @@ import { headphones, earbuds } from '../public/products';
 import ProductGrid from '../components/products/ProductGrid';
 import ContainerMaxWidth from '../components/utils/ContainerMaxWidth';
 import Filter from '../components/products/Filter';
-import { addInCartProperty } from '../components/context/cookieUtils';
+import { evaluateProperties } from '../components/context/cookieUtils';
 
 const SectionContainer = styled.section`
   background: var(--light);
@@ -93,10 +93,10 @@ export async function getServerSideProps({ req, query }) {
 
   /* Gets headphones and earbuds (updated products based on cookies) */
   const headphonesArray = headphones.map((product) =>
-    addInCartProperty(req, product)
+    evaluateProperties(req, product)
   );
   const earbudsArray = earbuds.map((product) =>
-    addInCartProperty(req, product)
+    evaluateProperties(req, product)
   );
 
   const initialProducts =
