@@ -110,6 +110,7 @@ const HeadphoneImage = styled(motion.img)`
   width: 100%;
   max-width: 700px;
   mix-blend-mode: multiply;
+  will-change: opacity;
   filter: contrast(90%);
 `;
 

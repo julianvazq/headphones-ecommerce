@@ -213,9 +213,11 @@ const ProductInformation = ({
     updateProduct({ ...product, color: selectedColor });
   }, [selectedColor]);
 
-  /* Render quantity based on stored value.
+  /* Render quantity and color based on stored value.
      E.g. if product in cart has quantity = 5, render
-     5, otherwise render 1 */
+     5, otherwise render 1
+     E.g. if product in cart has color = green, render
+     green, otherwise 'Default' */
   useEffect(() => {
     const currentProduct = cart.find(
       (productInCart) => productInCart.model === product.model
@@ -226,10 +228,16 @@ const ProductInformation = ({
     } else {
       setQuantity(currentProduct.quantity);
     }
+
+    if (!currentProduct) {
+      setSelectedColor('Default');
+    } else {
+      setSelectedColor(currentProduct.color);
+    }
   }, [product]);
 
   /* If product changes or if it's added to the cart,
-     change inCart to render the appropriate button styling */
+     change inCart value to render the appropriate button styling */
   useEffect(() => {
     setInCart(checkIfInCart(product));
   }, [cart, product]);

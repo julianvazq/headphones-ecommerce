@@ -56,9 +56,9 @@ const Sidebar = styled(motion.div)`
     background-image: url('/images/headphones/headphone-white-half.png');
     filter: contrast(90%);
     opacity: ${(props) => (props.cart ? '0.2' : '0.4')};
+    mix-blend-mode: multiply;
     background-repeat: no-repeat;
     background-size: contain;
-    mix-blend-mode: multiply;
   }
 
   @media (min-width: 700px) {

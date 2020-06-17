@@ -1,7 +1,7 @@
 import React, { useContext } from 'react';
 import Link from 'next/link';
 import AnimatedSidebar from './AnimatedSidebar';
-import { motion } from 'framer-motion';
+import { AnimatePresence } from 'framer-motion';
 import styled from 'styled-components';
 import { CartContext } from '../context/CartContext';
 import CartProduct from '../products/CartProduct';
@@ -17,7 +17,7 @@ const Total = styled.p`
   color: var(--dark);
   text-align: center;
   margin-bottom: 2rem;
-  font-weight: 600;
+  font-weight: 500;
   letter-spacing: 1px;
 
   span {
@@ -109,15 +109,17 @@ const CartOpen = ({ showingCartOrMenu, handleShowSidebar }) => {
         <p>{getNumberOfItems()}</p>
       </CheckoutContainer>
       <CartContainer>
-        {cart.map((product) => (
-          <CartProduct
-            key={product.model}
-            product={product}
-            {...product}
-            closeSidebar={closeSidebar}
-            removeFromCart={() => removeFromCart(product)}
-          />
-        ))}
+        <AnimatePresence>
+          {cart.map((product) => (
+            <CartProduct
+              key={product.model}
+              product={product}
+              {...product}
+              closeSidebar={closeSidebar}
+              removeFromCart={() => removeFromCart(product)}
+            />
+          ))}
+        </AnimatePresence>
       </CartContainer>
     </AnimatedSidebar>
   );

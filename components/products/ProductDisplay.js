@@ -3,8 +3,32 @@ import styled from 'styled-components';
 import Link from 'next/link';
 import Stars from './Stars';
 import { CartContext } from '../context/CartContext';
+import { motion } from 'framer-motion';
 
-const ProductCard = styled.article`
+const productVariant = {
+  initial: {
+    x: 50,
+    opacity: 0,
+  },
+  final: {
+    x: 0,
+    opacity: 1,
+    transition: {
+      duration: 0.5,
+      type: 'tween',
+    },
+  },
+  exit: {
+    x: -50,
+    opacity: 0,
+    transition: {
+      duration: 0.5,
+      type: 'tween',
+    },
+  },
+};
+
+const ProductCard = styled(motion.article)`
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -91,7 +115,12 @@ const ProductDisplay = ({ product }) => {
   return (
     <Link href='/products/[model]' as={`/products/${product.model}`}>
       <a>
-        <ProductCard>
+        <ProductCard
+          variants={productVariant}
+          initial='initial'
+          animate='final'
+          exit='exit'
+        >
           <img src={product.image} alt={product.model} />
           <Model>{product.model}</Model>
           <Stars rating={product.rating} />

@@ -2,13 +2,37 @@ import React from 'react';
 import Link from 'next/link';
 import styled from 'styled-components';
 import Stars from './Stars';
+import { motion } from 'framer-motion';
 
-const ProductContainer = styled.article`
+const cartProductVariant = {
+  initial: {
+    x: 100,
+    opacity: 0,
+  },
+  final: {
+    x: 0,
+    opacity: 1,
+    transition: {
+      duration: 0.5,
+      type: 'spring',
+    },
+  },
+  exit: {
+    x: -25,
+    opacity: 0,
+    transition: {
+      type: 'tween',
+      duration: 0.5,
+    },
+  },
+};
+
+const ProductContainer = styled(motion.article)`
   display: flex;
   flex-direction: column;
   align-items: center;
   margin-top: 4rem;
-  padding-bottom: 4rem;
+  padding-bottom: 4.75rem;
   border-bottom: 1px solid;
   color: var(--dark);
   text-transform: capitalize;
@@ -52,6 +76,8 @@ const InfoContainer = styled.div`
   align-items: center;
   font-family: 'Open Sans', sans-serif;
   font-weight: 600;
+  width: 90%;
+  max-width: 280px;
 
   & > * {
     margin-bottom: 0.5rem;
@@ -64,7 +90,6 @@ const InfoContainer = styled.div`
   h2 {
     font-family: 'Oswald', sans-serif;
     font-size: 2rem;
-    margin-top: 1rem;
     color: var(--dark);
     text-transform: uppercase;
     letter-spacing: 1px;
@@ -88,16 +113,8 @@ const Type = styled.p`
 
 const ButtonContainer = styled.div`
   display: flex;
+  margin-top: 1rem;
   width: 100%;
-  margin-top: 0.5rem;
-
-  @media (min-width: 1000px) {
-    width: 90%;
-  }
-
-  @media (min-width: 1500px) {
-    width: 70%;
-  }
 `;
 
 const Button = styled.button`
@@ -136,7 +153,12 @@ const CartProduct = ({
   color = 'Default',
 }) => {
   return (
-    <ProductContainer>
+    <ProductContainer
+      variants={cartProductVariant}
+      initial='initial'
+      animate='final'
+      exit='exit'
+    >
       <ImgContainer>
         <img src={image} alt={model} />
       </ImgContainer>
