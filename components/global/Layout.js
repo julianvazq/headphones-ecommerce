@@ -1,5 +1,6 @@
 import React from 'react';
 import Nav from './Nav';
+import Footer from './Footer';
 
 const Layout = ({ showingCartOrMenu, handleShowSidebar, children }) => {
   return (
@@ -9,6 +10,7 @@ const Layout = ({ showingCartOrMenu, handleShowSidebar, children }) => {
         handleShowSidebar={handleShowSidebar}
       />
       {children}
+      <Footer />
     </>
   );
 };
