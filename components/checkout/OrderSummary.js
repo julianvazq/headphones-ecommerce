@@ -1,8 +1,9 @@
-import React, { useState, useEffect, useContext } from 'react';
+import React, { useContext } from 'react';
 import { CartContext } from '../context/CartContext';
 import styled from 'styled-components';
 import TableHeadings from './TableHeadings';
-import ProductOrder from './ProductOrder';
+import CheckoutProduct from './CheckoutProduct';
+import { AnimatePresence } from 'framer-motion';
 
 const OrdersTable = styled.div``;
 
@@ -11,9 +12,11 @@ const OrderSummary = () => {
   return (
     <OrdersTable>
       <TableHeadings />
-      {cart.map((product) => (
-        <ProductOrder key={product.model} product={product} />
-      ))}
+      <AnimatePresence>
+        {cart.map((product) => (
+          <CheckoutProduct key={product.model} product={product} />
+        ))}
+      </AnimatePresence>
     </OrdersTable>
   );
 };

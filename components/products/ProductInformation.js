@@ -125,6 +125,7 @@ const Stock = styled.p`
   color: ${(props) => props.outOfStock && '#bc0000'};
   font-size: 0.9rem;
   font-weight: 500;
+  margin-bottom: 1rem;
 
   span {
     color: var(--primary);

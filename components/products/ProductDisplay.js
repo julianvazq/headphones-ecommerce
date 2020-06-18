@@ -4,29 +4,7 @@ import Link from 'next/link';
 import Stars from './Stars';
 import { CartContext } from '../context/CartContext';
 import { motion } from 'framer-motion';
-
-const productVariant = {
-  initial: {
-    x: 50,
-    opacity: 0,
-  },
-  final: {
-    x: 0,
-    opacity: 1,
-    transition: {
-      duration: 0.5,
-      type: 'tween',
-    },
-  },
-  exit: {
-    x: -50,
-    opacity: 0,
-    transition: {
-      duration: 0.5,
-      type: 'tween',
-    },
-  },
-};
+import { slideOutVariant } from '../../styles/animations';
 
 const ProductCard = styled(motion.article)`
   display: flex;
@@ -116,7 +94,7 @@ const ProductDisplay = ({ product }) => {
     <Link href='/products/[model]' as={`/products/${product.model}`}>
       <a>
         <ProductCard
-          variants={productVariant}
+          variants={slideOutVariant}
           initial='initial'
           animate='final'
           exit='exit'

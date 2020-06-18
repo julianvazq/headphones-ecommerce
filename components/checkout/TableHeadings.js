@@ -7,7 +7,7 @@ const HeadingsContainer = styled.div`
   @media (min-width: 700px) {
     display: grid;
     grid-template-columns: 60% 1fr 1fr;
-    padding-bottom: 1.125rem;
+    padding-bottom: 1.5rem;
     border-bottom: 2px solid var(--primary);
   }
 `;

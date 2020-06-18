@@ -9,12 +9,6 @@ const Container = styled.div`
   border: 1px solid #cbcbcb;
   border-radius: 0.2rem;
   font-size: 1.125rem;
-  margin-top: 1rem;
-
-  @media (min-width: 368px) {
-    margin-top: 0;
-  }
-  /* padding: 0.5rem; */
 `;
 
 const Button = styled.button`

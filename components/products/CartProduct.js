@@ -3,29 +3,7 @@ import Link from 'next/link';
 import styled from 'styled-components';
 import Stars from './Stars';
 import { motion } from 'framer-motion';
-
-const cartProductVariant = {
-  initial: {
-    x: 100,
-    opacity: 0,
-  },
-  final: {
-    x: 0,
-    opacity: 1,
-    transition: {
-      duration: 0.5,
-      type: 'spring',
-    },
-  },
-  exit: {
-    x: -25,
-    opacity: 0,
-    transition: {
-      type: 'tween',
-      duration: 0.5,
-    },
-  },
-};
+import { slideOutVariant } from '../../styles/animations';
 
 const ProductContainer = styled(motion.article)`
   display: flex;
@@ -154,7 +132,7 @@ const CartProduct = ({
 }) => {
   return (
     <ProductContainer
-      variants={cartProductVariant}
+      variants={slideOutVariant}
       initial='initial'
       animate='final'
       exit='exit'
