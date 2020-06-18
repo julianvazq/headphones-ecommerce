@@ -1,8 +1,13 @@
 import React from 'react';
+import Link from 'next/link';
 import { FaHeadphones } from 'react-icons/fa';
 import styled from 'styled-components';
 
 const Container = styled.div`
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
   color: var(--dark);
   text-align: center;
   transform: translate(-50%, -50%);
@@ -21,13 +26,28 @@ const Message = styled.p`
 
 const HeadphoneIcon = styled(FaHeadphones)`
   font-size: 3rem;
+  display: block;
 `;
 
-const EmptyCart = () => {
+const ActionButton = styled.a`
+  padding: 1rem 2rem;
+  background: var(--dark);
+  color: var(--light);
+  margin-top: 2rem;
+
+  &:visited {
+    color: var(--light);
+  }
+`;
+
+const EmptyCart = ({ closeSidebar }) => {
   return (
     <Container>
       <Message>Your cart is currently empty</Message>
       <HeadphoneIcon />
+      <Link href='/products?type=headphones' passHref>
+        <ActionButton onClick={closeSidebar}>Browse products</ActionButton>
+      </Link>
     </Container>
   );
 };

@@ -9,6 +9,7 @@ const OrdersTable = styled.div``;
 
 const OrderSummary = () => {
   const { cart, handleCartChange, updateProperty } = useContext(CartContext);
+
   return (
     <OrdersTable>
       <TableHeadings />

@@ -30,14 +30,13 @@ const OrderContainer = styled(motion.article)`
   }
 `;
 
-const Information = styled.a`
+const Information = styled.div`
   display: flex;
   margin: 0 auto 2rem auto;
-  font-weight: 400;
-  cursor: pointer;
 
-  & > div {
+  & > a {
     margin-left: 1rem;
+    font-weight: 400;
 
     @media (min-width: 375px) {
       margin-left: 2rem;
@@ -55,14 +54,16 @@ const Information = styled.a`
 
   img {
     display: block;
-    height: 100px;
+    max-width: 40%;
+    object-fit: contain;
+    cursor: pointer;
 
     @media (min-width: 800px) {
-      height: 200px;
+      max-width: 30%;
     }
   }
 
-  @media (min-width: 700px) {
+  @media (min-width: 550px) {
     margin: 0;
     align-items: center;
   }
@@ -73,8 +74,12 @@ const Type = styled.p`
   letter-spacing: 1px;
 `;
 
+const Color = styled.p`
+  text-transform: capitalize;
+`;
+
 const Price = styled.p`
-  font-weight: 700;
+  font-weight: 600;
   font-size: 1.125rem;
 `;
 
@@ -128,18 +133,28 @@ const CheckoutProduct = ({ product }) => {
       animate='final'
       exit='exit'
     >
-      <Link href='/products/[model]' as={`/products/${product.model}`} passHref>
-        <Information>
+      <Information>
+        <Link
+          href='/products/[model]'
+          as={`/products/${product.model}`}
+          passHref
+        >
           <img src={product.image} alt={product.model} />
-          <div>
+        </Link>
+        <Link
+          href='/products/[model]'
+          as={`/products/${product.model}`}
+          passHref
+        >
+          <a>
             <h3>{product.model}</h3>
             <Stars rating={product.rating} />
             <Type>{product.type}</Type>
-            <p>Color: {product.color}</p>
+            <Color>Color: {product.color}</Color>
             <Price>${product.price}</Price>
-          </div>
-        </Information>
-      </Link>
+          </a>
+        </Link>
+      </Information>
       <Quantity>
         <QuantityPicker quantity={quantity} setQuantity={setQuantity} />
         <RemoveButton onClick={removeProduct}>Remove item</RemoveButton>

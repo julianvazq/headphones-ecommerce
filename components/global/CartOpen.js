@@ -84,7 +84,7 @@ const CartOpen = ({ showingCartOrMenu, handleShowSidebar }) => {
         handleShowSidebar={handleShowSidebar}
         cart
       >
-        <EmptyCart />
+        <EmptyCart closeSidebar={closeSidebar} />
       </AnimatedSidebar>
     );
   }
