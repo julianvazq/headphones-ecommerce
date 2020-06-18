@@ -5,7 +5,9 @@ import TableHeadings from './TableHeadings';
 import CheckoutProduct from './CheckoutProduct';
 import { AnimatePresence } from 'framer-motion';
 
-const OrdersTable = styled.div``;
+const OrdersTable = styled.div`
+  margin: 2rem 0;
+`;
 
 const OrderSummary = () => {
   const { cart, handleCartChange, updateProperty } = useContext(CartContext);
