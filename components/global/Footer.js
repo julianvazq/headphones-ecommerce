@@ -6,7 +6,6 @@ import {
   FaFacebookF,
   FaTwitter,
   FaInstagram,
-  FaLinkedinIn,
   FaPinterestP,
   FaYoutube,
 } from 'react-icons/fa';
@@ -63,9 +62,6 @@ const Footer = ({ hide }) => {
             </IconCircle>
             <IconCircle>
               <FaYoutube />
-            </IconCircle>
-            <IconCircle>
-              <FaLinkedinIn />
             </IconCircle>
           </IconContainer>
           <Copyright>@H 2020</Copyright>
