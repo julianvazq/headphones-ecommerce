@@ -91,25 +91,29 @@ const ProductDisplay = ({ product }) => {
   }, [cart]);
 
   return (
-    <Link href='/products/[model]' as={`/products/${product.model}`}>
-      <a>
-        <ProductCard
-          variants={slideOutVariant}
-          initial='initial'
-          animate='final'
-          exit='exit'
-        >
+    <ProductCard
+      variants={slideOutVariant}
+      initial='initial'
+      animate='final'
+      exit='exit'
+    >
+      <Link href='/products/[model]' as={`/products/${product.model}`}>
+        <a>
           <img src={product.image} alt={product.model} />
-          <Model>{product.model}</Model>
-          <Stars rating={product.rating} />
-          <Price>${product.price}</Price>
-          <SecondaryButton>More info</SecondaryButton>
-          <Button onClick={handleClick} inCart={inCart}>
-            {inCart ? 'Remove from cart' : 'Add to cart'}
-          </Button>
-        </ProductCard>
-      </a>
-    </Link>
+        </a>
+      </Link>
+      <Link href='/products/[model]' as={`/products/${product.model}`}>
+        <a>
+          <Model>{product.model}</Model>{' '}
+        </a>
+      </Link>
+      <Stars rating={product.rating} />
+      <Price>${product.price}</Price>
+      <SecondaryButton>More info</SecondaryButton>
+      <Button onClick={handleClick} inCart={inCart}>
+        {inCart ? 'Remove from cart' : 'Add to cart'}
+      </Button>
+    </ProductCard>
   );
 };
 
