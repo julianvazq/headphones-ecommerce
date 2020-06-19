@@ -8,7 +8,7 @@ const Grid = styled.div`
   grid-template-columns: 1fr;
   grid-gap: 2rem;
   margin: 4rem 0;
-  align-items: center;
+  align-items: end;
 
   @media (min-width: 500px) {
     grid-template-columns: repeat(2, 1fr);

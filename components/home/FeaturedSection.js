@@ -4,7 +4,6 @@ import Stars from '../products/Stars';
 import Link from 'next/link';
 
 const FeaturedSectionContainer = styled.section`
-  /* background: var(--primary); */
   background-image: linear-gradient(to top, var(--primary) 0%, #00aaa0 100%);
   color: var(--dark);
   padding: 4rem 0;
@@ -12,16 +11,34 @@ const FeaturedSectionContainer = styled.section`
   flex-direction: column;
   justify-content: center;
   align-items: center;
+  position: relative;
+
+  &:before {
+    content: '';
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    top: 0;
+    left: 0;
+    background: var(--primary);
+    z-index: -1;
+    mix-blend-mode: hue;
+  }
 
   @media (min-width: 1000px) {
     flex-direction: row;
-    background: linear-gradient(
-      to right,
-      var(--primary) 0%,
-      var(--primary) 50%,
-      #fff 50%,
-      #fff 100%
-    );
+    background-image: linear-gradient(
+        to right,
+        hsla(177, 100%, 44%, 0.85) 0%,
+        hsla(177, 100%, 44%, 0.85) 50%,
+        rgba(255, 255, 255, 0.95) 50%,
+        rgba(255, 255, 255, 0.95) 100%
+      ),
+      url('/images/woman-yellow-cropped-2.jpg');
+    background-position: center;
+    background-size: cover;
+    background-repeat: no-repeat;
+    mix-blend-mode: color;
   }
 `;
 
