@@ -218,12 +218,8 @@ const ProductInformation = ({
   };
 
   useEffect(() => {
-    updateProduct({ ...product, quantity: quantity });
-  }, [quantity]);
-
-  useEffect(() => {
-    updateProduct({ ...product, color: selectedColor });
-  }, [selectedColor]);
+    updateProduct({ ...product, color: selectedColor, quantity: quantity });
+  }, [quantity, selectedColor]);
 
   /* Render quantity and color based on stored value.
      Keeps server and client in sync.

@@ -1,18 +1,16 @@
 import { motion } from 'framer-motion';
-import Hero from '../components/hero/Hero';
+import Hero from '../components/home/Hero';
 import ProductsSection from '../components/products/ProductsSection';
 import { headphones, earbuds } from '../public/products';
 import { evaluateProperties } from '../components/context/cookieUtils';
+import FeaturedSection from '../components/home/FeaturedSection';
 
 export default function Home({ headphones, earbuds }) {
   return (
-    <motion.div
-    // initial={{ opacity: 0 }}
-    // animate={{ opacity: 1 }}
-    // exit={{ opacity: 0 }}
-    >
+    <motion.div>
       <Hero />
       <ProductsSection headphones={headphones} earbuds={earbuds} />
+      <FeaturedSection {...headphones[0]} />
     </motion.div>
   );
 }

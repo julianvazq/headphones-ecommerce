@@ -1,10 +1,11 @@
-import React from 'react';
+import React, { useEffect, useContext } from 'react';
 import styled from 'styled-components';
 import { SectionContainer } from '../../styles/shared-styles';
 import { FaShippingFast } from 'react-icons/fa';
+import { CartContext } from '../../components/context/CartContext';
 
 const CenteredContainer = styled.div`
-  height: calc(100vh - 114px);
+  height: calc(50vh - 114px);
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -32,21 +33,33 @@ const CenteredContainer = styled.div`
 `;
 
 const Message = styled.p`
-  font-weight: 600;
+  font-family: 'Oswald', sans-serif;
+  font-weight: 500;
   font-size: 1.5rem;
-  text-transform: none;
-  margin-bottom: 1rem;
+  text-align: center;
+  margin: 0 1rem 1rem;
+`;
 
-  svg {
-    font-size: 2rem;
-  }
+const SubMessage = styled.p`
+  font-family: 'Oswald', sans-serif;
+  font-size: 1.25rem;
+  text-transform: none;
+  text-align: center;
+  margin: 0 1rem 1rem;
 `;
 
 const ConfirmationPage = () => {
+  const { clearCart } = useContext(CartContext);
+
+  useEffect(() => {
+    clearCart();
+  }, []);
+
   return (
     <SectionContainer>
       <CenteredContainer>
-        <Message>Thank you for placing a fake order!</Message>
+        <Message>Thank you for placing a fake order.</Message>
+        <SubMessage>Your product(s) will be delivered never!</SubMessage>
         <FaShippingFast />
       </CenteredContainer>
     </SectionContainer>

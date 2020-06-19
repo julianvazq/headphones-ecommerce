@@ -74,7 +74,7 @@ const PaymentProductDisplay = ({ model, quantity, price, image }) => {
       </ImgContainer>
       <InfoContainer>
         <Model>{model}</Model>
-        <RowTotal>${price * quantity}</RowTotal>
+        <RowTotal>${(price * quantity).toFixed(2)}</RowTotal>
       </InfoContainer>
     </Container>
   );

@@ -2,6 +2,7 @@ import React, { useContext } from 'react';
 import Link from 'next/link';
 import styled, { css } from 'styled-components';
 import { CartContext } from '../context/CartContext';
+import { IoIosArrowBack } from 'react-icons/io';
 
 const Container = styled.section`
   width: 100%;
@@ -33,7 +34,7 @@ const GridForm = styled.form`
 `;
 
 const Heading = styled.h2`
-  font-weight: 500;
+  font-weight: 600;
   letter-spacing: 1px;
   font-size: 1.25rem;
   grid-column: 1 / -1;
@@ -102,14 +103,20 @@ const OrderButton = styled.a`
   color: var(--light);
   background: var(--primary);
   border-radius: 0.3rem;
+
+  &:visited {
+    color: var(--light);
+  }
 `;
 
 const GoBackButton = styled.a`
   font-weight: 500;
   letter-spacing: 1px;
+  display: flex;
+  align-items: center;
 
-  span {
-    margin-right: 0.5rem;
+  svg {
+    margin-right: 0.25rem;
   }
 `;
 
@@ -160,13 +167,14 @@ const PaymentForm = ({ cart }) => {
           </ShortForm>
           <ShortForm>
             <label>ZIP Code</label>
-            <input type='text' placeholder='Doe' defaultValue='' />
+            <input type='text' placeholder='32830' defaultValue='' />
           </ShortForm>
         </GridForm>
         <ButtonContainer>
           <Link href='/checkout' passHref>
             <GoBackButton>
-              <span>{'<'}</span>Back to cart
+              <IoIosArrowBack />
+              <span>Back to cart</span>
             </GoBackButton>
           </Link>
           <Link href='/checkout/confirmation' passHref>

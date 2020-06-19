@@ -25,6 +25,12 @@ const CartProvider = ({ children }) => {
     return total.toFixed(2);
   };
 
+  const clearCart = () => {
+    const emptyCart = [];
+    setCart(emptyCart);
+    Cookies.set('cart', JSON.stringify(emptyCart), { sameSite: 'lax' });
+  };
+
   const updateProduct = (product) => {
     const found = cart.find(
       (productInCart) => productInCart.model === product.model
@@ -106,6 +112,7 @@ const CartProvider = ({ children }) => {
         checkIfInCart,
         updateProduct,
         getCartTotal,
+        clearCart,
       }}
     >
       {children}

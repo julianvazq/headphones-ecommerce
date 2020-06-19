@@ -159,7 +159,7 @@ const CheckoutProduct = ({ product }) => {
         <QuantityPicker quantity={quantity} setQuantity={setQuantity} />
         <RemoveButton onClick={removeProduct}>Remove item</RemoveButton>
       </Quantity>
-      <Subtotal>${product.price * quantity}</Subtotal>
+      <Subtotal>${(product.price * quantity).toFixed(2)}</Subtotal>
     </OrderContainer>
   );
 };
