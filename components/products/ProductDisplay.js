@@ -33,7 +33,7 @@ const ProductCard = styled(motion.article)`
   }
 `;
 
-const Model = styled.h2`
+const Model = styled.h3`
   letter-spacing: 1px;
 
   @media (min-width: 500px) {
