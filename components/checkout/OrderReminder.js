@@ -1,12 +1,11 @@
 import React, { useContext } from 'react';
 import styled from 'styled-components';
-import { CartContext } from '../context/CartContext';
 import PaymentProductDisplay from './PaymentProductDisplay';
 
 const Container = styled.section`
   width: 100%;
   background: var(--body);
-  padding: 4rem 2rem;
+  padding: 4rem;
   order: -1;
   color: var(--dark);
   text-transform: none;
@@ -52,8 +51,6 @@ const Total = styled.p`
 `;
 
 const OrderReminder = ({ cart }) => {
-  //   const { getCartTotal } = useContext(CartContext);
-
   const getCartTotal = () => {
     if (!cart.length) return 0;
 
