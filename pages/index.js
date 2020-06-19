@@ -10,7 +10,7 @@ export default function Home({ headphones, earbuds }) {
     <motion.div>
       <Hero />
       <ProductsSection headphones={headphones} earbuds={earbuds} />
-      <FeaturedSection first={headphones[2]} second={headphones[0]} />
+      <FeaturedSection first={headphones[2]} second={headphones[1]} />
     </motion.div>
   );
 }

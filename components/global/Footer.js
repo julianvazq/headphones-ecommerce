@@ -40,6 +40,7 @@ const IconCircle = styled.a`
 const Copyright = styled.p`
   text-align: center;
   font-size: 1.25rem;
+  font-family: 'Oswald', sans-serif;
 `;
 
 const Footer = ({ hide }) => {

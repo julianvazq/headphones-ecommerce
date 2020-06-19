@@ -69,12 +69,14 @@ const ProductContainer = styled.div`
   img {
     display: block;
     width: 100%;
+    cursor: pointer;
   }
 
   h3 {
     font-size: 1.5rem;
     letter-spacing: 1px;
     text-align: center;
+    cursor: pointer;
   }
 
   p {
@@ -115,6 +117,10 @@ const ActionButton = styled.a`
   padding: 1rem 2rem;
   background: var(--dark);
   color: var(--light);
+
+  &:visited {
+    color: var(--light);
+  }
 `;
 
 const FeaturedSection = ({ first, second }) => {
@@ -124,26 +130,38 @@ const FeaturedSection = ({ first, second }) => {
       <FeaturedSectionContainer>
         <FlexContainer>
           <ProductContainer>
-            <img src={first.image} alt={first.model} />
-            <h3>{first.model}</h3>
+            <Link href={`/products/${first.model}`} passHref>
+              <img src={first.image} alt={first.model} />
+            </Link>
+            <Link href={`/products/${first.model}`} passHref>
+              <h3>{first.model}</h3>
+            </Link>
             <Stars rating={first.rating} featured={1} white={1} />
             <p>${first.price}</p>
           </ProductContainer>
           <CTAContainer>
             <LimitedEdition reverse>Limited Edition</LimitedEdition>
-            <ActionButton>See details</ActionButton>
+            <Link href={`/products/${first.model}`} passHref>
+              <ActionButton>See details</ActionButton>
+            </Link>
           </CTAContainer>
         </FlexContainer>
         <FlexContainer>
           <ProductContainer>
-            <img src={second.image} alt={second.model} />
-            <h3>{second.model}</h3>
+            <Link href={`/products/${second.model}`} passHref>
+              <img src={second.image} alt={second.model} />
+            </Link>
+            <Link href={`/products/${second.model}`} passHref>
+              <h3>{second.model}</h3>
+            </Link>
             <Stars rating={second.rating} featured={1} />
             <p>${second.price}</p>
           </ProductContainer>
           <CTAContainer>
             <LimitedEdition>Limited Edition</LimitedEdition>
-            <ActionButton>See details</ActionButton>
+            <Link href={`/products/${second.model}`} passHref>
+              <ActionButton>See details</ActionButton>
+            </Link>
           </CTAContainer>
         </FlexContainer>
       </FeaturedSectionContainer>
