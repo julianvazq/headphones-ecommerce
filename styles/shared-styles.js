@@ -5,3 +5,10 @@ export const SectionContainer = styled.section`
   color: var(--dark);
   padding: 2rem 0;
 `;
+
+export const Heading = styled.h1`
+  font-size: 2rem;
+  font-family: 'Oswald', sans-serif;
+  color: var(--dark);
+  margin-bottom: 2rem;
+`;

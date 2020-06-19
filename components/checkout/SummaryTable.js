@@ -9,7 +9,7 @@ const OrdersTable = styled.div`
   margin: 2rem 0;
 `;
 
-const OrderSummary = () => {
+const SummaryTable = () => {
   const { cart, handleCartChange, updateProperty } = useContext(CartContext);
 
   return (
@@ -24,4 +24,4 @@ const OrderSummary = () => {
   );
 };
 
-export default OrderSummary;
+export default SummaryTable;

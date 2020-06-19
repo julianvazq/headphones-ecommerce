@@ -11,6 +11,10 @@ import {
   FaYoutube,
 } from 'react-icons/fa';
 
+const FooterContainer = styled.footer`
+  display: ${(props) => props.hide && 'none'};
+`;
+
 const IconContainer = styled.div`
   display: flex;
   flex-wrap: wrap;
@@ -38,33 +42,35 @@ const Copyright = styled.p`
   font-size: 1.25rem;
 `;
 
-const Footer = () => {
+const Footer = ({ hide }) => {
   return (
-    <SectionContainer bodyColor>
-      <ContainerMaxWidth>
-        <IconContainer>
-          <IconCircle>
-            <FaFacebookF />
-          </IconCircle>
-          <IconCircle>
-            <FaTwitter />
-          </IconCircle>
-          <IconCircle>
-            <FaInstagram />
-          </IconCircle>
-          <IconCircle>
-            <FaPinterestP />
-          </IconCircle>
-          <IconCircle>
-            <FaYoutube />
-          </IconCircle>
-          <IconCircle>
-            <FaLinkedinIn />
-          </IconCircle>
-        </IconContainer>
-        <Copyright>@H 2020</Copyright>
-      </ContainerMaxWidth>
-    </SectionContainer>
+    <FooterContainer hide={hide}>
+      <SectionContainer bodyColor>
+        <ContainerMaxWidth>
+          <IconContainer>
+            <IconCircle>
+              <FaFacebookF />
+            </IconCircle>
+            <IconCircle>
+              <FaTwitter />
+            </IconCircle>
+            <IconCircle>
+              <FaInstagram />
+            </IconCircle>
+            <IconCircle>
+              <FaPinterestP />
+            </IconCircle>
+            <IconCircle>
+              <FaYoutube />
+            </IconCircle>
+            <IconCircle>
+              <FaLinkedinIn />
+            </IconCircle>
+          </IconContainer>
+          <Copyright>@H 2020</Copyright>
+        </ContainerMaxWidth>
+      </SectionContainer>
+    </FooterContainer>
   );
 };
 

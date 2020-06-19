@@ -20,6 +20,10 @@ const navVariant = {
   },
 };
 
+const NavContainer = styled(motion.div)`
+  display: ${(props) => props.hide && 'none'};
+`;
+
 const Navigation = styled.nav`
   display: flex;
   justify-content: space-between;
@@ -77,10 +81,15 @@ const CartIcon = styled(MdShoppingCart)`
   color: var(--dark) !important;
 `;
 
-const Nav = ({ showingCartOrMenu, handleShowSidebar }) => {
+const Nav = ({ showingCartOrMenu, handleShowSidebar, hide }) => {
   const router = useRouter();
   return (
-    <motion.div variants={navVariant} initial='initial' animate='final'>
+    <NavContainer
+      variants={navVariant}
+      initial='initial'
+      animate='final'
+      hide={hide}
+    >
       <AnimatePresence exitBeforeEnter>
         {showingCartOrMenu === 'cart' && (
           <CartOpen
@@ -120,7 +129,7 @@ const Nav = ({ showingCartOrMenu, handleShowSidebar }) => {
           </LinkContainer>
         </Navigation>
       </ContainerMaxWidth>
-    </motion.div>
+    </NavContainer>
   );
 };
 

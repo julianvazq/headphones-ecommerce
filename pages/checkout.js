@@ -1,20 +1,13 @@
 import React, { useState, useEffect, useContext } from 'react';
+import Link from 'next/link';
 import { motion } from 'framer-motion';
 import ContainerMaxWidth from '../components/utils/ContainerMaxWidth';
 import styled from 'styled-components';
-import { SectionContainer } from '../styles/shared-styles';
-import OrderSummary from '../components/checkout/OrderSummary';
+import { SectionContainer, Heading } from '../styles/shared-styles';
+import SummaryTable from '../components/checkout/SummaryTable';
 import EmptyCart from '../components/products/EmptyCart';
 import { CartContext } from '../components/context/CartContext';
 import { getCartCookie } from '../components/context/cookieUtils';
-
-const Heading = styled.h1`
-  font-size: 2rem;
-  font-family: 'Oswald', sans-serif;
-  color: var(--dark);
-  margin-bottom: 0.5rem;
-  padding-bottom: 1.5rem;
-`;
 
 const EmptyCartContainer = styled.section`
   height: 100vh;
@@ -41,6 +34,10 @@ const CheckoutButton = styled.a`
   background: var(--dark);
   color: var(--light);
   margin-top: 2rem;
+
+  &:visited {
+    color: var(--light);
+  }
 
   @media (min-width: 650px) {
     order: 1;
@@ -92,7 +89,7 @@ const Checkout = ({ initialCart }) => {
     <SectionContainer>
       <ContainerMaxWidth>
         <Heading>Order Summary</Heading>
-        <OrderSummary />
+        <SummaryTable />
         <CheckoutContainer initial={{ opacity: 0 }} animate={{ opacity: 1 }}>
           <Total>
             Total:{' '}
@@ -101,7 +98,9 @@ const Checkout = ({ initialCart }) => {
               {getCartTotal()}
             </span>
           </Total>
-          <CheckoutButton>Checkout</CheckoutButton>
+          <Link href='/checkout/payment' passHref>
+            <CheckoutButton>Checkout</CheckoutButton>
+          </Link>
         </CheckoutContainer>
       </ContainerMaxWidth>
     </SectionContainer>
