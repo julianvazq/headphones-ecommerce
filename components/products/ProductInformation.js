@@ -254,8 +254,14 @@ const ProductInformation = ({
 
   return (
     <ProductContainer>
-      <ImageContainer variants={imageVariant} initial='initial' animate='final'>
-        <img src={image} alt={model} />
+      <ImageContainer>
+        <motion.img
+          src={image}
+          alt={model}
+          variants={imageVariant}
+          initial='initial'
+          animate='final'
+        />
       </ImageContainer>
       <InformationContainer>
         <HeadingContainer>
