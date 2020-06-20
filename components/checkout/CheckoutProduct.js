@@ -10,6 +10,8 @@ import { slideOutVariant } from '../../styles/animations';
 const OrderContainer = styled(motion.article)`
   display: grid;
   grid-template-columns: 1fr;
+  align-items: center;
+  justify-content: center;
   padding: 2rem 0;
   border-bottom: 2px solid var(--primary);
   text-transform: none;
@@ -25,8 +27,6 @@ const OrderContainer = styled(motion.article)`
   @media (min-width: 700px) {
     display: grid;
     grid-template-columns: 60% 1fr 1fr;
-    align-items: center;
-    justify-content: center;
   }
 `;
 
@@ -134,26 +134,26 @@ const CheckoutProduct = ({ product }) => {
       exit='exit'
     >
       <Information>
-        <Link
+        {/* <Link
           href='/products/[model]'
           as={`/products/${product.model}`}
           passHref
-        >
-          <img src={product.image} alt={product.model} />
-        </Link>
-        <Link
+        > */}
+        <img src={product.image} alt={product.model} />
+        {/* </Link> */}
+        {/* <Link
           href='/products/[model]'
           as={`/products/${product.model}`}
           passHref
-        >
-          <a>
-            <h3>{product.model}</h3>
-            <Stars rating={product.rating} />
-            <Type>{product.type}</Type>
-            <Color>Color: {product.color}</Color>
-            <Price>${product.price}</Price>
-          </a>
-        </Link>
+        > */}
+        <a>
+          <h3>{product.model}</h3>
+          <Stars rating={product.rating} />
+          <Type>{product.type}</Type>
+          <Color>Color: {product.color}</Color>
+          <Price>${product.price}</Price>
+        </a>
+        {/* </Link> */}
       </Information>
       <Quantity>
         <QuantityPicker quantity={quantity} setQuantity={setQuantity} />
