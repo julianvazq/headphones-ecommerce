@@ -5,7 +5,7 @@ import { motion } from 'framer-motion';
 
 const headerVariant = {
   initial: {
-    x: '100%',
+    x: '100vw',
   },
   final: {
     x: 0,
