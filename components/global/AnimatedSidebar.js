@@ -68,13 +68,15 @@ const Sidebar = styled(motion.div)`
 `;
 
 const CloseButton = styled.button`
+  width: 48px;
+  height: 48px;
   display: flex;
   justify-content: center;
   align-items: center;
   color: ${(props) => (props.cart ? 'var(--dark)' : 'var(--light)')};
   align-self: flex-end;
   margin-bottom: 2rem;
-  z-index: 3;
+  z-index: 5;
   position: relative;
 
   svg {
@@ -112,7 +114,7 @@ const AnimatedSidebar = ({ handleShowSidebar, cart = false, children }) => {
         exit='initial'
       >
         <CloseButton ref={navRef} onClick={closeSidebar} cart={cart}>
-          <MdClose />X
+          <MdClose />
         </CloseButton>
         {children}
       </Sidebar>
