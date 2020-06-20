@@ -93,11 +93,11 @@ const ProductDisplay = ({ product }) => {
   return (
     <div>
       <ProductCard
-        key={product.model}
-        variants={slideOutVariant}
-        initial='initial'
-        animate='final'
-        exit='exit'
+      // key={product.model}
+      // variants={slideOutVariant}
+      // initial='initial'
+      // animate='final'
+      // exit='exit'
       >
         <Link href='/products/[model]' as={`/products/${product.model}`}>
           <a>
