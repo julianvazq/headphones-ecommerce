@@ -7,7 +7,7 @@ import Stars from '../products/Stars';
 import { motion } from 'framer-motion';
 import { slideOutVariant } from '../../styles/animations';
 
-const OrderContainer = styled(motion.article)`
+const OrderContainer = styled.article`
   display: grid;
   grid-template-columns: 1fr;
   padding: 2rem 0;
@@ -128,10 +128,10 @@ const CheckoutProduct = ({ product }) => {
 
   return (
     <OrderContainer
-      variants={slideOutVariant}
-      initial='initial'
-      animate='final'
-      exit='exit'
+    // variants={slideOutVariant}
+    // initial='initial'
+    // animate='final'
+    // exit='exit'
     >
       <Information>
         <Link
