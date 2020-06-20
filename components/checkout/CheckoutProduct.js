@@ -31,10 +31,11 @@ const OrderContainer = styled(motion.article)`
 `;
 
 const Information = styled.div`
-  /* display: flex; */
+  display: flex;
   margin: 0 auto 2rem auto;
+  font-weight: 400;
 
-  & > a {
+  div:first-child {
     margin-left: 1rem;
     font-weight: 400;
 
@@ -144,11 +145,13 @@ const CheckoutProduct = ({ product }) => {
           passHref
         >
           <a>
-            <h3>{product.model}</h3>
-            <Stars rating={product.rating} />
-            <Type>{product.type}</Type>
-            <Color>Color: {product.color}</Color>
-            <Price>${product.price}</Price>
+            <div>
+              <h3>{product.model}</h3>
+              <Stars rating={product.rating} />
+              <Type>{product.type}</Type>
+              <Color>Color: {product.color}</Color>
+              <Price>${product.price}</Price>
+            </div>
           </a>
         </Link>
       </Information>

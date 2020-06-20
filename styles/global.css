@@ -23,7 +23,6 @@ body {
   background: var(--body);
   text-transform: uppercase;
   overflow-x: hidden;
-  /* overscroll-behavior-y: none; */
 }
 
 /* Global Styles */
