@@ -22,11 +22,10 @@ const starStyling = css`
   filter: ${(props) =>
     props.featured && 'drop-shadow(1px 1px 1px rgba(0, 0, 0, 0.2))'};
   font-size: 1.5rem;
-  /* font-size: ${(props) => props.featured && '5rem'}; */
 
-@media (min-width: 440px) {
-  font-size: ${(props) => props.featured && '1.75rem'};
-}
+  @media (min-width: 440px) {
+    font-size: ${(props) => props.featured && '1.75rem'};
+  }
 
   @media (min-width: 500px) {
     font-size: ${(props) => !props.featured && '1.25rem'};

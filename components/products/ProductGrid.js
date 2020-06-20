@@ -7,7 +7,7 @@ const Grid = styled.div`
   display: grid;
   grid-template-columns: 1fr;
   grid-gap: 2rem;
-  margin: 4rem 0;
+  margin: 4rem 0 2rem;
   align-items: end;
 
   @media (min-width: 500px) {
