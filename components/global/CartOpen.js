@@ -110,7 +110,7 @@ const CartOpen = ({ showingCartOrMenu, handleShowSidebar }) => {
         <p>{getNumberOfItems()}</p>
       </CheckoutContainer>
       <CartContainer>
-        <AnimatePresence>
+        <AnimatePresence initial={false}>
           {cart.map((product) => (
             <CartProduct
               key={product.model}
