@@ -112,7 +112,7 @@ const AnimatedSidebar = ({ handleShowSidebar, cart = false, children }) => {
         exit='initial'
       >
         <CloseButton ref={navRef} onClick={closeSidebar} cart={cart}>
-          <MdClose />
+          <MdClose />X
         </CloseButton>
         {children}
       </Sidebar>
