@@ -76,14 +76,13 @@ const CloseButton = styled.button`
   color: ${(props) => (props.cart ? 'var(--dark)' : 'var(--light)')};
   align-self: flex-end;
   margin-bottom: 2rem;
+  margin-top: 5rem;
   z-index: 5;
   position: relative;
   overflow: visible;
 
   svg {
-    width: 28px;
-    height: 28px;
-    /* font-size: 3rem; */
+    font-size: 3rem;
     overflow: visible;
     flex: 1;
   }
