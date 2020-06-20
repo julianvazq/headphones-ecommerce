@@ -39,8 +39,8 @@ const Sidebar = styled(motion.div)`
   position: fixed;
   right: 0;
   padding: 2rem;
-  display: flex;
-  flex-direction: column;
+  /* display: flex;
+  flex-direction: column; */
   z-index: 2;
   overscroll-behavior-y: none;
   overflow-y: ${(props) => props.cart && 'scroll'};
@@ -74,9 +74,9 @@ const CloseButton = styled.button`
   justify-content: center;
   align-items: center;
   color: ${(props) => (props.cart ? 'var(--dark)' : 'var(--light)')};
-  align-self: flex-end;
+  /* align-self: flex-end; */
+  margin-left: auto;
   margin-bottom: 2rem;
-  margin-top: 5rem;
   z-index: 5;
   position: relative;
   overflow: visible;
