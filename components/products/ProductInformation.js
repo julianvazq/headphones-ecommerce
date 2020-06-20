@@ -256,6 +256,7 @@ const ProductInformation = ({
     <ProductContainer>
       <ImageContainer>
         <motion.img
+          key={model}
           src={image}
           alt={model}
           variants={imageVariant}
