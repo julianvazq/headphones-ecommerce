@@ -4,7 +4,7 @@ const useViewportWidth = () => {
   const [width, setWidth] = useState(null);
 
   useEffect(() => {
-    if (window) {
+    if (process.browser) {
       setWidth(window.innerWidth);
     }
 
@@ -18,7 +18,7 @@ const useViewportWidth = () => {
     return () => {
       window.removeEventListener('resize', handleResize);
     };
-  });
+  }, []);
 
   return width;
 };

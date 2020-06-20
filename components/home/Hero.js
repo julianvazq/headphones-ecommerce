@@ -2,13 +2,28 @@ import React from 'react';
 import styled from 'styled-components';
 import Link from 'next/link';
 import { motion } from 'framer-motion';
+import useViewportWidth from '../hooks/useViewportWidth';
 
-const headerVariant = {
+const translateVertically = {
   initial: {
     translateY: '100%',
   },
   final: {
     translateY: 0,
+    transition: {
+      delayChildren: 0.5,
+      duration: 1,
+      staggerChildren: 0.5,
+    },
+  },
+};
+
+const translateHorizontally = {
+  initial: {
+    translateX: '100%',
+  },
+  final: {
+    translateX: 0,
     transition: {
       delayChildren: 0.5,
       duration: 1,
@@ -143,8 +158,10 @@ const EarbudsButton = styled(motion.a)`
 `;
 
 const Hero = () => {
+  const width = useViewportWidth();
+
   return (
-    <Header variants={headerVariant} initial='initial' animate='final'>
+    <Header variants={translateHorizontally} initial='initial' animate='final'>
       <ImageContainer>
         <HeadphoneImage
           variants={headphoneVariant}

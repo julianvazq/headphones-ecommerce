@@ -6,6 +6,7 @@ import { CartContext } from '../context/CartContext';
 import { motion } from 'framer-motion';
 import { slideOutVariant } from '../../styles/animations';
 import { AnimatePresence } from 'framer-motion';
+import useViewportWidth from '../hooks/useViewportWidth';
 
 const ProductCard = styled(motion.article)`
   display: flex;
@@ -78,7 +79,12 @@ const SecondaryButton = styled(Button)`
   border: 1.5px solid var(--primary);
 `;
 
+const positionAnimation = {
+  duration: 0.5,
+};
+
 const ProductDisplay = ({ product }) => {
+  const width = useViewportWidth();
   const { cart, handleCartChange, checkIfInCart } = useContext(CartContext);
   const [inCart, setInCart] = useState(product.inCart);
 
@@ -99,6 +105,8 @@ const ProductDisplay = ({ product }) => {
         initial='initial'
         animate='final'
         exit='exit'
+        /* Disable sorting animation when only one column -- looks clunky */
+        layoutTransition={width >= 500 ? positionAnimation : false}
       >
         <Link href='/products/[model]' as={`/products/${product.model}`}>
           <a>
