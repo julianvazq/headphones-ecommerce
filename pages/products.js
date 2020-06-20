@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import Head from 'next/head';
 import styled from 'styled-components';
 import { useRouter } from 'next/router';
 import { headphones, earbuds } from '../public/products';
@@ -66,21 +67,31 @@ const Products = ({ initialProducts, headphones, earbuds }) => {
     setProducts(sortedProducts);
   };
 
+  const capitalize = (str) => {
+    return str.charAt(0).toUpperCase() + str.slice(1);
+  };
+
   return (
-    <SectionContainer>
-      <ContainerMaxWidth>
-        <Filter
-          productType={productType}
-          setProductType={setProductType}
-          priceSort={priceSort}
-          setPriceSort={setPriceSort}
-          ratingSort={ratingSort}
-          setRatingSort={setRatingSort}
-          count={products.length}
-        />
-        <ProductGrid products={products} />
-      </ContainerMaxWidth>
-    </SectionContainer>
+    <>
+      <Head>
+        <title>Products | {capitalize(productType)}</title>
+        <meta name='viewport' content='initial-scale=1.0, width=device-width' />
+      </Head>
+      <SectionContainer>
+        <ContainerMaxWidth>
+          <Filter
+            productType={productType}
+            setProductType={setProductType}
+            priceSort={priceSort}
+            setPriceSort={setPriceSort}
+            ratingSort={ratingSort}
+            setRatingSort={setRatingSort}
+            count={products.length}
+          />
+          <ProductGrid products={products} />
+        </ContainerMaxWidth>
+      </SectionContainer>
+    </>
   );
 };
 

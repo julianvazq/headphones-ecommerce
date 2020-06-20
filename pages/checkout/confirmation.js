@@ -1,4 +1,5 @@
 import React, { useEffect, useContext } from 'react';
+import Head from 'next/head';
 import styled from 'styled-components';
 import { SectionContainer } from '../../styles/shared-styles';
 import { FaShippingFast } from 'react-icons/fa';
@@ -56,13 +57,19 @@ const ConfirmationPage = () => {
   }, []);
 
   return (
-    <SectionContainer>
-      <CenteredContainer>
-        <Message>Thank you for placing a fake order.</Message>
-        <SubMessage>Your product(s) will be delivered never!</SubMessage>
-        <FaShippingFast />
-      </CenteredContainer>
-    </SectionContainer>
+    <>
+      <Head>
+        <title>Headphones | Order Confirmation</title>
+        <meta name='viewport' content='initial-scale=1.0, width=device-width' />
+      </Head>
+      <SectionContainer>
+        <CenteredContainer>
+          <Message>Thank you for placing a fake order.</Message>
+          <SubMessage>Your product(s) will be delivered never!</SubMessage>
+          <FaShippingFast />
+        </CenteredContainer>
+      </SectionContainer>
+    </>
   );
 };
 

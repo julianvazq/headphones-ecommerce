@@ -6,7 +6,7 @@ import useViewportWidth from '../hooks/useViewportWidth';
 
 const translateVertically = {
   initial: {
-    translateY: '100%',
+    translateY: '-100%',
   },
   final: {
     translateY: 0,
@@ -158,14 +158,8 @@ const EarbudsButton = styled(motion.a)`
 `;
 
 const Hero = () => {
-  const width = useViewportWidth();
-
   return (
-    <Header
-      variants={width >= 600 ? translateHorizontally : translateVertically}
-      initial='initial'
-      animate='final'
-    >
+    <Header variants={translateVertically} initial='initial' animate='final'>
       <ImageContainer>
         <HeadphoneImage
           variants={headphoneVariant}

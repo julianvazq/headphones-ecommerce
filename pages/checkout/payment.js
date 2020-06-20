@@ -1,4 +1,5 @@
 import React, { useState, useEffect, useContext } from 'react';
+import Head from 'next/head';
 import styled from 'styled-components';
 import ContainerFluid from '../../components/utils/ContainerFluid';
 import OrderReminder from '../../components/checkout/OrderReminder';
@@ -40,14 +41,20 @@ const PaymentPage = ({ initialCart }) => {
   }
 
   return (
-    <ContainerFluid background='var(--light)'>
-      <PaymentSectionContainer>
-        <FlexContainer>
-          <PaymentForm cart={cart} />
-          <OrderReminder cart={cart} />
-        </FlexContainer>
-      </PaymentSectionContainer>
-    </ContainerFluid>
+    <>
+      <Head>
+        <title>Headphones | Contact &amp; Shipping Information</title>
+        <meta name='viewport' content='initial-scale=1.0, width=device-width' />
+      </Head>
+      <ContainerFluid background='var(--light)'>
+        <PaymentSectionContainer>
+          <FlexContainer>
+            <PaymentForm cart={cart} />
+            <OrderReminder cart={cart} />
+          </FlexContainer>
+        </PaymentSectionContainer>
+      </ContainerFluid>
+    </>
   );
 };
 

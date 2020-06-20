@@ -1,5 +1,6 @@
 import React, { useState, useEffect, useContext } from 'react';
 import Link from 'next/link';
+import Head from 'next/head';
 import { motion } from 'framer-motion';
 import ContainerMaxWidth from '../components/utils/ContainerMaxWidth';
 import styled from 'styled-components';
@@ -86,24 +87,30 @@ const Checkout = ({ initialCart }) => {
   }
 
   return (
-    <SectionContainer>
-      <ContainerMaxWidth>
-        <Heading>Order Summary</Heading>
-        <SummaryTable />
-        <CheckoutContainer initial={{ opacity: 0 }} animate={{ opacity: 1 }}>
-          <Total>
-            Total:{' '}
-            <span>
-              <span>$</span>
-              {getCartTotal()}
-            </span>
-          </Total>
-          <Link href='/checkout/payment' passHref>
-            <CheckoutButton>Checkout</CheckoutButton>
-          </Link>
-        </CheckoutContainer>
-      </ContainerMaxWidth>
-    </SectionContainer>
+    <>
+      <Head>
+        <title>Headphones | Order Summary</title>
+        <meta name='viewport' content='initial-scale=1.0, width=device-width' />
+      </Head>
+      <SectionContainer>
+        <ContainerMaxWidth>
+          <Heading>Order Summary</Heading>
+          <SummaryTable />
+          <CheckoutContainer initial={{ opacity: 0 }} animate={{ opacity: 1 }}>
+            <Total>
+              Total:{' '}
+              <span>
+                <span>$</span>
+                {getCartTotal()}
+              </span>
+            </Total>
+            <Link href='/checkout/payment' passHref>
+              <CheckoutButton>Checkout</CheckoutButton>
+            </Link>
+          </CheckoutContainer>
+        </ContainerMaxWidth>
+      </SectionContainer>
+    </>
   );
 };
 

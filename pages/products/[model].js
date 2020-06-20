@@ -1,6 +1,6 @@
 import React from 'react';
+import Head from 'next/head';
 import { headphones, earbuds } from '../../public/products';
-import styled from 'styled-components';
 import ContainerMaxWidth from '../../components/utils/ContainerMaxWidth';
 import Breadcrumbs from '../../components/products/Breadcrumbs';
 import ProductInformation from '../../components/products/ProductInformation';
@@ -9,19 +9,31 @@ import { evaluateProperties } from '../../components/context/cookieUtils';
 import { SectionContainer } from '../../styles/shared-styles';
 
 const ProductPage = ({ product, similarProducts }) => {
+  const capitalize = (str) => {
+    return str.charAt(0).toUpperCase() + str.slice(1);
+  };
+
   return (
-    <SectionContainer>
-      <ContainerMaxWidth>
-        <Breadcrumbs model={product.model} type={product.type} />
-        <ProductInformation
-          initialInCart={product.inCart}
-          initialQuantity={product.quantity}
-          initialColor={product.color}
-          product={product}
-        />
-        <SimilarProducts products={similarProducts} model={product.model} />
-      </ContainerMaxWidth>
-    </SectionContainer>
+    <>
+      <Head>
+        <title>
+          {product.model} | {capitalize(product.type)}
+        </title>
+        <meta name='viewport' content='initial-scale=1.0, width=device-width' />
+      </Head>
+      <SectionContainer>
+        <ContainerMaxWidth>
+          <Breadcrumbs model={product.model} type={product.type} />
+          <ProductInformation
+            initialInCart={product.inCart}
+            initialQuantity={product.quantity}
+            initialColor={product.color}
+            product={product}
+          />
+          <SimilarProducts products={similarProducts} model={product.model} />
+        </ContainerMaxWidth>
+      </SectionContainer>
+    </>
   );
 };
 
