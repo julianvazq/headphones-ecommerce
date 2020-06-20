@@ -74,6 +74,8 @@ const CloseButton = styled.button`
   color: ${(props) => (props.cart ? 'var(--dark)' : 'var(--light)')};
   align-self: flex-end;
   margin-bottom: 2rem;
+  z-index: 3;
+  position: relative;
 
   svg {
     font-size: 3rem;
