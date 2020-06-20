@@ -161,7 +161,11 @@ const Hero = () => {
   const width = useViewportWidth();
 
   return (
-    <Header variants={translateHorizontally} initial='initial' animate='final'>
+    <Header
+      variants={width >= 600 ? translateHorizontally : translateVertically}
+      initial='initial'
+      animate='final'
+    >
       <ImageContainer>
         <HeadphoneImage
           variants={headphoneVariant}
