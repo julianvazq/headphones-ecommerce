@@ -30,22 +30,9 @@ const OrderContainer = styled(motion.article)`
   }
 `;
 
-const Information = styled.div`
-  /* display: flex; */
+const InformationContainer = styled.div`
   margin: 0 auto 2rem auto;
   font-weight: 400;
-
-  div:first-child {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    font-weight: 400;
-  }
-
-  h3 {
-    text-transform: uppercase;
-    letter-spacing: 1px;
-  }
 
   img {
     display: block;
@@ -61,17 +48,36 @@ const Information = styled.div`
 
   @media (min-width: 550px) {
     display: flex;
-    /* margin: 0; */
     align-items: center;
-
-    div:first-child {
-      display: block;
-      margin-left: 2rem;
-    }
 
     img {
       margin: 0;
     }
+  }
+`;
+
+const ProductDetails = styled.div`
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  font-weight: 400;
+
+  & > * {
+    margin-bottom: 0.5rem;
+  }
+
+  & *:last-child {
+    margin-bottom: 0;
+  }
+
+  h3 {
+    text-transform: uppercase;
+    letter-spacing: 1px;
+  }
+
+  @media (min-width: 550px) {
+    display: block;
+    margin-left: 2rem;
   }
 `;
 
@@ -136,7 +142,7 @@ const CheckoutProduct = ({ product }) => {
       animate='final'
       exit='exit'
     >
-      <Information>
+      <InformationContainer>
         <Link
           href='/products/[model]'
           as={`/products/${product.model}`}
@@ -150,16 +156,16 @@ const CheckoutProduct = ({ product }) => {
           passHref
         >
           <a>
-            <div>
+            <ProductDetails>
               <h3>{product.model}</h3>
               <Stars rating={product.rating} />
               <Type>{product.type}</Type>
               <Color>Color: {product.color}</Color>
               <Price>${product.price}</Price>
-            </div>
+            </ProductDetails>
           </a>
         </Link>
-      </Information>
+      </InformationContainer>
       <Quantity>
         <QuantityPicker quantity={quantity} setQuantity={setQuantity} />
         <RemoveButton onClick={removeProduct}>Remove item</RemoveButton>
