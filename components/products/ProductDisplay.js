@@ -93,38 +93,38 @@ const ProductDisplay = ({ product }) => {
 
   return (
     <div>
-      <AnimatePresence exitBeforeEnter>
-        <ProductCard
-          key={product.model}
-          variants={slideOutVariant}
-          initial='initial'
-          animate='final'
-          exit='exit'
+      {/* <AnimatePresence exitBeforeEnter> */}
+      <ProductCard
+        key={product.model}
+        variants={slideOutVariant}
+        initial='initial'
+        animate='final'
+        exit='exit'
+      >
+        <Link href='/products/[model]' as={`/products/${product.model}`}>
+          <a>
+            <img src={product.image} alt={product.model} />
+          </a>
+        </Link>
+        <Link href='/products/[model]' as={`/products/${product.model}`}>
+          <a>
+            <Model>{product.model}</Model>{' '}
+          </a>
+        </Link>
+        <Stars rating={product.rating} />
+        <Price>${product.price}</Price>
+        <Link
+          href='/products/[model]'
+          as={`/products/${product.model}`}
+          passHref
         >
-          <Link href='/products/[model]' as={`/products/${product.model}`}>
-            <a>
-              <img src={product.image} alt={product.model} />
-            </a>
-          </Link>
-          <Link href='/products/[model]' as={`/products/${product.model}`}>
-            <a>
-              <Model>{product.model}</Model>{' '}
-            </a>
-          </Link>
-          <Stars rating={product.rating} />
-          <Price>${product.price}</Price>
-          <Link
-            href='/products/[model]'
-            as={`/products/${product.model}`}
-            passHref
-          >
-            <SecondaryButton>More info</SecondaryButton>
-          </Link>
-          <Button onClick={handleClick} inCart={inCart}>
-            {inCart ? 'Remove from cart' : 'Add to cart'}
-          </Button>
-        </ProductCard>
-      </AnimatePresence>
+          <SecondaryButton>More info</SecondaryButton>
+        </Link>
+        <Button onClick={handleClick} inCart={inCart}>
+          {inCart ? 'Remove from cart' : 'Add to cart'}
+        </Button>
+      </ProductCard>
+      {/* </AnimatePresence> */}
     </div>
   );
 };
