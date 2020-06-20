@@ -148,7 +148,7 @@ const FeaturedSection = ({ first, second }) => {
         <FlexContainer>
           <ProductContainer>
             <Link href={`/products/${first.model}`} passHref>
-              <img src={first.image} alt={first.model} loading='lazy' />
+              <img src={first.image} alt={first.model} />
             </Link>
             <Link href={`/products/${first.model}`} passHref>
               <h3>{first.model}</h3>
@@ -166,7 +166,7 @@ const FeaturedSection = ({ first, second }) => {
         <FlexContainer>
           <ProductContainer>
             <Link href={`/products/${second.model}`} passHref>
-              <img src={second.image} alt={second.model} loading='lazy' />
+              <img src={second.image} alt={second.model} />
             </Link>
             <Link href={`/products/${second.model}`} passHref>
               <h3>{second.model}</h3>
