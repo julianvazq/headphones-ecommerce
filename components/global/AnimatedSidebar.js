@@ -68,16 +68,17 @@ const Sidebar = styled(motion.div)`
 `;
 
 const CloseButton = styled.button`
-  flex: 1;
-  display: block;
+  display: flex;
+  justify-content: center;
+  align-items: center;
   color: ${(props) => (props.cart ? 'var(--dark)' : 'var(--light)')};
-  font-size: 3rem;
   align-self: flex-end;
   margin-bottom: 2rem;
 
   svg {
     font-size: 3rem;
     overflow: visible;
+    flex: 1;
   }
 `;
 
