@@ -24,7 +24,7 @@ const ProductGrid = ({ products, fourOnly }) => {
 
   return (
     <Grid>
-      {/* <AnimatePresence initial={false}> */}
+      {/* <AnimatePresence exitBeforeEnter> */}
       {visibleProducts.map((product) => (
         <ProductDisplay key={product.model} product={product} />
       ))}
