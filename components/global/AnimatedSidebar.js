@@ -32,7 +32,7 @@ const Backdrop = styled(motion.div)`
 
 const Sidebar = styled(motion.div)`
   font-family: 'Oswald', sans-serif;
-  height: 100vh;
+  height: 100%;
   min-height: 100vh;
   width: 100%;
   background: ${(props) => (props.cart ? 'var(--body)' : 'var(--primary)')};
