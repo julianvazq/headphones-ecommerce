@@ -34,7 +34,7 @@ const FeaturedSectionContainer = styled.section`
         rgba(255, 255, 255, 0.95) 50%,
         rgba(255, 255, 255, 0.95) 100%
       ),
-      url('/images/woman-yellow-cropped-2.jpg');
+      url('/images/woman-yellow.jpg');
     background-position: center;
     background-size: cover;
     background-repeat: no-repeat;
@@ -148,7 +148,7 @@ const FeaturedSection = ({ first, second }) => {
         <FlexContainer>
           <ProductContainer>
             <Link href={`/products/${first.model}`} passHref>
-              <img src={first.image} alt={first.model} />
+              <img src={first.image} alt={first.model} loading='lazy' />
             </Link>
             <Link href={`/products/${first.model}`} passHref>
               <h3>{first.model}</h3>
@@ -166,7 +166,7 @@ const FeaturedSection = ({ first, second }) => {
         <FlexContainer>
           <ProductContainer>
             <Link href={`/products/${second.model}`} passHref>
-              <img src={second.image} alt={second.model} />
+              <img src={second.image} alt={second.model} loading='lazy' />
             </Link>
             <Link href={`/products/${second.model}`} passHref>
               <h3>{second.model}</h3>

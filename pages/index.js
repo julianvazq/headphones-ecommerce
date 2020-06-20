@@ -10,17 +10,14 @@ export default function Home({ headphones, earbuds }) {
     <motion.div>
       <Hero />
       <ProductsSection headphones={headphones} earbuds={earbuds} />
-      <FeaturedSection first={headphones[2]} second={headphones[1]} />
+      <FeaturedSection first={headphones[2]} second={headphones[7]} />
     </motion.div>
   );
 }
 
 export async function getServerSideProps({ req }) {
-  /* Check if products in JSON file are in cart 
-     (passed by cookies).
-    If so, add isCart = true
-  */
-
+  /* If product is in cart (cookies), add inCart = true 
+     and set quantity accordingly */
   const headphonesArray = headphones.map((product) =>
     evaluateProperties(req, product)
   );

@@ -32,6 +32,7 @@ a {
   text-decoration: none;
   font-weight: 700;
   cursor: pointer;
+  color: var(--dark);
 }
 
 a:visited {

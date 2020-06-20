@@ -32,6 +32,8 @@ const Colors = ({ color, selectedColor, setSelectedColor }) => {
         return '#68bb68';
       case 'blue':
         return '#4343f3';
+      case 'gold':
+        return '#ffc859';
     }
   };
 

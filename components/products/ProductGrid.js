@@ -19,11 +19,13 @@ const Grid = styled.div`
   }
 `;
 
-const ProductGrid = ({ products }) => {
+const ProductGrid = ({ products, fourOnly }) => {
+  const visibleProducts = fourOnly ? products.slice(0, 4) : products;
+
   return (
     <Grid>
       <AnimatePresence exitBeforeEnter>
-        {products.slice(0, 4).map((product) => (
+        {visibleProducts.map((product) => (
           <ProductDisplay key={product.model} product={product} />
         ))}
       </AnimatePresence>

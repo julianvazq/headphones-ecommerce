@@ -99,7 +99,7 @@ const ProductDisplay = ({ product }) => {
     >
       <Link href='/products/[model]' as={`/products/${product.model}`}>
         <a>
-          <img src={product.image} alt={product.model} />
+          <img src={product.image} alt={product.model} loading='lazy' />
         </a>
       </Link>
       <Link href='/products/[model]' as={`/products/${product.model}`}>
