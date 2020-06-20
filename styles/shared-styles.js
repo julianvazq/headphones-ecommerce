@@ -8,6 +8,7 @@ export const SectionContainer = styled.section`
 
 export const Heading = styled.h1`
   font-size: 2rem;
+  font-weight: 600;
   font-family: 'Oswald', sans-serif;
   color: var(--dark);
   margin-bottom: 2rem;

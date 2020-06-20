@@ -7,13 +7,11 @@ import Stars from '../products/Stars';
 import { motion } from 'framer-motion';
 import { slideOutVariant } from '../../styles/animations';
 
-const OrderContainer = styled.article`
+const OrderContainer = styled(motion.article)`
   display: grid;
   grid-template-columns: 1fr;
   padding: 2rem 0;
   border-bottom: 2px solid var(--primary);
-  align-items: center;
-  justify-content: center;
   text-transform: none;
 
   & > * {
@@ -27,6 +25,8 @@ const OrderContainer = styled.article`
   @media (min-width: 700px) {
     display: grid;
     grid-template-columns: 60% 1fr 1fr;
+    align-items: center;
+    justify-content: center;
   }
 `;
 
@@ -128,10 +128,10 @@ const CheckoutProduct = ({ product }) => {
 
   return (
     <OrderContainer
-    // variants={slideOutVariant}
-    // initial='initial'
-    // animate='final'
-    // exit='exit'
+      variants={slideOutVariant}
+      initial='initial'
+      animate='final'
+      exit='exit'
     >
       <Information>
         <Link
