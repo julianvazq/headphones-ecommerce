@@ -109,7 +109,9 @@ const ProductDisplay = ({ product }) => {
       </Link>
       <Stars rating={product.rating} />
       <Price>${product.price}</Price>
-      <SecondaryButton>More info</SecondaryButton>
+      <Link href='/products/[model]' as={`/products/${product.model}`} passHref>
+        <SecondaryButton>More info</SecondaryButton>
+      </Link>
       <Button onClick={handleClick} inCart={inCart}>
         {inCart ? 'Remove from cart' : 'Add to cart'}
       </Button>

@@ -44,7 +44,7 @@ const Copyright = styled.p`
 
 const Footer = ({ hide }) => {
   return (
-    <FooterContainer hide={hide}>
+    <FooterContainer hide={hide} id='footer'>
       <SectionContainer bodyColor>
         <ContainerMaxWidth>
           <IconContainer>

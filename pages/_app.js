@@ -1,15 +1,8 @@
 import App from 'next/app';
 import '../styles/global.css';
-import { ThemeProvider } from 'styled-components';
 import Layout from '../components/global/Layout';
 import { AnimatePresence } from 'framer-motion';
 import CartProvider from '../components/context/CartContext';
-
-const theme = {
-  colors: {
-    primary: '#0070f3',
-  },
-};
 
 export default class MyApp extends App {
   state = {
@@ -33,18 +26,16 @@ export default class MyApp extends App {
   render() {
     const { Component, pageProps, router } = this.props;
     return (
-      <ThemeProvider theme={theme}>
-        <CartProvider>
-          <AnimatePresence exitBeforeEnter onExitComplete={this.closeSidebar}>
-            <Layout
-              showingCartOrMenu={this.state.showingCartOrMenu}
-              handleShowSidebar={this.handleShowSidebar}
-            >
-              <Component {...pageProps} key={router.route} />
-            </Layout>
-          </AnimatePresence>
-        </CartProvider>
-      </ThemeProvider>
+      <CartProvider>
+        <AnimatePresence exitBeforeEnter onExitComplete={this.closeSidebar}>
+          <Layout
+            showingCartOrMenu={this.state.showingCartOrMenu}
+            handleShowSidebar={this.handleShowSidebar}
+          >
+            <Component {...pageProps} key={router.route} />
+          </Layout>
+        </AnimatePresence>
+      </CartProvider>
     );
   }
 }

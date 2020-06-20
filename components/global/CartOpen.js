@@ -62,6 +62,7 @@ const Button = styled.button`
 
 const CartOpen = ({ showingCartOrMenu, handleShowSidebar }) => {
   const { cart, handleCartChange, getCartTotal } = useContext(CartContext);
+
   const closeSidebar = () => {
     handleShowSidebar(null);
   };

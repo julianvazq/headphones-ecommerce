@@ -1,3 +1,4 @@
+import React, { useEffect, useRef } from 'react';
 import styled from 'styled-components';
 import { motion } from 'framer-motion';
 import { MdClose } from 'react-icons/md';
@@ -66,20 +67,39 @@ const Sidebar = styled(motion.div)`
   }
 `;
 
-const CloseButton = styled(MdClose)`
+const CloseButton = styled.button`
   display: block;
   color: ${(props) => (props.cart ? 'var(--dark)' : 'var(--light)')};
   font-size: 3rem;
   align-self: flex-end;
   margin-bottom: 2rem;
-  cursor: pointer;
-  overflow: visible;
+
+  svg {
+    font-size: 3rem;
+    overflow: visible;
+  }
 `;
 
+// const CloseButton = styled(MdClose)`
+//   display: block;
+//   color: ${(props) => (props.cart ? 'var(--dark)' : 'var(--light)')};
+//   font-size: 3rem;
+//   align-self: flex-end;
+//   margin-bottom: 2rem;
+//   cursor: pointer;
+//   overflow: visible;
+// `;
+
 const AnimatedSidebar = ({ handleShowSidebar, cart = false, children }) => {
+  const navRef = useRef();
+
   const closeSidebar = () => {
     handleShowSidebar(null);
   };
+
+  useEffect(() => {
+    navRef.current.focus();
+  }, []);
 
   return (
     <motion.div>
@@ -97,7 +117,9 @@ const AnimatedSidebar = ({ handleShowSidebar, cart = false, children }) => {
         animate='final'
         exit='initial'
       >
-        <CloseButton onClick={closeSidebar} cart={cart} />
+        <CloseButton ref={navRef} onClick={closeSidebar} cart={cart}>
+          <MdClose />
+        </CloseButton>
         {children}
       </Sidebar>
     </motion.div>
