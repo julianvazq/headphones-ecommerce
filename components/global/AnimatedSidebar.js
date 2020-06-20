@@ -73,6 +73,7 @@ const CloseButton = styled.button`
   font-size: 3rem;
   align-self: flex-end;
   margin-bottom: 2rem;
+  overflow: visible;
 
   svg {
     font-size: 3rem;
