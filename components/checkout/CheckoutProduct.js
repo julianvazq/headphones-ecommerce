@@ -31,7 +31,7 @@ const OrderContainer = styled(motion.article)`
 `;
 
 const Information = styled.div`
-  display: flex;
+  /* display: flex; */
   margin: 0 auto 2rem auto;
 
   & > a {
@@ -54,14 +54,9 @@ const Information = styled.div`
 
   img {
     display: block;
-    /* max-width: 40%; */
-    max-width: 100px;
+    max-width: 40%;
     object-fit: contain;
     cursor: pointer;
-
-    @media (min-width: 450px) {
-      max-width: 40%;
-    }
 
     @media (min-width: 800px) {
       max-width: 30%;
@@ -117,11 +112,8 @@ const Subtotal = styled.p`
 `;
 
 const CheckoutProduct = ({ product }) => {
-  const [selectedColor, setSelectedColor] = useState(product.color);
   const [quantity, setQuantity] = useState(product.quantity);
-  const { cart, handleCartChange, checkIfInCart, updateProduct } = useContext(
-    CartContext
-  );
+  const { handleCartChange, updateProduct } = useContext(CartContext);
 
   const removeProduct = () => {
     handleCartChange(product);
