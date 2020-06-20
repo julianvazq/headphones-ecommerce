@@ -9,9 +9,9 @@ const backdropVariant = {
 };
 
 const sidebarVariant = {
-  initial: { x: '100%' },
+  initial: { translateX: '100%' },
   final: {
-    x: 0,
+    translateX: 0,
     transition: {
       delay: 0.5,
       type: 'spring',
