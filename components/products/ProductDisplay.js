@@ -92,8 +92,7 @@ const ProductDisplay = ({ product }) => {
   }, [cart]);
 
   return (
-    <div>
-      {/* <AnimatePresence exitBeforeEnter> */}
+    <AnimatePresence exitBeforeEnter>
       <ProductCard
         key={product.model}
         variants={slideOutVariant}
@@ -124,8 +123,7 @@ const ProductDisplay = ({ product }) => {
           {inCart ? 'Remove from cart' : 'Add to cart'}
         </Button>
       </ProductCard>
-      {/* </AnimatePresence> */}
-    </div>
+    </AnimatePresence>
   );
 };
 

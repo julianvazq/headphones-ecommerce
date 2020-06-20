@@ -22,6 +22,8 @@ const navVariant = {
 
 const NavContainer = styled(motion.div)`
   display: ${(props) => props.hide && 'none'};
+  position: relative;
+  z-index: 1;
 `;
 
 const Navigation = styled.nav`

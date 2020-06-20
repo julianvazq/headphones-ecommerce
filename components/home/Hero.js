@@ -5,10 +5,12 @@ import { motion } from 'framer-motion';
 
 const headerVariant = {
   initial: {
-    x: '100vw',
+    // opacity: 0,
+    translateY: '100%',
   },
   final: {
-    x: 0,
+    // opacity: 1,
+    translateY: 0,
     transition: {
       delayChildren: 0.5,
       duration: 1,
@@ -19,11 +21,11 @@ const headerVariant = {
 
 const headphoneVariant = {
   initial: {
-    y: -100,
+    translateY: -100,
     opacity: 0,
   },
   final: {
-    y: 0,
+    translateY: 0,
     opacity: 1,
     transition: {
       delay: 1.25,

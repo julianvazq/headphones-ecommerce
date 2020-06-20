@@ -10,7 +10,7 @@ import QuantityPicker from './QuantityPicker';
 
 const imageVariant = {
   initial: {
-    x: 100,
+    x: -100,
     opacity: 0,
   },
   final: {

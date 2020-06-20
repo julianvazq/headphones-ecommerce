@@ -1,10 +1,10 @@
 export const slideOutVariant = {
   initial: {
-    x: 50,
+    translateX: -50,
     opacity: 0,
   },
   final: {
-    x: 0,
+    translateX: 0,
     opacity: 1,
     transition: {
       duration: 0.5,
@@ -12,10 +12,9 @@ export const slideOutVariant = {
     },
   },
   exit: {
-    x: -25,
+    translateX: 25,
     opacity: 0,
     transition: {
-      duration: 0.5,
       type: 'tween',
     },
   },
