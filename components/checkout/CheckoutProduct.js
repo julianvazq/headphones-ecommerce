@@ -54,9 +54,14 @@ const Information = styled.div`
 
   img {
     display: block;
-    max-width: 40%;
+    /* max-width: 40%; */
+    max-width: 100px;
     object-fit: contain;
     cursor: pointer;
+
+    @media (min-width: 450px) {
+      max-width: 40%;
+    }
 
     @media (min-width: 800px) {
       max-width: 30%;
