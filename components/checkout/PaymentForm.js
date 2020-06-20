@@ -89,23 +89,35 @@ const ShortForm = styled.div`
 
 const ButtonContainer = styled.div`
   display: flex;
-  justify-content: space-between;
+  flex-direction: column;
+  justify-content: center;
   align-items: center;
   margin-top: 2rem;
+
+  @media (min-width: 480px) {
+    flex-direction: row;
+    justify-content: space-between;
+  }
 `;
 
 const OrderButton = styled.a`
+  text-align: center;
   font-family: 'Oswald', sans-serif;
-  padding: 0.75rem 1.5rem;
+  padding: 0.5rem 1rem;
   font-size: 1.25rem;
   font-weight: 600;
   letter-spacing: 1px;
   color: var(--light);
   background: var(--primary);
   border-radius: 0.3rem;
+  margin-top: 2rem;
 
   &:visited {
     color: var(--light);
+  }
+
+  @media (min-width: 480px) {
+    margin: 0;
   }
 `;
 
