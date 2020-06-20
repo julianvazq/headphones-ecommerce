@@ -31,21 +31,15 @@ const OrderContainer = styled(motion.article)`
 `;
 
 const Information = styled.div`
-  display: flex;
+  /* display: flex; */
   margin: 0 auto 2rem auto;
   font-weight: 400;
 
   div:first-child {
-    margin-left: 1rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
     font-weight: 400;
-
-    @media (min-width: 375px) {
-      margin-left: 2rem;
-    }
-
-    @media (min-width: 900px) {
-      margin-left: 4rem;
-    }
   }
 
   h3 {
@@ -55,9 +49,10 @@ const Information = styled.div`
 
   img {
     display: block;
-    max-width: 40%;
+    max-width: 50%;
     object-fit: contain;
     cursor: pointer;
+    margin: 0 auto 2rem auto;
 
     @media (min-width: 800px) {
       max-width: 30%;
@@ -65,8 +60,18 @@ const Information = styled.div`
   }
 
   @media (min-width: 550px) {
-    margin: 0;
+    display: flex;
+    /* margin: 0; */
     align-items: center;
+
+    div:first-child {
+      display: block;
+      margin-left: 2rem;
+    }
+
+    img {
+      margin: 0;
+    }
   }
 `;
 
