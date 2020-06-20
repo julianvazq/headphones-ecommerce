@@ -68,28 +68,18 @@ const Sidebar = styled(motion.div)`
 `;
 
 const CloseButton = styled.button`
+  flex: 1;
   display: block;
   color: ${(props) => (props.cart ? 'var(--dark)' : 'var(--light)')};
   font-size: 3rem;
   align-self: flex-end;
   margin-bottom: 2rem;
-  overflow: visible;
 
   svg {
     font-size: 3rem;
     overflow: visible;
   }
 `;
-
-// const CloseButton = styled(MdClose)`
-//   display: block;
-//   color: ${(props) => (props.cart ? 'var(--dark)' : 'var(--light)')};
-//   font-size: 3rem;
-//   align-self: flex-end;
-//   margin-bottom: 2rem;
-//   cursor: pointer;
-//   overflow: visible;
-// `;
 
 const AnimatedSidebar = ({ handleShowSidebar, cart = false, children }) => {
   const navRef = useRef();
