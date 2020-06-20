@@ -24,11 +24,11 @@ const ProductGrid = ({ products, fourOnly }) => {
 
   return (
     <Grid>
-      <AnimatePresence exitBeforeEnter>
-        {visibleProducts.map((product) => (
-          <ProductDisplay key={product.model} product={product} />
-        ))}
-      </AnimatePresence>
+      {/* <AnimatePresence exitBeforeEnter> */}
+      {visibleProducts.map((product) => (
+        <ProductDisplay key={product.model} product={product} />
+      ))}
+      {/* </AnimatePresence> */}
     </Grid>
   );
 };
