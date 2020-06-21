@@ -28,10 +28,10 @@ export default class MyApp extends App {
     const { Component, pageProps, router } = this.props;
     return (
       <CartProvider>
+        <Head>
+          <link rel='shortcut icon' href='/favicon-32x32.png' />
+        </Head>
         <AnimatePresence exitBeforeEnter onExitComplete={this.closeSidebar}>
-          <Head>
-            <link rel='shortcut icon' href='/favicon-32x32.png' />
-          </Head>
           <Layout
             showingCartOrMenu={this.state.showingCartOrMenu}
             handleShowSidebar={this.handleShowSidebar}

@@ -28,6 +28,7 @@ const ImgContainer = styled.div`
   display: flex;
   justify-content: center;
   align-items: center;
+  margin-bottom: 1rem;
 
   img {
     display: block;
@@ -38,6 +39,7 @@ const ImgContainer = styled.div`
 
   @media (min-width: 1100px) {
     width: 50%;
+    margin-bottom: 1rem;
     margin-right: 2rem;
   }
 
@@ -132,6 +134,7 @@ const CartProduct = ({
 }) => {
   return (
     <ProductContainer
+      key={model}
       variants={slideOutVariant}
       initial='initial'
       animate='final'
