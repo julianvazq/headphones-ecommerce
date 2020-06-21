@@ -29,6 +29,7 @@ export default class MyApp extends App {
     return (
       <CartProvider>
         <Head>
+          <meta charset='utf-8' />
           <link rel='shortcut icon' href='/favicon-32x32.png' />
           <meta name='description' content='Mock E-Commerce Store.' />
           <meta name='author' content='Julian Vazquez' />

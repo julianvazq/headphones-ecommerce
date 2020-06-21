@@ -147,13 +147,19 @@ const Nav = ({ showingCartOrMenu, handleShowSidebar, hide }) => {
             <Link href='/products?type=earbuds'>
               <a>Earbuds</a>
             </Link>
-            <button onClick={() => handleShowSidebar('cart')}>
+            <button
+              onClick={() => handleShowSidebar('cart')}
+              aria-label='Toggle Cart'
+            >
               <CartIcon />
               <CartCounter reverse={router.pathname !== '/'}>
                 <span>{cart.length}</span>
               </CartCounter>
             </button>
-            <button onClick={() => handleShowSidebar('menu')}>
+            <button
+              onClick={() => handleShowSidebar('menu')}
+              aria-label='Toggle Menu'
+            >
               <MdMenu />
             </button>
           </LinkContainer>
