@@ -1,7 +1,6 @@
 import React from 'react';
 import styled from 'styled-components';
 import ProductDisplay from './ProductDisplay';
-import { AnimatePresence } from 'framer-motion';
 
 const Grid = styled.div`
   display: grid;
@@ -19,16 +18,12 @@ const Grid = styled.div`
   }
 `;
 
-const ProductGrid = ({ products, fourOnly }) => {
-  const visibleProducts = fourOnly ? products.slice(0, 4) : products;
-
+const ProductGrid = ({ products }) => {
   return (
     <Grid>
-      {/* <AnimatePresence exitBeforeEnter> */}
-      {visibleProducts.map((product) => (
+      {products.map((product) => (
         <ProductDisplay key={product.model} product={product} />
       ))}
-      {/* </AnimatePresence> */}
     </Grid>
   );
 };

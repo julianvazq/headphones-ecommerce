@@ -50,14 +50,14 @@ const ProductsSection = ({ headphones, earbuds }) => {
           <ViewMoreButton>View more</ViewMoreButton>
         </Link>
       </HeadingContainer>
-      <ProductGrid products={headphones} fourOnly />
+      <ProductGrid products={headphones.slice(0, 4)} />
       <HeadingContainer>
         <SectionTitle>Earbuds</SectionTitle>
         <Link href='/products?type=earbuds'>
           <ViewMoreButton>View more</ViewMoreButton>
         </Link>
       </HeadingContainer>
-      <ProductGrid products={earbuds} fourOnly />
+      <ProductGrid products={earbuds.slice(0, 4)} />
     </SectionContainer>
   );
 };

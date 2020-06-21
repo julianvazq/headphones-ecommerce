@@ -14,8 +14,8 @@ const Heading = styled.h2`
 const SimilarProducts = ({ model, products }) => {
   //   Filter out product on display
   const similarProducts = products
-    .slice(0, 5)
-    .filter((product) => product.model !== model);
+    .filter((product) => product.model !== model)
+    .slice(0, 4);
 
   return (
     <>
