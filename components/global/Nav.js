@@ -89,7 +89,8 @@ const CartCounter = styled.div`
   width: 20px;
   height: 20px;
   border-radius: 50%;
-  background: var(--light);
+  background: ${(props) => (props.reverse ? 'var(--primary)' : 'var(--light)')};
+  color: ${(props) => (props.reverse ? 'var(--light)' : 'var(--dark)')};
   display: flex;
   justify-content: center;
   align-items: center;
@@ -148,7 +149,7 @@ const Nav = ({ showingCartOrMenu, handleShowSidebar, hide }) => {
             </Link>
             <button onClick={() => handleShowSidebar('cart')}>
               <CartIcon />
-              <CartCounter>
+              <CartCounter reverse={router.pathname !== '/'}>
                 <span>{cart.length}</span>
               </CartCounter>
             </button>
