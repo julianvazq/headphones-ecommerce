@@ -51,11 +51,17 @@ const Stars = ({ rating, featured, white }) => {
     const stars = [];
 
     for (let i = 0; i < integer; i++) {
-      stars.push(<StarIcon key={i} featured={featured} />);
+      stars.push(<StarIcon key={i} aria-label='Star' featured={featured} />);
     }
 
     if (rating % integer !== 0) {
-      stars.push(<HalfStarIcon key={stars.length} featured={featured} />);
+      stars.push(
+        <HalfStarIcon
+          key={stars.length}
+          aria-label='Half Star'
+          featured={featured}
+        />
+      );
     }
 
     return stars;
