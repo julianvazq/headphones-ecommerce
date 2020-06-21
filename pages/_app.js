@@ -1,4 +1,5 @@
 import App from 'next/app';
+import Head from 'next/head';
 import '../styles/global.css';
 import Layout from '../components/global/Layout';
 import { AnimatePresence } from 'framer-motion';
@@ -28,6 +29,9 @@ export default class MyApp extends App {
     return (
       <CartProvider>
         <AnimatePresence exitBeforeEnter onExitComplete={this.closeSidebar}>
+          <Head>
+            <link rel='shortcut icon' href='/favicon-32x32.png' />
+          </Head>
           <Layout
             showingCartOrMenu={this.state.showingCartOrMenu}
             handleShowSidebar={this.handleShowSidebar}

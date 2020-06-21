@@ -2,7 +2,6 @@ import React from 'react';
 import styled from 'styled-components';
 import Link from 'next/link';
 import { motion } from 'framer-motion';
-import useViewportWidth from '../hooks/useViewportWidth';
 
 const translateVertically = {
   initial: {
