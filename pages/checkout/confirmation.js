@@ -4,15 +4,16 @@ import styled from 'styled-components';
 import { SectionContainer } from '../../styles/shared-styles';
 import { FaShippingFast } from 'react-icons/fa';
 import { CartContext } from '../../components/context/CartContext';
+import EmptyCart from '../../components/products/EmptyCart';
 
 const CenteredContainer = styled.div`
   height: calc(50vh - 114px);
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
   position: relative;
   margin: 4rem 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: var(--light);
 
   svg {
     font-size: 3rem;
@@ -30,7 +31,20 @@ const CenteredContainer = styled.div`
     background-position: center;
     opacity: 0.4;
     filter: contrast(90%);
+    z-index: 1;
   }
+`;
+
+const InnerContainer = styled.div`
+  background: hsla(176, 100%, 39%, 0.5);
+  color: var(--dark);
+  box-shadow: 0px 0px 8px rgba(0, 0, 0, 0.2);
+  padding: 2rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  z-index: 2;
 `;
 
 const Message = styled.p`
@@ -49,12 +63,26 @@ const SubMessage = styled.p`
   margin: 0 1rem 1rem;
 `;
 
+const EmptyCartContainer = styled.section`
+  height: 75vh;
+  background: var(--light);
+  position: relative;
+`;
+
 const ConfirmationPage = () => {
-  const { clearCart } = useContext(CartContext);
+  const { cart, clearCart } = useContext(CartContext);
 
   useEffect(() => {
     clearCart();
   }, []);
+
+  if (!cart.length) {
+    return (
+      <EmptyCartContainer>
+        <EmptyCart />
+      </EmptyCartContainer>
+    );
+  }
 
   return (
     <>
@@ -64,9 +92,11 @@ const ConfirmationPage = () => {
       </Head>
       <SectionContainer>
         <CenteredContainer>
-          <Message>Thank you for placing a fake order.</Message>
-          <SubMessage>Your product(s) will be delivered never!</SubMessage>
-          <FaShippingFast />
+          <InnerContainer>
+            <Message>Thank you for placing a fake order.</Message>
+            <SubMessage>Your product(s) will be delivered never!</SubMessage>
+            <FaShippingFast />
+          </InnerContainer>
         </CenteredContainer>
       </SectionContainer>
     </>

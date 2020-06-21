@@ -40,10 +40,10 @@ const ActionButton = styled.a`
   }
 `;
 
-const EmptyCart = ({ closeSidebar }) => {
+const EmptyCart = ({ closeSidebar, message }) => {
   return (
     <Container>
-      <Message>Your cart is currently empty</Message>
+      <Message>{message ? message : 'Your cart is currently empty'}</Message>
       <HeadphoneIcon />
       <Link href='/products?type=headphones' passHref>
         <ActionButton onClick={closeSidebar}>Browse products</ActionButton>

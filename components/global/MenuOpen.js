@@ -50,7 +50,7 @@ const MenuOpen = ({ showingCartOrMenu, handleShowSidebar }) => {
           <a onClick={closeSidebar}>Home</a>
         </Link>
         <Link href='/checkout'>
-          <a onClick={closeSidebar}>Checkout</a>
+          <a onClick={closeSidebar}>Cart</a>
         </Link>
         <Link href='/products?type=headphones'>
           <a onClick={closeSidebar}>Headphones</a>
