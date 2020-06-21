@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import Link from 'next/link';
 import { useRouter } from 'next/router';
 import styled from 'styled-components';
@@ -7,6 +7,7 @@ import ContainerMaxWidth from '../utils/ContainerMaxWidth';
 import { MdShoppingCart, MdMenu } from 'react-icons/md';
 import MenuOpen from './MenuOpen';
 import CartOpen from './CartOpen';
+import { CartContext } from '../context/CartContext';
 
 const navVariant = {
   initial: {
@@ -56,6 +57,7 @@ const LinkContainer = styled.div`
     display: flex;
     justify-content: center;
     align-items: center;
+    position: relative;
   }
 
   svg {
@@ -83,7 +85,29 @@ const CartIcon = styled(MdShoppingCart)`
   color: var(--dark) !important;
 `;
 
+const CartCounter = styled.div`
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+  background: var(--light);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: absolute;
+  top: -6px;
+  right: -6px;
+  font-weight: 600;
+
+  span {
+    font-size: 0.8rem;
+    line-height: 1;
+    vertical-align: middle;
+    text-align: center;
+  }
+`;
+
 const Nav = ({ showingCartOrMenu, handleShowSidebar, hide }) => {
+  const { cart } = useContext(CartContext);
   const router = useRouter();
   return (
     <NavContainer
@@ -124,6 +148,9 @@ const Nav = ({ showingCartOrMenu, handleShowSidebar, hide }) => {
             </Link>
             <button onClick={() => handleShowSidebar('cart')}>
               <CartIcon />
+              <CartCounter>
+                <span>{cart.length}</span>
+              </CartCounter>
             </button>
             <button onClick={() => handleShowSidebar('menu')}>
               <MdMenu />
