@@ -30,6 +30,13 @@ export default class MyApp extends App {
       <CartProvider>
         <Head>
           <link rel='shortcut icon' href='/favicon-32x32.png' />
+          <meta name='description' content='Mock E-Commerce Store.' />
+          <meta name='author' content='Julian Vazquez' />
+          <meta name='keywords' content='E-commerce, NextJS, React.' />
+          <meta
+            name='viewport'
+            content='width=device-width, initial-scale=1.0'
+          />
         </Head>
         <AnimatePresence exitBeforeEnter onExitComplete={this.closeSidebar}>
           <Layout
