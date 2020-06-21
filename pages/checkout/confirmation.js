@@ -63,26 +63,12 @@ const SubMessage = styled.p`
   margin: 0 1rem 1rem;
 `;
 
-const EmptyCartContainer = styled.section`
-  height: 75vh;
-  background: var(--light);
-  position: relative;
-`;
-
 const ConfirmationPage = () => {
   const { cart, clearCart } = useContext(CartContext);
 
   useEffect(() => {
     clearCart();
   }, []);
-
-  if (!cart.length) {
-    return (
-      <EmptyCartContainer>
-        <EmptyCart />
-      </EmptyCartContainer>
-    );
-  }
 
   return (
     <>
