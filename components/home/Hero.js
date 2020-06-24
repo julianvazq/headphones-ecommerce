@@ -5,7 +5,7 @@ import { motion } from 'framer-motion';
 
 const translateVertically = {
   initial: {
-    translateY: '-100%',
+    translateY: '-150%',
   },
   final: {
     translateY: 0,

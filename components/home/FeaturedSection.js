@@ -38,7 +38,6 @@ const FeaturedSectionContainer = styled.section`
     background-position: center;
     background-size: cover;
     background-repeat: no-repeat;
-    mix-blend-mode: color;
     will-change: opacity;
   }
 `;
