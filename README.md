@@ -8,7 +8,7 @@ Mock e-commerce store that exclusively sells headphones and earbuds.
 
 - NextJS (React)
 - [Styled Components](https://styled-components.com/) (CSS)
-- Framer Motion (animation library)
+- [Framer Motion](https://www.framer.com/motion/) (animation library)
 
 ### Backend
 
