@@ -86,6 +86,8 @@ const ProductContainer = styled.div`
   img {
     display: block;
     width: 100%;
+    max-width: 400px;
+    margin: 0 auto 2rem auto;
     cursor: pointer;
   }
 

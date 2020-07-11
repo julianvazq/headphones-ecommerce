@@ -122,7 +122,7 @@ const ImageContainer = styled.div`
 const HeadphoneImage = styled(motion.img)`
   display: block;
   width: 100%;
-  max-width: 700px;
+  max-width: 500px;
   mix-blend-mode: multiply;
   will-change: opacity;
   filter: contrast(90%);

@@ -39,6 +39,8 @@ const ImageContainer = styled(motion.div)`
   img {
     display: block;
     width: 100%;
+    max-width: 500px;
+    margin: auto;
   }
 
   @media (min-width: 800px) {

@@ -46,7 +46,7 @@ const Sidebar = styled(motion.div)`
   &:before {
     content: '';
     position: absolute;
-    top: 114px;
+    top: 106px;
     left: 0;
     height: 100%;
     width: 100%;
@@ -57,7 +57,7 @@ const Sidebar = styled(motion.div)`
     opacity: ${(props) => (props.cart ? '0.2' : '0.4')};
     mix-blend-mode: multiply;
     background-repeat: no-repeat;
-    background-size: contain;
+    background-size: 240px;
   }
 
   @media (min-width: 700px) {
