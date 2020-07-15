@@ -155,6 +155,7 @@ const CartButton = styled.button`
   text-transform: uppercase;
   font-size: 1.125rem;
   font-weight: 600;
+  letter-spacing: 1px;
   padding: 1rem 0;
   text-align: center;
   display: flex;

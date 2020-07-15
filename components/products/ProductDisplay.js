@@ -66,6 +66,7 @@ const Button = styled.button`
   text-transform: uppercase;
   font-size: 1.125rem;
   font-weight: 600;
+  letter-spacing: 1px;
   padding: 0.75rem;
   text-align: center;
   width: 75%;

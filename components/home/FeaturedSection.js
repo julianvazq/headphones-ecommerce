@@ -118,7 +118,7 @@ const LimitedEdition = styled.div`
   padding: 1rem 1.5rem;
   font-size: 1.5rem;
   font-weight: 600;
-
+  letter-spacing: 1px;
   color: var(--dark);
   text-align: center;
   margin-bottom: 2rem;
@@ -136,6 +136,7 @@ const ActionButton = styled.a`
   padding: 1rem 2rem;
   background: var(--dark);
   color: var(--light);
+  letter-spacing: 1px;
 
   &:visited {
     color: var(--light);

@@ -113,6 +113,7 @@ const Button = styled.button`
   margin: auto;
   color: var(--light);
   background: var(--dark);
+  letter-spacing: 1px;
 `;
 
 const SecondaryButton = styled(Button)`

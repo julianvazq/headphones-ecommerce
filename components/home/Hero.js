@@ -135,6 +135,7 @@ const HeadphonesButton = styled(motion.a)`
   padding: 1rem;
   font-weight: 700;
   font-size: 1.25rem;
+  letter-spacing: 1px;
   width: 300px;
   text-align: center;
   cursor: pointer;
@@ -151,6 +152,7 @@ const EarbudsButton = styled(motion.a)`
   padding: 1rem;
   font-weight: 700;
   font-size: 1.25rem;
+  letter-spacing: 1px;
   width: 300px;
   text-align: center;
   cursor: pointer;

@@ -58,6 +58,7 @@ const Button = styled.button`
   margin: auto;
   color: var(--light);
   background: var(--dark);
+  letter-spacing: 2px;
 `;
 
 const CartOpen = ({ showingCartOrMenu, handleShowSidebar }) => {

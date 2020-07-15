@@ -39,6 +39,7 @@ const ViewMoreButton = styled.a`
   padding: 0.5rem 1rem;
   color: var(--light);
   background: var(--dark);
+  letter-spacing: 1px;
 `;
 
 const ProductsSection = ({ headphones, earbuds }) => {

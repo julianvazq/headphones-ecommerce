@@ -35,6 +35,7 @@ const CheckoutButton = styled.a`
   background: var(--dark);
   color: var(--light);
   margin-top: 2rem;
+  letter-spacing: 2px;
 
   &:visited {
     color: var(--light);
