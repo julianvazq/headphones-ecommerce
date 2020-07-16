@@ -15,6 +15,7 @@ const HeadingContainer = styled.div`
   align-items: center;
   padding-bottom: 1.125rem;
   border-bottom: 2px solid var(--primary);
+  margin-top: ${(props) => props.marginTop && '4rem'};
 
   @media (min-width: 700px) {
     flex-direction: row;
@@ -52,7 +53,7 @@ const ProductsSection = ({ headphones, earbuds }) => {
         </Link>
       </HeadingContainer>
       <ProductGrid products={headphones.slice(0, 4)} />
-      <HeadingContainer>
+      <HeadingContainer marginTop>
         <SectionTitle>Earbuds</SectionTitle>
         <Link href='/products?type=earbuds'>
           <ViewMoreButton>View more</ViewMoreButton>

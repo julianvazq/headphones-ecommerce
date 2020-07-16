@@ -6,7 +6,7 @@ const Grid = styled.div`
   display: grid;
   grid-template-columns: 1fr;
   grid-gap: 2rem;
-  margin: 4rem 0 2rem;
+  margin-top: ${(props) => (props.reducedMarginTop ? '2rem' : '4rem')};
   align-items: end;
 
   @media (min-width: 500px) {
@@ -20,7 +20,7 @@ const Grid = styled.div`
 
 const ProductGrid = ({ products }) => {
   return (
-    <Grid>
+    <Grid reducedMarginTop={products[0].type === 'earbuds'}>
       {products.map((product) => (
         <ProductDisplay key={product.model} product={product} />
       ))}
